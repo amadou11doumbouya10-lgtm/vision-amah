@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#101522"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g transform="translate(400,260) rotate(-8)" stroke="url(#accent)" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-140,-50 a25,25 0 0 1 0,50 L140,0 a25,25 0 0 1 0,-50 Z"/>
+    <line x1="40" y1="-50" x2="40" y2="50" stroke-dasharray="10 10"/>
+    <circle cx="-80" cy="0" r="6" fill="#3b82f6" stroke="none"/>
+  </g>
+  <text x="400" y="480" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="3">TICKETING PLATFORM</text>
+  <text x="400" y="520" text-anchor="middle" fill="#9ca3af" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">BILLETTERIE · STRIPE</text>
+</svg>
