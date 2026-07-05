@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const AVATAR_AMAH_URL = "https://legendary-selkie-d298b7.netlify.app";
 
 export default function AvatarAmahWidget() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    fetch("https://legendary-selkie-d298b7.netlify.app/.netlify/functions/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: [{ role: "user", content: "ping" }] }),
+    }).catch(() => {});
+  }, []);
 
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3 sm:bottom-8 sm:right-8">
