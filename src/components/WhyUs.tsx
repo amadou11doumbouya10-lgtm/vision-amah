@@ -5,19 +5,19 @@ import VideoBackground from "./VideoBackground";
 
 const points = [
   {
-    stat: "100%",
-    label: "Solutions sur-mesure",
-    description: "Chaque projet est conçu autour de vos besoins réels, pas d'un template générique.",
+    stat: "10h",
+    label: "Gagnées par semaine",
+    description: "Nos clients automatisent leurs tâches répétitives et récupèrent en moyenne 10 heures par semaine grâce à nos assistants IA.",
   },
   {
-    stat: "IA-first",
-    label: "Expertise en intelligence artificielle",
-    description: "Assistants, chatbots et automatisations alimentés par les dernières technologies IA.",
+    stat: "×3",
+    label: "Plus vite sur le marché",
+    description: "De l'idée au site en ligne, nous livrons en semaines — pas en mois. Votre activité démarre pendant que vos concurrents attendent.",
   },
   {
-    stat: "End-to-end",
-    label: "De l'idée au déploiement",
-    description: "Conception, développement et mise en production, accompagnés sur la durée.",
+    stat: "0€",
+    label: "Pour commencer",
+    description: "Un audit de 30 minutes gratuit pour analyser vos besoins, identifier vos gains rapides et vous proposer une solution adaptée à votre budget.",
   },
 ];
 
@@ -40,7 +40,7 @@ export default function WhyUs() {
             Pourquoi nous choisir
           </p>
           <h2 className="text-4xl font-bold uppercase sm:text-5xl">
-            Une approche technique, pas marketing
+            Des résultats mesurables, pas des promesses
           </h2>
         </motion.div>
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-3">

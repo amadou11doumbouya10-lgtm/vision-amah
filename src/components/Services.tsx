@@ -7,38 +7,38 @@ const services = [
   {
     title: "Assistants IA & Automatisation",
     description:
-      "Assistants IA locaux capables d'exécuter des dizaines d'outils (fichiers, email, navigateur, voix) pour automatiser vos tâches métier, propulsés par Groq/Llama 3.3 et l'API Anthropic.",
+      "Automatisez 80 % de vos tâches administratives. Votre assistant lit vos PDF, remplit vos Excel, rédige vos emails et navigue sur le web à votre place — gagnez 10 heures par semaine.",
     image: "/projects/amah-agent.png",
   },
   {
     title: "Chatbots & Avatars conversationnels",
     description:
-      "Chatbots IA et avatars conversationnels personnalisés pour l'assistance client, le support et l'engagement utilisateur.",
+      "Un assistant disponible 24h/24 qui répond à vos clients, qualifie vos prospects et prend des rendez-vous — sans que vous leviez le petit doigt.",
     image: "/projects/chatbot.svg",
   },
   {
     title: "Plateformes Web & Streaming",
     description:
-      "Applications web performantes type Netflix, billetterie en ligne avec paiement Stripe, et plateformes de diffusion de contenu en temps réel, en PWA.",
+      "Votre plateforme en ligne lancée en quelques semaines : billetterie, streaming, abonnements. Vos clients accèdent à votre contenu partout, sur tous les appareils.",
     image: "/projects/theamah.png",
   },
   {
     title: "E-commerce & Boutiques en ligne",
     description:
-      "Boutiques Shopify avec thèmes Liquid personnalisés, et intégrations de paiement sur-mesure.",
+      "Votre boutique en ligne prête à vendre dès le premier jour — paiement intégré, design sur-mesure, zéro friction pour vos clients.",
     image: "/projects/vertex-shop.jpeg",
     fit: "contain" as const,
   },
   {
     title: "Logiciels métier sur-mesure",
     description:
-      "Applications Next.js, bases de données Prisma/PostgreSQL, pour la gestion de fret, logistique et opérations d'entreprise.",
+      "Fini les tablettes Excel et les processus manuels. Un logiciel taillé pour votre activité : suivi des commandes, gestion du stock, rapports automatiques.",
     image: "/projects/transport-agency.svg",
   },
   {
     title: "Cybersécurité & Audit",
     description:
-      "Audit de sécurité, tests d'intrusion et sensibilisation, avec Kali Linux, Nmap, Metasploit et Wireshark.",
+      "Identifiez vos failles avant que quelqu'un d'autre ne le fasse. Audit complet, rapport clair, recommandations actionnables — protégez votre business dès maintenant.",
     image: "/projects/cyber-content-generator.svg",
   },
 ];
@@ -58,7 +58,7 @@ export default function Services() {
             Nos services
           </p>
           <h2 className="text-4xl font-bold uppercase sm:text-5xl">
-            Des solutions informatiques pensées pour la performance
+            Ce que vous gagnez concrètement
           </h2>
         </motion.div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

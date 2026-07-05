@@ -52,9 +52,9 @@ export const projects: Project[] = [
     name: "Amah Agent",
     tag: "Intelligence artificielle",
     summary:
-      "Assistant IA local pour Windows avec 99 outils intégrés (fichiers, email, navigateur, Excel, voix), mémoire SQLite persistante.",
+      "Dites « Amah, rédige cet email » — et c'est fait. Un assistant IA local qui automatise vos tâches Windows : fichiers, Excel, emails, navigateur, voix.",
     description:
-      "Amah Agent est un assistant IA installé localement sur un PC Windows, propulsé par Groq (Llama 3.3) pour le raisonnement et Gemini Live pour la conversation vocale temps réel. Il dispose de 99 outils intégrés — fichiers, emails Gmail, navigateur avec profil persistant, Excel, vision par IA, planification multi-étapes — pilotables à l'écrit comme à la voix avec mot de réveil dédié. Sa mémoire persistante en SQLite lui permet de se souvenir du contexte entre les sessions, et une licence offline liée au matériel sécurise la distribution. Packagé en exécutable Windows autonome, il automatise des tâches métier répétitives sans dépendre du cloud pour l'essentiel de son fonctionnement.",
+      "Imaginez un collaborateur disponible 24h/24, qui lit vos PDF, remplit vos fichiers Excel, rédige vos emails Gmail et navigue sur le web pour vous — le tout à la voix ou au texte. Amah Agent s'installe sur votre PC Windows et fonctionne sans internet pour l'essentiel. Ses 99 outils couvrent tout ce que vous faites en journée : gestion de fichiers, documents, tableurs, agenda, vision par IA sur vos écrans. Il planifie des tâches en plusieurs étapes, se souvient de vos préférences entre les sessions, et répond au mot-clé « Amah » comme un vrai assistant. Résultat : 10 heures récupérées par semaine, sans recruter.",
     stack: ["Python", "Groq / Llama 3.3", "Gemini Live", "SQLite"],
     features: [
       "99 outils : fichiers, documents, Excel, email Gmail, navigateur, vision IA, automatisation système",
