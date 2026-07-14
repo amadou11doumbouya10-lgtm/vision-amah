@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { projects, getProject } from "@/data/projects";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ProjectHeroVideo from "@/components/ProjectHeroVideo";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -18,8 +19,21 @@ export function generateMetadata({
   const project = getProject(params.slug);
   if (!project) return {};
   return {
-    title: `${project.name} — Vision Amah`,
+    title: project.name,
     description: project.summary,
+    alternates: { canonical: `/projets/${project.slug}` },
+    openGraph: {
+      title: `${project.name} — Vision Amah`,
+      description: project.summary,
+      url: `/projets/${project.slug}`,
+      images: [{ url: project.image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} — Vision Amah`,
+      description: project.summary,
+      images: [project.image],
+    },
   };
 }
 
@@ -28,20 +42,12 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   if (!project) notFound();
 
   return (
-    <main className="bg-black">
+    <main id="main-content" className="bg-black">
       <Navbar />
       <section className="relative flex min-h-[70vh] w-full items-end overflow-hidden bg-black pt-24">
         <div className="absolute inset-0">
           {project.video ? (
-            <video
-              src={project.video}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="h-full w-full object-cover"
-              aria-label={project.name}
-            />
+            <ProjectHeroVideo src={project.video} alt={project.name} />
           ) : (
             <Image
               src={project.image}
