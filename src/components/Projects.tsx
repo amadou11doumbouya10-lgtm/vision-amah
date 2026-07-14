@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export default function Projects() {
+  const reducedMotion = useReducedMotion();
+
   return (
     <section id="realisations" className="border-t border-white/10 bg-black py-28">
       <div className="mx-auto max-w-7xl px-6">
@@ -40,9 +43,9 @@ export default function Projects() {
                   {project.video ? (
                     <video
                       src={project.video}
-                      autoPlay
+                      autoPlay={!reducedMotion}
                       muted
-                      loop
+                      loop={!reducedMotion}
                       playsInline
                       className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                       aria-label={project.name}

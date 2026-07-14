@@ -1,0 +1,21 @@
+{
+  "name": "Vision Amah — Solutions informatiques & IA",
+  "short_name": "Vision Amah",
+  "description": "Assistants IA, chatbots conversationnels, plateformes web et cybersécurité sur-mesure, depuis Conakry.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "/icon",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

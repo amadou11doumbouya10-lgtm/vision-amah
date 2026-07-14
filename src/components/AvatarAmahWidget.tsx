@@ -9,11 +9,31 @@ export default function AvatarAmahWidget() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    fetch("https://legendary-selkie-d298b7.netlify.app/.netlify/functions/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: [{ role: "user", content: "ping" }] }),
-    }).catch(() => {});
+    const controller = new AbortController();
+    let warmedUp = false;
+
+    const warmUp = () => {
+      if (warmedUp) return;
+      warmedUp = true;
+      fetch("https://legendary-selkie-d298b7.netlify.app/.netlify/functions/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: [{ role: "user", content: "ping" }] }),
+        signal: controller.signal,
+      }).catch(() => {});
+    };
+
+    const interactionEvents: (keyof WindowEventMap)[] = ["pointermove", "scroll", "keydown", "touchstart"];
+    interactionEvents.forEach((event) =>
+      window.addEventListener(event, warmUp, { once: true, passive: true, signal: controller.signal })
+    );
+
+    const idleTimer = window.setTimeout(warmUp, 4000);
+
+    return () => {
+      controller.abort();
+      window.clearTimeout(idleTimer);
+    };
   }, []);
 
   return (
