@@ -52,6 +52,7 @@ export default function AvatarAmahWidget() {
               title="Avatar Amah"
               className="h-full w-full border-0"
               allow="clipboard-write"
+              sandbox="allow-scripts allow-forms allow-popups allow-same-origin"
             />
           </motion.div>
         )}
