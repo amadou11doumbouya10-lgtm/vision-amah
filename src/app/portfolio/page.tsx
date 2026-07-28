@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
@@ -330,10 +331,11 @@ export default function PortfolioPage() {
 
             <div className="rounded-2xl border border-white/10 bg-black p-8">
               <p className="mb-6 text-sm font-semibold text-white/60">
-                Ou réservez directement un audit IA gratuit sur{" "}
-                <a href="/#contact" className="text-accent underline underline-offset-4">
-                  Vision Amah →
-                </a>
+                Envoyez-moi un message — je lis tout personnellement.
+              </p>
+              <ContactForm />
+              <p className="mb-4 mt-8 text-center text-xs uppercase tracking-widest-plus text-white/40">
+                ou directement
               </p>
               <div className="flex flex-col gap-4">
                 <a
@@ -350,6 +352,12 @@ export default function PortfolioPage() {
                 >
                   Envoyer un email
                 </a>
+                <p className="text-center text-xs text-white/40">
+                  Ou réservez un audit IA gratuit sur{" "}
+                  <a href="/#contact" className="text-accent underline underline-offset-4">
+                    Vision Amah →
+                  </a>
+                </p>
               </div>
             </div>
           </div>

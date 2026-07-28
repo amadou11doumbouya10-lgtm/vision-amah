@@ -15,6 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       priority: 1,
     },
+    {
+      url: `${siteUrl}/portfolio`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
     ...projectRoutes,
   ];
 }
