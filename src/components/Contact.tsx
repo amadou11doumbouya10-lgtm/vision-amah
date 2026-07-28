@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import VideoBackground from "./VideoBackground";
+import ContactForm from "./ContactForm";
 
 export default function Contact() {
   return (
@@ -28,6 +29,12 @@ export default function Contact() {
         </p>
         <p className="mx-auto mb-10 max-w-xl text-balance text-sm text-white/50">
           Sans engagement. Sans jargon technique. Juste des solutions concrètes pour votre business.
+        </p>
+
+        <ContactForm />
+
+        <p className="mx-auto mb-6 mt-12 text-xs uppercase tracking-widest-plus text-white/40">
+          ou contactez-nous directement
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a

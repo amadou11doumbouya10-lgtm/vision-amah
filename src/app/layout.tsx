@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import AvatarAmahWidget from "@/components/AvatarAmahWidget";
 
@@ -93,6 +94,7 @@ export default function RootLayout({
         </a>
         {children}
         <AvatarAmahWidget />
+        <Analytics />
       </body>
     </html>
   );
