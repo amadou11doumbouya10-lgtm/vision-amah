@@ -19,12 +19,26 @@ const skills = [
   {
     category: "Back-end & BDD",
     icon: "◉",
-    items: ["Node.js", "Python", "Prisma ORM", "PostgreSQL", "SQLite", "REST API", "Netlify Functions"],
+    items: ["Node.js", "Python", "Tkinter", "Prisma ORM", "PostgreSQL", "SQLite", "REST API", "Netlify Functions"],
   },
   {
     category: "IA & Agents",
     icon: "◎",
     items: ["Anthropic API", "Groq API", "Llama 3.3 70B", "Gemini Live", "Playwright", "PyInstaller", "TMDB API"],
+  },
+  {
+    category: "Machine Learning & Data",
+    icon: "◍",
+    items: [
+      "Régression linéaire & logistique",
+      "Descente de gradient",
+      "Régularisation",
+      "Feature engineering",
+      "NumPy (vectorisation)",
+      "scikit-learn (LogisticRegression, TF-IDF)",
+      "Matplotlib",
+      "PyTorch (réseaux de neurones, dropout)",
+    ],
   },
   {
     category: "E-Commerce",
@@ -82,8 +96,51 @@ const timeline = [
   },
 ];
 
+const certifications = [
+  {
+    title: "Supervised Machine Learning: Regression and Classification",
+    issuer: "DeepLearning.AI / Stanford Online",
+    date: "Juillet 2026",
+    note: "Cours 1 de la Machine Learning Specialization",
+    href: null,
+    obtained: true,
+  },
+  {
+    title: "Getting Started with Generative AI",
+    issuer: "IBM SkillsBuild",
+    date: "2026",
+    note: null,
+    href: "https://www.credly.com/badges/1a6c872c-f34c-41fd-b145-bb9dc463046d/public_url",
+    obtained: true,
+  },
+  {
+    title: "Web Development Fundamentals",
+    issuer: "IBM SkillsBuild",
+    date: "2026",
+    note: null,
+    href: "https://www.credly.com/badges/56c12464-2aa6-4a56-95b9-62ca2a5cf4c0/public_url",
+    obtained: true,
+  },
+  {
+    title: "Microsoft Azure AI Engineer Associate (AI-102)",
+    issuer: "Microsoft",
+    date: "En préparation",
+    note: null,
+    href: null,
+    obtained: false,
+  },
+  {
+    title: "Certified in Cybersecurity (CC)",
+    issuer: "ISC2",
+    date: "En préparation",
+    note: null,
+    href: null,
+    obtained: false,
+  },
+];
+
 const stats = [
-  { num: "7+", label: "Projets déployés" },
+  { num: "8+", label: "Projets déployés" },
   { num: "99", label: "Outils — Amah Agent" },
   { num: "600K+", label: "Titres — Theamah+" },
   { num: "3", label: "Ventures actives" },
@@ -287,8 +344,64 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      {/* ── CERTIFICATIONS ── */}
+      <section id="certifications" className="border-t border-white/10 bg-white/[0.02] py-28">
+        <div className="mx-auto max-w-5xl px-6">
+          <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
+            Certifications
+          </p>
+          <h2 className="mb-3 text-4xl font-bold uppercase sm:text-5xl">Mes Certifications</h2>
+          <p className="mb-16 max-w-xl text-sm leading-relaxed text-white/50">
+            Formation continue en IA, machine learning, développement web et cybersécurité.
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {certifications.map((cert) => (
+              <div
+                key={cert.title}
+                className={`flex flex-col justify-between rounded-2xl border p-6 transition ${
+                  cert.obtained
+                    ? "border-white/10 bg-black hover:border-accent/40"
+                    : "border-dashed border-white/15 bg-black/50"
+                }`}
+              >
+                <div>
+                  <div className="mb-3 flex items-start justify-between gap-3">
+                    <span
+                      className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest-plus ${
+                        cert.obtained
+                          ? "bg-accent/15 text-accent"
+                          : "bg-white/5 text-white/40"
+                      }`}
+                    >
+                      {cert.obtained ? "Obtenu" : "En cours"}
+                    </span>
+                    <span className="text-xs text-white/40">{cert.date}</span>
+                  </div>
+                  <p className="mb-1 font-semibold leading-snug text-white">{cert.title}</p>
+                  <p className="text-xs font-medium text-accent">{cert.issuer}</p>
+                  {cert.note && (
+                    <p className="mt-2 text-xs leading-relaxed text-white/40">{cert.note}</p>
+                  )}
+                </div>
+                {cert.href && (
+                  <a
+                    href={cert.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-block text-xs font-semibold uppercase tracking-widest-plus text-accent underline underline-offset-4 hover:text-white"
+                  >
+                    Vérifier sur Credly →
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CONTACT ── */}
-      <section id="contact" className="border-t border-white/10 bg-white/[0.02] py-28">
+      <section id="contact" className="border-t border-white/10 bg-black py-28">
         <div className="mx-auto max-w-5xl px-6">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
             Contact

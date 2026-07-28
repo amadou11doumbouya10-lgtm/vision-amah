@@ -176,6 +176,27 @@ export const projects: Project[] = [
     image: "/projects/ticketing-platform.svg",
   },
   {
+    slug: "generateur-cours",
+    name: "Générateur de Cours IA",
+    tag: "IA & Machine Learning",
+    summary:
+      "Outil Python qui génère des cours complets en Markdown sur n'importe quel sujet : recherche Wikipedia FR/EN filtrée par un classifieur ML maison, rédaction par Llama 3.3 et programmes de formation multi-modules.",
+    description:
+      "Cet outil en ligne de commande transforme un simple sujet (« Docker », « Machine Learning »…) en cours structuré prêt à étudier. Il collecte d'abord le contexte sur Wikipedia en français et en anglais, puis un classifieur de pertinence entraîné maison (régression logistique + TF-IDF, scikit-learn) écarte automatiquement les extraits hors-sujet — par exemple les pages d'homonymie — avant que Llama 3.3 (via Groq) ne rédige un cours complet : définitions, cas d'usage, exemples de code commentés, exercices et erreurs courantes. L'outil suggère ensuite des sujets connexes, et peut concevoir un programme de formation entier découpé en modules progressifs, chacun généré et sauvegardé dans son propre fichier Markdown avec sommaire.",
+    stack: ["Python", "Groq / Llama 3.3", "scikit-learn", "API Wikipedia"],
+    features: [
+      "Génération d'un cours complet en Markdown à partir d'un simple sujet (définitions, exemples de code, exercices, erreurs courantes)",
+      "Recherche automatique du contexte sur Wikipedia FR + EN, avec résolution intelligente des titres approximatifs",
+      "Classifieur ML de pertinence entraîné maison (régression logistique + TF-IDF) qui filtre les extraits hors-sujet",
+      "Programmes de formation multi-modules : plan progressif conçu par IA puis chaque module généré individuellement",
+      "Suggestions de sujets connexes en fin de cours pour continuer à apprendre",
+      "Sauvegarde organisée : un fichier .md par cours, dossiers de programme avec sommaire automatique",
+    ],
+    architecture:
+      "main.py                 → Menu interactif (cours simple / programme complet)\nchercheur.py            → Recherche Wikipedia FR/EN + filtre ML de pertinence\ngenerateur.py           → Génération Groq (cours, suggestions, plans de programme)\nentrainement/           → Dataset, entraînement du classifieur (scikit-learn),\n                          expérience réseau de neurones (PyTorch)\ncours_generes/          → Cours et programmes produits (Markdown)",
+    image: "/projects/generateur-cours.svg",
+  },
+  {
     slug: "cyber-content-generator",
     name: "Cyber Content Generator",
     tag: "Cybersécurité",
