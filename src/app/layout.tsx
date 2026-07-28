@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     "Guinée",
   ],
   manifest: "/manifest.webmanifest",
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",
