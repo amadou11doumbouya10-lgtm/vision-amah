@@ -2,11 +2,24 @@
 
 ## 1. Vue d'ensemble
 
-Vision Amah est un site vitrine pour une société de solutions informatiques et IA basée à Conakry, Guinée. Le site présente les services, les réalisations et les coordonnées de contact de l'entreprise, sans backend, base de données ni CMS — tout le contenu est codé en dur dans les composants (sauf les données de projets, centralisées dans `src/data/projects.ts`).
+Vision Amah est un site vitrine pour une société de solutions informatiques et IA basée à Conakry, Guinée. Le site présente les services, les réalisations, les coordonnées de contact de l'entreprise, et un portfolio personnel — sans backend, base de données ni CMS.
 
 - **Cible** : clients en Afrique francophone et à l'international cherchant des assistants IA, chatbots, plateformes web, e-commerce ou cybersécurité.
-- **Type de site** : marketing, statique. Page d'accueil one-page (`/`) + une page de détail par projet (`/projets/[slug]`, générée statiquement).
+- **URL de production** : `https://vision-amah.vercel.app`
 - **Langue** : français (`lang="fr"` dans `layout.tsx`).
+
+### Routes
+
+| Route | Description |
+|---|---|
+| `/` | Page d'accueil one-page (sections empilées) |
+| `/projets/[slug]` | Page de détail par projet (générée statiquement) |
+| `/portfolio` | Portfolio personnel d'Amadou Doumbouya |
+| `/sitemap.xml` | Sitemap auto-généré (indexation Google) |
+| `/robots.txt` | Directives robots auto-générées |
+| `/opengraph-image` | Image sociale 1200×630 pour partage |
+| `/icon` / `/apple-icon` | Icônes PWA générées dynamiquement |
+| `/_not-found` | Page 404 personnalisée |
 
 ## 2. Stack technique
 
@@ -16,106 +29,152 @@ Vision Amah est un site vitrine pour une société de solutions informatiques et
 | TypeScript | Typage statique |
 | Tailwind CSS | Styling utilitaire |
 | Framer Motion | Animations au scroll et au chargement |
+| `@vercel/og` | Génération d'images OG et icônes PWA |
+| `@vercel/analytics` | Suivi des pages vues (zero-config) |
+| Formspree | Formulaire de contact serverless (env var `NEXT_PUBLIC_FORMSPREE_ID`) |
 | ESLint (`next/core-web-vitals`, `next/typescript`) | Linting |
 | Geist (local via `next/font/local`) | Police de caractères |
 
-Aucune base de données, aucune API externe, aucun gestionnaire d'état global.
+Aucune base de données, aucune API externe à part Formspree, aucun gestionnaire d'état global.
 
 ## 3. Structure du projet
 
 ```
 src/
   app/
-    layout.tsx           → squelette HTML, chargement des polices, métadonnées SEO
-    page.tsx              → assemble les sections de la page d'accueil dans l'ordre d'affichage
-    globals.css           → variables CSS (couleurs), animations CSS (starfield)
-    fonts/                → fichiers de police Geist (.woff)
+    layout.tsx               → squelette HTML, polices, métadonnées SEO complètes, JSON-LD, Analytics
+    page.tsx                 → assemble les sections de la page d'accueil dans l'ordre d'affichage
+    globals.css              → variables CSS (couleurs), animations CSS (starfield)
+    fonts/                   → fichiers de police Geist (.woff)
+    icon.tsx                 → icône PWA 32×32 "VA" générée via @vercel/og (force-dynamic)
+    apple-icon.tsx           → icône Apple Touch 180×180 via @vercel/og (force-dynamic)
+    opengraph-image.tsx      → image OG 1200×630 pour partage social (force-dynamic)
+    sitemap.ts               → sitemap.xml auto-généré (/, /projets/[slug], /portfolio)
+    robots.ts                → robots.txt auto-généré
+    not-found.tsx            → page 404 personnalisée
+    error.tsx                → error boundary global (client component)
     projets/[slug]/
-      page.tsx            → page de détail d'un projet (statique, via generateStaticParams)
+      page.tsx               → page de détail d'un projet (statique, via generateStaticParams)
+    portfolio/
+      page.tsx               → portfolio personnel Amadou Doumbouya (hero, stats, projets, skills ML, certifications, contact)
   components/
-    Navbar.tsx            → navigation fixe, change d'apparence au scroll
-    Hero.tsx               → section d'accueil plein écran
-    Services.tsx           → grille des 6 services proposés
-    WhyUs.tsx               → 3 arguments différenciants (statistiques)
-    Projects.tsx            → grille des réalisations/projets (lit src/data/projects.ts)
-    Contact.tsx              → appel à l'action + email de contact
-    Footer.tsx                → mentions légales, copyright
-    VideoBackground.tsx        → fond vidéo en boucle avec overlay, utilisé par Hero/WhyUs/Contact
+    Navbar.tsx               → navigation fixe, opaque au scroll, menu hamburger mobile + scroll-lock
+    Hero.tsx                 → section d'accueil plein écran
+    Services.tsx             → grille des 6 services proposés
+    WhyUs.tsx                → 3 arguments différenciants (statistiques)
+    Projects.tsx             → grille des réalisations/projets (lit src/data/projects.ts)
+    Contact.tsx              → formulaire Formspree + boutons WhatsApp/email
+    ContactForm.tsx          → formulaire Formspree (nom, email, message) — 4 états : idle/submitting/success/error
+    Footer.tsx               → mentions légales, copyright
+    VideoBackground.tsx      → fond vidéo lazy-loadé (IntersectionObserver) avec overlay, utilisé par Hero/WhyUs/Contact
+    AvatarAmahWidget.tsx     → iframe chatbot Avatar Amah, warm-up au premier interaction ou après 4s idle
+    ProjectHeroVideo.tsx     → vidéo hero projet respectant prefers-reduced-motion
+  hooks/
+    useReducedMotion.ts      → hook React qui lit la media query prefers-reduced-motion
   data/
-    projects.ts           → source unique de vérité des projets (type Project + tableau projects)
+    projects.ts              → source unique de vérité des projets (type Project + tableau projects)
 docs/
-  PROJET.md            → ce fichier
-  projets/             → un fichier markdown de référence par projet (stack, fonctionnalités, architecture)
-CLAUDE.md              → instructions pour Claude Code (commandes, architecture)
+  PROJET.md                  → ce fichier
+  projets/                   → un fichier markdown de référence par projet
+public/
+  logo.svg                   → wordmark SVG blanc-sur-noir
+  manifest.webmanifest       → manifeste PWA (nom, thème #050505, icônes)
+  projects/                  → visuels projets (*.png screenshots, *.svg placeholders)
+  video/                     → vidéos de fond sections (hero/section backgrounds)
+  video/projects/            → démos vidéo par projet
+CLAUDE.md                    → instructions pour Claude Code (commandes, architecture)
 ```
-
-Chaque composant de section :
-- est **autonome** : son contenu (textes, listes de services) est défini en haut du fichier sous forme de tableau JS, pas tiré d'une source externe — exception : `Projects.tsx` et `/projets/[slug]` lisent tous les deux `src/data/projects.ts` ;
-- possède un `id` HTML (`#services`, `#pourquoi`, `#realisations`, `#contact`) utilisé par les ancres de navigation ;
-- est rendu dans `page.tsx` dans un ordre fixe : `Navbar → Hero → Services → WhyUs → Projects → Contact → Footer`.
 
 ### Données de projets (`src/data/projects.ts`)
 
 Chaque projet est un objet `Project` avec :
 - `summary` / `description` : résumé (carte) et paragraphe complet (page de détail) ;
 - `stack` : liste de tags technologiques ;
-- `features` (optionnel) : liste de fonctionnalités clés, affichée sur la page de détail ;
-- `pages` (optionnel) : liste `{ name, description }` des pages/vues du projet, affichée en grille sur la page de détail ;
-- `architecture` (optionnel) : arborescence technique en texte brut, affichée dans un bloc `<pre>` ;
+- `features` (optionnel) : fonctionnalités clés, affichées sur la page de détail ;
+- `pages` (optionnel) : liste `{ name, description }` des vues du projet ;
+- `architecture` (optionnel) : arborescence technique en texte brut ;
 - `externalHref` / `externalLabel` : lien vers la démo/le site en ligne ;
-- `repoHref` (optionnel) : lien vers le dépôt GitHub, affiché comme bouton « Voir le code » distinct du lien démo.
+- `repoHref` (optionnel) : lien GitHub du code source ;
+- `image` (optionnel) : screenshot PNG dans `public/projects/` ;
+- `svg` (optionnel) : placeholder SVG dans `public/projects/` ;
+- `video` (optionnel) : démo MP4 dans `public/video/projects/`.
 
-Le détail technique (stack précise, fonctionnalités, architecture) provient des dépôts GitHub ou du code source réel de chaque projet quand il est disponible — voir `docs/projets/<slug>.md` pour le détail brut sans mise en forme marketing.
+Ce fichier est la seule source de vérité consommée par la grille `Projects.tsx`, les pages `/projets/[slug]`, et le portfolio `/portfolio`.
 
 ## 4. Construction et choix de conception
 
 ### 4.1 Direction artistique : inspiration SpaceX
 
 Le site a été conçu pour adopter l'esthétique de spacex.com :
-- **Fond noir** (`--background: #050505`) et texte clair (`--foreground: #f2f2f2`), définis comme variables CSS dans `globals.css` et exposés via Tailwind (`tailwind.config.ts`).
-- **Une seule couleur d'accent** (`--accent: #3b82f6`, bleu) utilisée avec parcimonie sur les CTA, tags et statistiques — pour éviter le bruit visuel d'une palette multicolore.
-- **Typographie massive et en majuscules** : titres en `font-black`/`font-bold`, `uppercase`, avec un tracking large via l'utilitaire `tracking-widest-plus` (`letter-spacing: 0.25em`) défini dans `globals.css`.
-- **Sections plein écran** pour le Hero, la section "Pourquoi nous" et la section Contact (`min-h-screen` / `h-screen`), pour reproduire le défilement "un écran = un message" de SpaceX.
-- **Fond animé du Hero** : un champ d'étoiles généré en pur CSS (classe `.starfield`, keyframe `drift` dans `globals.css`) plutôt qu'une vidéo/image, pour rester léger sans asset lourd à charger.
+- **Fond noir** (`--background: #050505`) et texte clair (`--foreground: #f2f2f2`), définis dans `globals.css`.
+- **Une seule couleur d'accent** (`--accent: #3b82f6`, bleu) utilisée avec parcimonie sur les CTA, tags et statistiques.
+- **Typographie massive en majuscules** : `font-black`/`font-bold`, `uppercase`, `tracking-widest-plus` (`letter-spacing: 0.25em`).
+- **Sections plein écran** pour Hero, WhyUs et Contact (`min-h-screen`/`h-screen`).
+- **Fond animé du Hero** : champ d'étoiles pur CSS (classe `.starfield`, keyframe `drift` dans `globals.css`).
 
 ### 4.2 Navigation
 
-`Navbar.tsx` est un composant client (`"use client"`) car il écoute le scroll (`window.scrollY`) via `useEffect`/`useState` pour basculer entre :
-- transparent en haut de page,
-- `bg-black/80 backdrop-blur-md` après 40px de scroll.
+`Navbar.tsx` est client (`"use client"`) car il écoute le scroll pour basculer entre transparent (haut de page) et `bg-black/80 backdrop-blur-md` (après 40px). Il inclut un menu hamburger mobile avec verrouillage du scroll `document.body.style.overflow = "hidden"` pendant l'ouverture.
+
+Liens de navigation : Services → Pourquoi nous → Réalisations → **Portfolio** → Contact.
 
 ### 4.3 Animations
 
-Toutes les sections utilisent `framer-motion` :
-- Le Hero anime ses éléments à l'arrivée sur la page (`initial`/`animate`).
-- Les autres sections utilisent `whileInView` avec `viewport={{ once: true }}` pour déclencher un fondu/translation lors de l'entrée dans le viewport au scroll, avec un léger décalage (`delay`) entre les éléments d'une même grille pour un effet de cascade.
+- Hero : animations à l'arrivée (`initial`/`animate` Framer Motion).
+- Autres sections : `whileInView` + `viewport={{ once: true }}` pour déclencher un fondu/translation à l'entrée dans le viewport.
+- `ProjectHeroVideo.tsx` et `useReducedMotion` : désactivent `autoPlay`/`loop` si l'OS a `prefers-reduced-motion: reduce`.
+- `VideoBackground.tsx` : lazy-loading via `IntersectionObserver` — la vidéo ne se charge que quand la section entre dans le viewport.
 
-Tout composant utilisant `framer-motion` ou des hooks de scroll doit être marqué `"use client"`, le reste de l'arbre (layout, page) restant rendu côté serveur par défaut (App Router).
+### 4.4 SEO et performance
 
-### 4.4 Accessibilité et SEO
+- `layout.tsx` exporte `metadata` complet : `title`, `description`, `keywords`, Open Graph, Twitter card, `metadataBase = "https://vision-amah.vercel.app"`.
+- JSON-LD `LocalBusiness` schema injecté dans `<body>` via `<script type="application/ld+json">`.
+- `verification.google` lit `process.env.GOOGLE_SITE_VERIFICATION` → balise `<meta name="google-site-verification">` automatique.
+- `sitemap.ts` génère `/sitemap.xml` avec toutes les routes (priorité 1.0 pour `/`, 0.8 pour `/portfolio`, 0.7 pour les projets).
+- `robots.ts` pointe vers `/sitemap.xml`.
+- `opengraph-image.tsx` génère l'image 1200×630 pour le partage sur les réseaux sociaux.
+- Images optimisées AVIF/WebP via `next.config.mjs`.
+- `@vercel/analytics` : suivi des pages vues sans configuration supplémentaire.
+- PWA : `manifest.webmanifest` + icônes `/icon` et `/apple-icon` générées via `@vercel/og`.
 
-- Métadonnées (`title`, `description`) définies dans `layout.tsx`.
-- Liens d'ancrage sémantiques entre la navbar et les sections.
-- Contraste fort (texte clair sur fond noir) cohérent avec le thème.
+### 4.5 Accessibilité
+
+- Skip-to-content `<a href="#main-content">` dans `layout.tsx` (visible uniquement au focus clavier).
+- `aria-label` et `aria-expanded` sur le bouton hamburger.
+- Contraste fort (texte clair sur fond noir).
+- `useReducedMotion` pour désactiver les vidéos auto-jouées si demandé par l'OS.
+
+### 4.6 Formulaire de contact (Formspree)
+
+`ContactForm.tsx` envoie les données à `https://formspree.io/f/${NEXT_PUBLIC_FORMSPREE_ID}`. L'ID est stocké dans la variable d'environnement `NEXT_PUBLIC_FORMSPREE_ID` dans Vercel (jamais dans le code). Le formulaire gère 4 états : `idle`, `submitting`, `success`, `error`.
 
 ## 5. Modifier le contenu
 
-Pour changer un texte, ajouter/retirer un service ou un projet : éditer directement le tableau de données en haut du composant concerné (`services` dans `Services.tsx`, `projects` dans `Projects.tsx`, `points` dans `WhyUs.tsx`). Aucune base de données ni fichier de configuration externe à toucher.
+| Ce que tu veux changer | Où modifier |
+|---|---|
+| Texte / services sur la page d'accueil | Tableau local en haut du composant concerné (`Services.tsx`, `WhyUs.tsx`, etc.) |
+| Ajouter/modifier/supprimer un projet | `src/data/projects.ts` uniquement |
+| Modifier le portfolio | `src/app/portfolio/page.tsx` |
+| Changer les liens de la navbar | Tableau `links` dans `src/components/Navbar.tsx` |
+| Métadonnées SEO globales | `src/app/layout.tsx` |
+| Activer le formulaire de contact | Ajouter `NEXT_PUBLIC_FORMSPREE_ID=<id>` dans Vercel → Environment Variables |
+| Activer Google Search Console | Ajouter `GOOGLE_SITE_VERIFICATION=<token>` dans Vercel → Environment Variables |
 
 ## 6. Commandes utiles
 
 ```bash
 npm run dev          # serveur de développement (http://localhost:3000)
-npm run build         # build de production (inclut type-check + lint)
-npm run start         # sert le build de production
-npm run lint          # ESLint
-npx tsc --noEmit      # vérification des types seule
+npm run build        # build de production (inclut type-check + lint)
+npm run start        # sert le build de production
+npm run lint         # ESLint
+npx tsc --noEmit     # vérification des types seule
 ```
 
 Il n'y a pas de suite de tests dans ce projet.
 
 ## 7. Pistes d'amélioration futures
 
-- Brancher un vrai formulaire de contact (actuellement un simple lien `mailto:`).
-- Ajouter de vraies captures d'écran/démos pour Vertex Shop, Transport Agency, Ticketing Platform et Cyber Content Generator (actuellement des SVG placeholders pour certains).
-- Retrouver/publier un dépôt GitHub pour Transport Agency, Ticketing Platform et Cyber Content Generator afin d'afficher un bouton « Voir le code » comme pour Theamah+ et Amah Agent.
+- Ajouter de vraies captures d'écran/démos pour les projets qui ont encore des SVG placeholders (Vertex Shop, Transport Agency, Ticketing Platform, Cyber Content Generator).
+- Publier les dépôts GitHub manquants (Transport Agency, Ticketing Platform, Cyber Content Generator) pour afficher un bouton « Voir le code » sur leurs pages de détail.
+- Ajouter des témoignages clients ou des études de cas dans une nouvelle section.
+- Internationalisation (EN/FR) si une audience anglophone est ciblée.
