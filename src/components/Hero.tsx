@@ -55,8 +55,10 @@ export default function Hero() {
           </a>
         </motion.div>
       </div>
-      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce text-white/40">
-        <span className="text-xs uppercase tracking-widest-plus">Découvrir</span>
+      {/* Le centrage est porté par le conteneur flex : animate-bounce anime `transform`
+          et écraserait un -translate-x-1/2 posé sur le même élément. */}
+      <div className="absolute bottom-8 left-0 right-0 z-10 flex justify-center text-white/40">
+        <span className="animate-bounce text-xs uppercase tracking-widest-plus">Découvrir</span>
       </div>
     </section>
   );

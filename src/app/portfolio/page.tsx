@@ -292,11 +292,14 @@ export default function PortfolioPage() {
           <p className="mb-16 max-w-xl text-sm leading-relaxed text-white/50">
             Les technologies et outils que j&apos;utilise pour construire des produits de qualité.
           </p>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Colonnes CSS (masonry) plutôt qu'une grille : chaque carte prend la hauteur
+              de son contenu, sinon les catégories courtes héritent de la hauteur de la
+              plus longue et laissent un grand vide. */}
+          <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
             {skills.map((group) => (
               <div
                 key={group.category}
-                className="rounded-2xl border border-white/10 bg-black p-6"
+                className="mb-5 break-inside-avoid rounded-2xl border border-white/10 bg-black p-6"
               >
                 <p className="mb-4 text-xs font-bold uppercase tracking-widest-plus text-accent">
                   {group.category}
