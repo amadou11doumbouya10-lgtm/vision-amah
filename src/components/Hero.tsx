@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import VideoBackground from "./VideoBackground";
+import Typewriter from "./Typewriter";
 
 export default function Hero() {
   return (
@@ -20,15 +21,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-balance text-3xl font-black uppercase leading-tight tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] sm:text-5xl lg:text-6xl"
+          className="text-3xl font-black uppercase leading-tight tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] sm:text-5xl lg:text-6xl"
         >
-          Gagnez du temps.
-          <br /> Automatisez l&apos;essentiel.
+          <Typewriter text={"Gagnez du temps.\nAutomatisez l'essentiel."} />
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
           className="mx-auto mt-6 max-w-2xl text-balance text-base text-white/60 sm:text-lg"
         >
           Vision Amah automatise vos tâches répétitives, modernise vos outils
@@ -38,7 +38,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.75 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <a
