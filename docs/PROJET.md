@@ -64,11 +64,13 @@ src/
     WhyUs.tsx                → 3 arguments différenciants (statistiques)
     Projects.tsx             → grille des réalisations/projets (lit src/data/projects.ts)
     Contact.tsx              → formulaire Formspree + boutons WhatsApp/email
-    ContactForm.tsx          → formulaire Formspree (nom, email, message) — 4 états : idle/submitting/success/error
+    ContactForm.tsx          → formulaire Formspree (nom, email, message) — 4 états : idle/submitting/success/error — honeypot _gotcha anti-spam
+    Testimonials.tsx         → section témoignages clients — retourne null si le tableau testimonials est vide
     Footer.tsx               → mentions légales, copyright
     VideoBackground.tsx      → fond vidéo lazy-loadé (IntersectionObserver) avec overlay, utilisé par Hero/WhyUs/Contact
     AvatarAmahWidget.tsx     → iframe chatbot Avatar Amah, warm-up au premier interaction ou après 4s idle
     ProjectHeroVideo.tsx     → vidéo hero projet respectant prefers-reduced-motion
+    Typewriter.tsx           → effet machine à écrire réutilisable, utilisé dans Hero.tsx (prefers-reduced-motion respecté, SEO-safe)
   hooks/
     useReducedMotion.ts      → hook React qui lit la media query prefers-reduced-motion
   data/
@@ -79,7 +81,8 @@ docs/
 public/
   logo.svg                   → wordmark SVG blanc-sur-noir
   manifest.webmanifest       → manifeste PWA (nom, thème #050505, icônes)
-  projects/                  → visuels projets (*.png screenshots, *.svg placeholders)
+  projects/                  → visuels projets (*.png screenshots, *.svg placeholders 16:9, sans texte)
+  services/                  → icônes dédiées à la section Services (6 SVG thématiques)
   video/                     → vidéos de fond sections (hero/section backgrounds)
   video/projects/            → démos vidéo par projet
 CLAUDE.md                    → instructions pour Claude Code (commandes, architecture)
@@ -146,7 +149,20 @@ Liens de navigation : Services → Pourquoi nous → Réalisations → **Portfol
 
 ### 4.6 Formulaire de contact (Formspree)
 
-`ContactForm.tsx` envoie les données à `https://formspree.io/f/${NEXT_PUBLIC_FORMSPREE_ID}`. L'ID est stocké dans la variable d'environnement `NEXT_PUBLIC_FORMSPREE_ID` dans Vercel (jamais dans le code). Le formulaire gère 4 états : `idle`, `submitting`, `success`, `error`.
+`ContactForm.tsx` envoie les données à `https://formspree.io/f/${NEXT_PUBLIC_FORMSPREE_ID}`. L'ID est stocké dans la variable d'environnement `NEXT_PUBLIC_FORMSPREE_ID` dans Vercel (jamais dans le code). Le formulaire gère 4 états : `idle`, `submitting`, `success`, `error`. Le champ caché `_gotcha` (honeypot) protège le quota Formspree contre les robots spam.
+
+### 4.7 Sécurité HTTP (`next.config.mjs`)
+
+Tous les en-têtes de sécurité sont définis dans `next.config.mjs` et s'appliquent à toutes les routes :
+- **CSP** : restreint scripts, styles, médias, connexions et cadres aux origines réellement utilisées
+- **HSTS** : HTTPS forcé 2 ans avec préchargement navigateur
+- **X-Frame-Options: DENY** + `frame-ancestors 'none'` : anti-clickjacking
+- **Permissions-Policy** : désactive caméra, micro, géolocalisation, paiement, USB
+- `poweredByHeader: false` : retire `X-Powered-By: Next.js` de chaque réponse
+
+### 4.8 Témoignages clients (`Testimonials.tsx`)
+
+La section `#temoignages` est rendue conditionnellement : elle retourne `null` tant que le tableau `testimonials` (dans `Testimonials.tsx`) est vide. Pour l'activer, remplir ce tableau avec de vrais retours clients obtenus avec leur accord.
 
 ## 5. Modifier le contenu
 
