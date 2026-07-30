@@ -75,6 +75,18 @@ export default function ContactForm() {
           />
         </div>
       </div>
+      {/* Piège à robots : Formspree rejette silencieusement tout envoi où `_gotcha`
+          est rempli. Un humain ne le voit pas, un robot qui remplit tout se trahit.
+          L'identifiant Formspree étant public par nature, c'est ce qui protège le
+          quota mensuel des envois automatisés. */}
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
       <div>
         <label htmlFor="message" className="mb-2 block text-xs uppercase tracking-widest-plus text-white/50">
           Votre besoin
