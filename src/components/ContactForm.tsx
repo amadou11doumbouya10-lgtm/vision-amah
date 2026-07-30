@@ -75,6 +75,33 @@ export default function ContactForm() {
           />
         </div>
       </div>
+      {/* Facultatif à dessein : chaque champ obligatoire fait baisser le taux de
+          soumission, et un numéro se donne moins volontiers qu'un email. Ceux qui
+          préfèrent WhatsApp — majoritaire sur le marché visé — le laissent, les
+          autres ne sont pas bloqués. */}
+      <div>
+        <label
+          htmlFor="phone"
+          className="mb-2 block text-xs uppercase tracking-widest-plus text-white/50"
+        >
+          Téléphone / WhatsApp{" "}
+          <span className="normal-case tracking-normal text-white/30">
+            (facultatif)
+          </span>
+        </label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          // inputMode fait apparaître le clavier numérique sur mobile, d'où vient
+          // la majorité du trafic.
+          inputMode="tel"
+          autoComplete="tel"
+          placeholder="+224 6XX XX XX XX"
+          className="w-full rounded-xl border border-white/15 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/30 focus:border-accent"
+        />
+      </div>
+
       {/* Piège à robots : Formspree rejette silencieusement tout envoi où `_gotcha`
           est rempli. Un humain ne le voit pas, un robot qui remplit tout se trahit.
           L'identifiant Formspree étant public par nature, c'est ce qui protège le

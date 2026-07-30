@@ -38,7 +38,7 @@ export default function Contact() {
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="https://wa.me/224624909865?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20un%20audit%20IA%20gratuit%20avec%20Vision%20Amah."
+            href="https://wa.me/224611768552?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20un%20audit%20IA%20gratuit%20avec%20Vision%20Amah."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block rounded-full bg-accent px-10 py-4 text-sm font-semibold uppercase tracking-widest-plus text-white transition hover:bg-accent/85"

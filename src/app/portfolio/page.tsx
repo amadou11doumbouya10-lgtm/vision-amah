@@ -419,7 +419,7 @@ export default function PortfolioPage() {
               {[
                 { icon: "✉", label: "Email", value: "amadou11doumbouya10@gmail.com", href: "mailto:amadou11doumbouya10@gmail.com" },
                 { icon: "◉", label: "GitHub", value: "amadou11doumbouya10-lgtm", href: "https://github.com/amadou11doumbouya10-lgtm" },
-                { icon: "◎", label: "WhatsApp", value: "+224 624 909 865", href: "https://wa.me/224624909865" },
+                { icon: "◎", label: "WhatsApp", value: "+224 611 76 85 52", href: "https://wa.me/224611768552" },
                 { icon: "◈", label: "Localisation", value: "Conakry, Guinée — disponible à distance", href: null },
               ].map((item) => {
                 const El = item.href ? "a" : "div";
@@ -455,7 +455,7 @@ export default function PortfolioPage() {
               </p>
               <div className="flex flex-col gap-4">
                 <a
-                  href="https://wa.me/224624909865?text=Bonjour%20Amadou%2C%20j%27ai%20vu%20votre%20portfolio%20et%20j%27aimerais%20discuter%20d%27un%20projet."
+                  href="https://wa.me/224611768552?text=Bonjour%20Amadou%2C%20j%27ai%20vu%20votre%20portfolio%20et%20j%27aimerais%20discuter%20d%27un%20projet."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 text-sm font-semibold uppercase tracking-widest-plus text-white transition hover:bg-accent/85"
