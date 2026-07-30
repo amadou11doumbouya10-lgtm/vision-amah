@@ -26,7 +26,10 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
+# `.env*.local` seul ne couvrait pas un `.env` ou `.env.production` simple,
+# qui aurait donc pu être committé avec des secrets dedans.
+.env*
+!.env.example
 
 # vercel
 .vercel

@@ -87,7 +87,12 @@ export default function RootLayout({
       >
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          // JSON.stringify n'échappe pas `</script>` : les données sont statiques
+          // aujourd'hui, mais échapper `<` évite qu'une valeur dynamique ajoutée
+          // plus tard puisse fermer la balise et injecter du script.
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
         />
         <a
           href="#main-content"
