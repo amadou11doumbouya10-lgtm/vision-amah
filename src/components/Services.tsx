@@ -8,38 +8,37 @@ const services = [
     title: "Assistants IA & Automatisation",
     description:
       "Automatisez 80 % de vos tâches administratives. Votre assistant lit vos PDF, remplit vos Excel, rédige vos emails et navigue sur le web à votre place — gagnez 10 heures par semaine.",
-    image: "/projects/amah-agent.png",
+    image: "/services/automatisation.svg",
   },
   {
     title: "Chatbots & Avatars conversationnels",
     description:
       "Un assistant disponible 24h/24 qui répond à vos clients, qualifie vos prospects et prend des rendez-vous — sans que vous leviez le petit doigt.",
-    image: "/projects/chatbot.svg",
+    image: "/services/chatbot.svg",
   },
   {
     title: "Plateformes Web & Streaming",
     description:
       "Votre plateforme en ligne lancée en quelques semaines : billetterie, streaming, abonnements. Vos clients accèdent à votre contenu partout, sur tous les appareils.",
-    image: "/projects/theamah.png",
+    image: "/services/plateformes-web.svg",
   },
   {
     title: "E-commerce & Boutiques en ligne",
     description:
       "Votre boutique en ligne prête à vendre dès le premier jour — paiement intégré, design sur-mesure, zéro friction pour vos clients.",
-    image: "/projects/vertex-shop.jpeg",
-    fit: "contain" as const,
+    image: "/services/ecommerce.svg",
   },
   {
     title: "Logiciels métier sur-mesure",
     description:
       "Fini les tablettes Excel et les processus manuels. Un logiciel taillé pour votre activité : suivi des commandes, gestion du stock, rapports automatiques.",
-    image: "/projects/transport-agency.svg",
+    image: "/services/logiciels-metier.svg",
   },
   {
     title: "Cybersécurité & Audit",
     description:
       "Identifiez vos failles avant que quelqu'un d'autre ne le fasse. Audit complet, rapport clair, recommandations actionnables — protégez votre business dès maintenant.",
-    image: "/projects/cyber-content-generator.svg",
+    image: "/services/cybersecurite.svg",
   },
 ];
 
@@ -76,11 +75,7 @@ export default function Services() {
                   src={service.image}
                   alt={service.title}
                   fill
-                  className={
-                    "fit" in service && service.fit === "contain"
-                      ? "object-contain p-6"
-                      : "object-cover"
-                  }
+                  className="object-cover"
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 />
               </div>
