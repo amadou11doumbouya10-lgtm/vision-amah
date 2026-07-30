@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="Cybersécurité et audit">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#101522"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.5" fill="#3b82f6"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#dots)" opacity="0.14"/>
+  <g transform="translate(400,210)" stroke="url(#accent)" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0,-110 L92,-64 L92,36 C92,92 51,122 0,142 C-51,122 -92,92 -92,36 L-92,-64 Z"/>
+    <circle cx="0" cy="-4" r="21"/>
+    <!-- tige de la serrure en trapèze : un trait vertical aurait une boîte
+         englobante de largeur nulle, où un dégradé ne se peint pas -->
+    <path d="M-10,52 L-4,16 L4,16 L10,52 Z"/>
+  </g>
+</svg>

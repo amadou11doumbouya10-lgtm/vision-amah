@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="Logiciels métier sur-mesure">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#101522"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.5" fill="#3b82f6"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#dots)" opacity="0.14"/>
+  <g transform="translate(400,225)" stroke="url(#accent)" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-165" y="-115" width="330" height="230" rx="18"/>
+    <path d="M-165,-62 L165,-62"/>
+    <!-- barres du tableau de bord : plusieurs sous-tracés, la boîte englobante
+         combinée reste en deux dimensions et le dégradé s'applique bien -->
+    <path stroke-width="14" d="M-96,72 L-96,-12 M-32,72 L-32,-38 M32,72 L32,10 M96,72 L96,-24"/>
+  </g>
+  <g fill="#3b82f6">
+    <circle cx="266" cy="137" r="8"/>
+    <circle cx="296" cy="137" r="8"/>
+  </g>
+</svg>

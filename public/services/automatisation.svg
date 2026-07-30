@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="Automatisation et assistants IA">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#101522"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.5" fill="#3b82f6"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#dots)" opacity="0.14"/>
+  <g transform="translate(370,245)" stroke="url(#accent)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle r="70" stroke-width="10"/>
+    <circle r="26" stroke-width="10"/>
+    <path stroke-width="12" d="M0,-70 L0,-96 M49.5,-49.5 L67.9,-67.9 M70,0 L96,0 M49.5,49.5 L67.9,67.9 M0,70 L0,96 M-49.5,49.5 L-67.9,67.9 M-70,0 L-96,0 M-49.5,-49.5 L-67.9,-67.9"/>
+  </g>
+  <g transform="translate(530,120)" stroke="url(#accent)" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <circle r="38" stroke-width="9"/>
+    <circle r="14" stroke-width="9"/>
+    <path stroke-width="10" d="M0,-38 L0,-56 M26.9,-26.9 L39.6,-39.6 M38,0 L56,0 M26.9,26.9 L39.6,39.6 M0,38 L0,56 M-26.9,26.9 L-39.6,39.6 M-38,0 L-56,0 M-26.9,-26.9 L-39.6,-39.6"/>
+  </g>
+</svg>
