@@ -4,11 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+import ProjectCardVideo from "./ProjectCardVideo";
 
 export default function Projects() {
-  const reducedMotion = useReducedMotion();
-
   return (
     <section id="realisations" className="border-t border-white/10 bg-black py-28">
       <div className="mx-auto max-w-7xl px-6">
@@ -41,14 +39,10 @@ export default function Projects() {
               >
                 <div className="relative aspect-video w-full overflow-hidden border-b border-white/10 bg-white/5">
                   {project.video ? (
-                    <video
+                    <ProjectCardVideo
                       src={project.video}
-                      autoPlay={!reducedMotion}
-                      muted
-                      loop={!reducedMotion}
-                      playsInline
+                      alt={project.name}
                       className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                      aria-label={project.name}
                     />
                   ) : (
                     <Image
