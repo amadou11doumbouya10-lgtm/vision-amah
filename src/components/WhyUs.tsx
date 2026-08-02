@@ -6,8 +6,8 @@ import VideoBackground from "./VideoBackground";
 const points = [
   {
     stat: "10h",
-    label: "Gagnées par semaine",
-    description: "Nos clients automatisent leurs tâches répétitives et récupèrent en moyenne 10 heures par semaine grâce à nos assistants IA.",
+    label: "Libérables par semaine*",
+    description: "En automatisant vos tâches répétitives avec l'IA, vous libérez du temps pour votre activité plutôt que pour la paperasse.",
   },
   {
     stat: "×3",
@@ -40,7 +40,7 @@ export default function WhyUs() {
             Pourquoi nous choisir
           </p>
           <h2 className="text-4xl font-bold uppercase sm:text-5xl">
-            Des résultats mesurables, pas des promesses
+            Ce que l&apos;automatisation peut changer pour vous
           </h2>
         </motion.div>
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-3">
@@ -62,6 +62,9 @@ export default function WhyUs() {
             </motion.div>
           ))}
         </div>
+        <p className="mt-10 text-xs text-white/30">
+          *Estimation selon le volume de tâches automatisées, évaluée ensemble lors de l&apos;audit gratuit — pas un résultat garanti.
+        </p>
       </div>
     </section>
   );
