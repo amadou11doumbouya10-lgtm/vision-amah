@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import AvatarAmahWidget from "@/components/AvatarAmahWidget";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -101,6 +102,7 @@ export default function RootLayout({
           Aller au contenu
         </a>
         {children}
+        <WhatsAppFloat />
         <AvatarAmahWidget />
         <Analytics />
       </body>
