@@ -45,6 +45,12 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
     .map((slug) => getProject(slug))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
+  // Une vraie capture d'un projet livré est plus parlante qu'une icône
+  // générique — on ne retombe sur l'icône du service que faute de projet lié.
+  const heroProject = relatedProjects[0];
+  const heroImage = heroProject?.image ?? service.image;
+  const heroFit = heroProject?.fit;
+
   return (
     <main id="main-content" className="bg-black">
       <Navbar />
@@ -81,10 +87,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <div className="mx-auto max-w-5xl px-6">
           <div className="relative mb-12 aspect-[21/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5">
             <Image
-              src={service.image}
+              src={heroImage}
               alt={service.title}
               fill
-              className="object-cover"
+              className={heroFit === "contain" ? "object-contain p-10" : "object-cover"}
               sizes="(min-width: 1024px) 900px, 100vw"
             />
           </div>
