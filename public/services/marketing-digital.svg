@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="Marketing digital">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#101522"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.5" fill="#3b82f6"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#dots)" opacity="0.14"/>
+
+  <g transform="translate(340,235)" stroke="url(#accent)" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <circle r="62"/>
+    <path d="M44,44 L110,110" stroke-width="13"/>
+    <path d="M-34,10 L-8,-24 L18,-4 L52,-46" stroke-width="9" opacity="0.85"/>
+  </g>
+
+  <g transform="translate(560,120)" stroke="url(#accent)" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <path d="M-40,60 L-40,10 M-10,60 L-10,-20 M20,60 L20,-40 M50,60 L50,0"/>
+    <path d="M-46,66 L56,66" stroke-width="6" opacity="0.5"/>
+  </g>
+</svg>
