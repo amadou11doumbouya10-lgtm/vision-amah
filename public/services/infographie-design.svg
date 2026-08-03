@@ -14,9 +14,20 @@
   </defs>
   <rect width="800" height="450" fill="url(#bg)"/>
   <rect width="800" height="450" fill="url(#dots)" opacity="0.14"/>
-  <g transform="translate(400,235)" stroke="url(#accent)" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M-96,88 L-52,44 L58,-66 a20,20 0 0 0 -28,-28 L-80,16 L-124,60 Z"/>
-    <path d="M-124,60 L-96,88"/>
-    <path d="M50,-84 L74,-84 M62,-96 L62,-72" stroke-width="9" opacity="0.75"/>
+
+  <g transform="translate(360,225)" stroke="url(#accent)" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-170" y="-95" width="270" height="190" rx="14"/>
+    <path d="M-140,-45 L20,-45 M-140,-5 L60,-5 M-140,35 L-20,35" stroke-width="6" opacity="0.45"/>
+  </g>
+
+  <g transform="translate(360,225)" stroke="url(#accent)" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20,90 L64,46 L162,-52 a18,18 0 0 0 -25,-25 L39,21 L-5,65 Z"/>
+    <path d="M-5,65 L20,90"/>
+  </g>
+
+  <g transform="translate(360,225)" fill="#3b82f6">
+    <circle cx="270" cy="20" r="9" opacity="0.9"/>
+    <circle cx="298" cy="44" r="9" opacity="0.6"/>
+    <circle cx="270" cy="68" r="9" opacity="0.35"/>
   </g>
 </svg>
