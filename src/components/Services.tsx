@@ -1,61 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-
-const categories = [
-  {
-    label: "Automatisation & IA",
-    services: [
-      {
-        title: "Assistants IA & Automatisation",
-        description:
-          "Automatisez vos tâches administratives répétitives. Votre assistant peut lire vos PDF, remplir vos Excel, rédiger vos emails et naviguer sur le web à votre place — jusqu'à plusieurs heures libérées chaque semaine.",
-        image: "/services/automatisation.svg",
-      },
-      {
-        title: "Chatbots & Avatars conversationnels",
-        description:
-          "Un assistant disponible 24h/24 qui répond à vos clients, qualifie vos prospects et prend des rendez-vous — sans que vous leviez le petit doigt.",
-        image: "/services/chatbot.svg",
-      },
-    ],
-  },
-  {
-    label: "Sites & Boutiques en ligne",
-    services: [
-      {
-        title: "Plateformes Web & Streaming",
-        description:
-          "Votre plateforme en ligne lancée en quelques semaines : billetterie, streaming, abonnements. Vos clients accèdent à votre contenu partout, sur tous les appareils.",
-        image: "/services/plateformes-web.svg",
-      },
-      {
-        title: "E-commerce & Boutiques en ligne",
-        description:
-          "Votre boutique en ligne prête à vendre dès le premier jour — paiement intégré, design sur-mesure, zéro friction pour vos clients.",
-        image: "/services/ecommerce.svg",
-      },
-    ],
-  },
-  {
-    label: "Applications & Sécurité sur mesure",
-    services: [
-      {
-        title: "Logiciels métier sur-mesure",
-        description:
-          "Fini les tablettes Excel et les processus manuels. Un logiciel taillé pour votre activité : suivi des commandes, gestion du stock, rapports automatiques.",
-        image: "/services/logiciels-metier.svg",
-      },
-      {
-        title: "Cybersécurité & Audit",
-        description:
-          "Identifiez vos failles avant que quelqu'un d'autre ne le fasse. Audit complet, rapport clair, recommandations actionnables — protégez votre business dès maintenant.",
-        image: "/services/cybersecurite.svg",
-      },
-    ],
-  },
-];
+import { services, CATEGORIES } from "@/data/services";
 
 export default function Services() {
   return (
@@ -77,40 +25,46 @@ export default function Services() {
         </motion.div>
 
         <div className="space-y-16">
-          {categories.map((category) => (
-            <div key={category.label}>
+          {CATEGORIES.map((category) => (
+            <div key={category}>
               <h3 className="mb-6 text-xs font-semibold uppercase tracking-widest-plus text-white/40">
-                {category.label}
+                {category}
               </h3>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                {category.services.map((service, i) => (
-                  <motion.div
-                    key={service.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 transition hover:border-accent/50 hover:bg-white/[0.03]"
-                  >
-                    <div className="relative aspect-video w-full overflow-hidden border-b border-white/10 bg-white/5">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        className="object-cover"
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      />
-                    </div>
-                    <div className="p-8">
-                      <h4 className="mb-3 text-lg font-semibold uppercase tracking-wide">
-                        {service.title}
-                      </h4>
-                      <p className="text-sm leading-relaxed text-white/60">
-                        {service.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                {services
+                  .filter((service) => service.category === category && !service.hiddenFromHome)
+                  .map((service, i) => (
+                    <motion.div
+                      key={service.slug}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.5, delay: i * 0.1 }}
+                    >
+                      <Link
+                        href={`/services/${service.slug}`}
+                        className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 transition hover:border-accent/50 hover:bg-white/[0.03]"
+                      >
+                        <div className="relative aspect-video w-full overflow-hidden border-b border-white/10 bg-white/5">
+                          <Image
+                            src={service.image}
+                            alt={service.title}
+                            fill
+                            className="object-cover"
+                            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                          />
+                        </div>
+                        <div className="p-8">
+                          <h4 className="mb-3 text-lg font-semibold uppercase tracking-wide">
+                            {service.title}
+                          </h4>
+                          <p className="text-sm leading-relaxed text-white/60">
+                            {service.summary}
+                          </p>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  ))}
               </div>
             </div>
           ))}
