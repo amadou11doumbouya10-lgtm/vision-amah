@@ -55,6 +55,23 @@ const categories = [
       },
     ],
   },
+  {
+    label: "Design & Marketing Digital",
+    services: [
+      {
+        title: "Infographie & Design graphique",
+        description:
+          "Flyers, visuels réseaux sociaux, présentations, logos — des créations professionnelles qui reflètent votre image et attirent l'œil, sans que vous ayez à ouvrir un logiciel.",
+        image: "/services/infographie-design.svg",
+      },
+      {
+        title: "Marketing Digital",
+        description:
+          "Stratégie de contenu, gestion des réseaux sociaux, campagnes sponsorisées — faites parler de votre activité là où se trouvent vos clients, et mesurez chaque résultat.",
+        image: "/services/marketing-digital.svg",
+      },
+    ],
+  },
 ];
 
 export default function Services() {
