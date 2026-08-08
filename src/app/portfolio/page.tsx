@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
@@ -203,10 +204,17 @@ export default function PortfolioPage() {
             <div className="relative">
               <div className="absolute inset-[-16px] animate-pulse rounded-full border border-accent/30" />
               <div className="absolute inset-[-32px] rounded-full border border-accent/10" />
-              <div className="relative z-10 flex h-64 w-64 items-center justify-center rounded-full border-2 border-accent/40 bg-white/[0.03] text-7xl font-black tracking-tight text-accent shadow-[0_0_60px_rgba(59,130,246,0.2)]">
-                AD
-                <span className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full border-2 border-black bg-green-500 text-xs text-white">✓</span>
+              <div className="relative z-10 h-64 w-64 overflow-hidden rounded-full border-2 border-accent/40 shadow-[0_0_60px_rgba(59,130,246,0.2)]">
+                <Image
+                  src="/about/amadou-doumbouya.jpg"
+                  alt="Amadou Doumbouya"
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="256px"
+                />
               </div>
+              <span className="absolute bottom-3 right-3 z-20 flex h-8 w-8 items-center justify-center rounded-full border-2 border-black bg-green-500 text-xs text-white">✓</span>
             </div>
           </div>
         </div>

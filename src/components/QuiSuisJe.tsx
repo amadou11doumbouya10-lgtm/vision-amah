@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const badges = [
@@ -18,6 +19,15 @@ export default function QuiSuisJe() {
         transition={{ duration: 0.6 }}
         className="mx-auto max-w-3xl px-6 text-center"
       >
+        <div className="relative mx-auto mb-8 h-36 w-36 overflow-hidden rounded-full border-2 border-accent/40 shadow-[0_0_50px_rgba(59,130,246,0.18)]">
+          <Image
+            src="/about/amadou-doumbouya.jpg"
+            alt="Amadou Doumbouya"
+            fill
+            className="object-cover"
+            sizes="144px"
+          />
+        </div>
         <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
           Qui suis-je
         </p>
