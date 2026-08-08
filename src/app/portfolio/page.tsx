@@ -99,19 +99,53 @@ const timeline = [
 
 const certifications = [
   {
+    title: "Getting Started with Generative AI",
+    issuer: "IBM SkillsBuild",
+    date: "16 juillet 2026",
+    note: "Fondamentaux, éthique de l'IA, LLM et modèles IBM Granite",
+    href: "https://www.credly.com/badges/1a6c872c-f34c-41fd-b145-bb9dc463046d/public_url",
+    image: "/certifications/cert-ibm-genai.png",
+    pdf: null,
+    obtained: true,
+  },
+  {
+    title: "Fondamentaux de l'IA Générative",
+    issuer: "IBM SkillsBuild",
+    date: "2026",
+    note: "Module de la certification Getting Started with Generative AI",
+    href: null,
+    image: null,
+    pdf: "/certifications/cert-fondamentaux-ia.pdf",
+    obtained: true,
+  },
+  {
+    title: "Introduction aux LLMs",
+    issuer: "IBM SkillsBuild",
+    date: "2026",
+    note: "Module de la certification Getting Started with Generative AI",
+    href: null,
+    image: null,
+    pdf: "/certifications/cert-introduction-llm.pdf",
+    obtained: true,
+  },
+  {
+    title: "Éthique de l'IA Générative",
+    issuer: "IBM SkillsBuild",
+    date: "2026",
+    note: "Module de la certification Getting Started with Generative AI",
+    href: null,
+    image: null,
+    pdf: "/certifications/cert-ethique-ia.pdf",
+    obtained: true,
+  },
+  {
     title: "Supervised Machine Learning: Regression and Classification",
     issuer: "DeepLearning.AI / Stanford Online",
     date: "Juillet 2026",
     note: "Cours 1 de la Machine Learning Specialization",
     href: null,
-    obtained: true,
-  },
-  {
-    title: "Getting Started with Generative AI",
-    issuer: "IBM SkillsBuild",
-    date: "2026",
-    note: null,
-    href: "https://www.credly.com/badges/1a6c872c-f34c-41fd-b145-bb9dc463046d/public_url",
+    image: null,
+    pdf: null,
     obtained: true,
   },
   {
@@ -120,6 +154,8 @@ const certifications = [
     date: "2026",
     note: null,
     href: "https://www.credly.com/badges/56c12464-2aa6-4a56-95b9-62ca2a5cf4c0/public_url",
+    image: null,
+    pdf: null,
     obtained: true,
   },
   {
@@ -128,6 +164,8 @@ const certifications = [
     date: "En préparation",
     note: null,
     href: null,
+    image: null,
+    pdf: null,
     obtained: false,
   },
   {
@@ -136,6 +174,8 @@ const certifications = [
     date: "En préparation",
     note: null,
     href: null,
+    image: null,
+    pdf: null,
     obtained: false,
   },
 ];
@@ -149,7 +189,7 @@ const stats = [
 
 export default function PortfolioPage() {
   return (
-    <main className="bg-black">
+    <main id="main-content" className="bg-black">
       <Navbar />
 
       {/* ── HERO ── */}
@@ -370,41 +410,71 @@ export default function PortfolioPage() {
             {certifications.map((cert) => (
               <div
                 key={cert.title}
-                className={`flex flex-col justify-between rounded-2xl border p-6 transition ${
+                className={`flex flex-col rounded-2xl border transition ${
                   cert.obtained
                     ? "border-white/10 bg-black hover:border-accent/40"
                     : "border-dashed border-white/15 bg-black/50"
                 }`}
               >
-                <div>
-                  <div className="mb-3 flex items-start justify-between gap-3">
-                    <span
-                      className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest-plus ${
-                        cert.obtained
-                          ? "bg-accent/15 text-accent"
-                          : "bg-white/5 text-white/40"
-                      }`}
-                    >
-                      {cert.obtained ? "Obtenu" : "En cours"}
-                    </span>
-                    <span className="text-xs text-white/40">{cert.date}</span>
-                  </div>
-                  <p className="mb-1 font-semibold leading-snug text-white">{cert.title}</p>
-                  <p className="text-xs font-medium text-accent">{cert.issuer}</p>
-                  {cert.note && (
-                    <p className="mt-2 text-xs leading-relaxed text-white/40">{cert.note}</p>
-                  )}
-                </div>
-                {cert.href && (
+                {cert.image && (
                   <a
-                    href={cert.href}
+                    href={cert.image}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-block text-xs font-semibold uppercase tracking-widest-plus text-accent underline underline-offset-4 hover:text-white"
+                    className="relative block aspect-[1.414] w-full overflow-hidden rounded-t-2xl border-b border-white/10"
                   >
-                    Vérifier sur Credly →
+                    <Image
+                      src={cert.image}
+                      alt={`Certificat ${cert.title}`}
+                      fill
+                      className="object-cover transition duration-300 hover:scale-105"
+                      sizes="(min-width: 640px) 350px, 100vw"
+                    />
                   </a>
                 )}
+                <div className="flex flex-1 flex-col justify-between p-6">
+                  <div>
+                    <div className="mb-3 flex items-start justify-between gap-3">
+                      <span
+                        className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest-plus ${
+                          cert.obtained
+                            ? "bg-accent/15 text-accent"
+                            : "bg-white/5 text-white/40"
+                        }`}
+                      >
+                        {cert.obtained ? "Obtenu" : "En cours"}
+                      </span>
+                      <span className="text-xs text-white/40">{cert.date}</span>
+                    </div>
+                    <p className="mb-1 font-semibold leading-snug text-white">{cert.title}</p>
+                    <p className="text-xs font-medium text-accent">{cert.issuer}</p>
+                    {cert.note && (
+                      <p className="mt-2 text-xs leading-relaxed text-white/40">{cert.note}</p>
+                    )}
+                  </div>
+                  <div className="mt-4 flex flex-wrap gap-4">
+                    {cert.href && (
+                      <a
+                        href={cert.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold uppercase tracking-widest-plus text-accent underline underline-offset-4 hover:text-white"
+                      >
+                        Vérifier sur Credly →
+                      </a>
+                    )}
+                    {cert.pdf && (
+                      <a
+                        href={cert.pdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold uppercase tracking-widest-plus text-accent underline underline-offset-4 hover:text-white"
+                      >
+                        Voir le certificat →
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
