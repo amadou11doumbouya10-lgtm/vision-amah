@@ -48,13 +48,13 @@ export const metadata: Metadata = {
     siteName: "Vision Amah",
     title,
     description,
-    images: [{ url: "/logo.svg", width: 1200, height: 630, alt: "Vision Amah" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Vision Amah" }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/logo.svg"],
+    images: ["/opengraph-image"],
   },
 };
 
