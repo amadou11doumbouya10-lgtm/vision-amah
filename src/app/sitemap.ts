@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
+import { posts } from "@/data/blog";
 
 const siteUrl = "https://vision-amah.vercel.app";
 
@@ -16,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${siteUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
+    priority: 0.6,
+  }));
+
   return [
     {
       url: siteUrl,
@@ -27,7 +34,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       priority: 0.8,
     },
+    {
+      url: `${siteUrl}/blog`,
+      lastModified: new Date(),
+      priority: 0.6,
+    },
     ...serviceRoutes,
     ...projectRoutes,
+    ...blogRoutes,
   ];
 }
