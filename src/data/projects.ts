@@ -129,8 +129,8 @@ export const projects: Project[] = [
     summary:
       "Chatbot IA public à la persona élégante et minimaliste, ambassadrice de Theamah+, avec dashboard admin de surveillance.",
     description:
-      "Avatar Amah (« The Amah ») est un chatbot IA public propulsé par Claude Sonnet 4.6, intégré comme widget flottant dans Theamah+. Sa persona est volontairement courte, dense et mystérieuse — jamais de listes, jamais de formules de politesse — et reste centrée sur le streaming, la tech, l'IA et la cybersécurité. Une fonction serverless Netlify fait office de proxy pour ne jamais exposer la clé API côté client, avec limitation du nombre de requêtes par visiteur. Un dashboard admin protégé permet de suivre les conversations, les sujets abordés et les statistiques d'usage.",
-    stack: ["JavaScript", "API Anthropic (Claude)", "Netlify Functions", "HTML/CSS"],
+      "Avatar Amah (« The Amah ») est un chatbot IA public propulsé par GPT-OSS 120B via l'API Groq, intégré comme widget flottant dans Theamah+. Sa persona est volontairement courte, dense et mystérieuse — jamais de listes, jamais de formules de politesse — et reste centrée sur le streaming, la tech, l'IA et la cybersécurité. Une fonction serverless Netlify fait office de proxy pour ne jamais exposer la clé API côté client, avec limitation du nombre de requêtes par visiteur. Un dashboard admin protégé permet de suivre les conversations, les sujets abordés et les statistiques d'usage.",
+    stack: ["JavaScript", "API Groq (GPT-OSS 120B)", "Netlify Functions", "HTML/CSS"],
     features: [
       "Persona « The Amah » : réponses courtes, élégantes, jamais de listes ni de salutations",
       "Widget flottant intégré directement dans Theamah+",
