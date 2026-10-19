@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 
 export default function BlogIndexPage() {
   return (
-    <main id="main-content" className="bg-black">
+    <main id="main-content" className="bg-background">
       <Navbar />
-      <section className="border-b border-white/10 bg-black pb-16 pt-32">
+      <section className="border-b border-white/10 bg-background pb-16 pt-32">
         <div className="mx-auto max-w-5xl px-6">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
             Blog
@@ -26,7 +26,7 @@ export default function BlogIndexPage() {
         </div>
       </section>
 
-      <section className="bg-black py-20">
+      <section className="bg-background py-20">
         <div className="mx-auto max-w-5xl px-6">
           <div className="grid gap-6">
             {posts.map((post) => (
@@ -35,7 +35,7 @@ export default function BlogIndexPage() {
                 href={`/blog/${post.slug}`}
                 className="group block rounded-2xl border border-white/10 p-8 transition hover:border-accent/50 hover:bg-white/[0.03]"
               >
-                <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent/80">
+                <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
                   {post.tag} · {new Date(post.publishedAt).toLocaleDateString("fr-FR", {
                     day: "numeric",
                     month: "long",

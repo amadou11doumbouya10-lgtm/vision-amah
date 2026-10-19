@@ -8,7 +8,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative flex min-h-screen items-center overflow-hidden border-t border-white/10 bg-black py-28"
+      className="relative flex min-h-screen items-center overflow-hidden border-t border-white/10 bg-background py-28"
     >
       <VideoBackground src="/video/mouse-clicking.mp4" alt="Travail sur ordinateur" />
       <motion.div

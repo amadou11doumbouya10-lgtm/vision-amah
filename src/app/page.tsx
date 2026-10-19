@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main id="main-content" className="bg-black">
+    <main id="main-content" className="bg-background">
       <Navbar />
       <Hero />
       <Services />

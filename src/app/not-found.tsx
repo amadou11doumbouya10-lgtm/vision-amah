@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 
 export default function NotFound() {
   return (
-    <main className="bg-black">
+    <main className="bg-background">
       <Navbar />
       <section className="flex min-h-[70vh] flex-col items-center justify-center px-6 pt-24 text-center">
         <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">

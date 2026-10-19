@@ -4,8 +4,8 @@
   "description": "Assistants IA, chatbots conversationnels, plateformes web et cybersécurité sur-mesure, depuis Conakry.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#050505",
-  "theme_color": "#050505",
+  "background_color": "#060a14",
+  "theme_color": "#060a14",
   "icons": [
     {
       "src": "/icon.png",

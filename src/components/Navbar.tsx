@@ -34,7 +34,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled || menuOpen
-          ? "border-b border-white/10 bg-black/80 backdrop-blur-md"
+          ? "border-b border-white/10 bg-background/80 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -86,7 +86,7 @@ export default function Navbar() {
       </nav>
 
       {menuOpen && (
-        <div className="border-t border-white/10 bg-black/95 backdrop-blur-md xl:hidden">
+        <div className="border-t border-white/10 bg-background/95 backdrop-blur-md xl:hidden">
           <ul className="flex flex-col gap-1 px-6 py-4 text-sm font-medium uppercase tracking-widest-plus text-white/70">
             {links.map((link) => (
               <li key={link.href}>

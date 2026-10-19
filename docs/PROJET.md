@@ -48,7 +48,7 @@ src/
     page.tsx                 → assemble les sections de la page d'accueil dans l'ordre d'affichage
     globals.css              → variables CSS (couleurs), keyframes (curseur du Typewriter, starfield)
     fonts/                   → fichiers de police Geist (.woff)
-    icon.png                 → icône 192×192 (monogramme VA sur fond #050505)
+    icon.png                 → icône 192×192 (monogramme VA sur fond #060a14)
     apple-icon.png           → icône Apple Touch 180×180
     favicon.ico              → favicon 16/32/48 px
     sitemap.ts               → sitemap.xml auto-généré (/, /portfolio, /blog, /services/[slug], /projets/[slug], /blog/[slug])
@@ -96,7 +96,7 @@ public/
   logo.png                   → logo (monogramme VA + VISION AMAH), fond transparent, pour fonds sombres
   og-image.jpg               → image de partage 1200×630 (bannière de la marque)
   icon-512.png               → grande icône PWA
-  manifest.webmanifest       → manifeste PWA (nom, thème #050505, icônes)
+  manifest.webmanifest       → manifeste PWA (nom, thème #060a14, icônes)
   projects/                  → visuels projets 16:9 (captures *.png/*.jpeg, photos libres *.jpg en attendant une capture)
   services/                  → une photo libre (CC0) par service (9 fichiers .jpg)
   about/                     → photo du fondateur (QuiSuisJe, portfolio)
@@ -135,8 +135,8 @@ Chaque `BlogPost` a un `slug`, un titre, un résumé, un `tag`, une date `publis
 ### 4.1 Direction artistique : inspiration SpaceX
 
 Le site a été conçu pour adopter l'esthétique de spacex.com :
-- **Fond noir** (`--background: #050505`) et texte clair (`--foreground: #f2f2f2`), définis dans `globals.css`.
-- **Une seule couleur d'accent** (`--accent: #3b82f6`, bleu) utilisée avec parcimonie sur les CTA, tags et statistiques.
+- **Fond bleu nuit** (`--background: #060a14`) et texte clair (`--foreground: #f2f2f2`), définis dans `globals.css` en canaux RVB pour que les opacités Tailwind (`bg-background/80`) fonctionnent. Les sections utilisent `bg-background`, jamais `bg-black`.
+- **Une seule couleur d'accent** (`--accent: #026bde`, le bleu du logo) utilisée avec parcimonie sur les CTA, tags et statistiques. `text-accent` prend automatiquement une variante plus claire (`--accent-text: #3489e5`) pour rester lisible en petit (contraste ≥ 4,5:1).
 - **Typographie massive en majuscules** : `font-black`/`font-bold`, `uppercase`, `tracking-widest-plus` (`letter-spacing: 0.25em`).
 - **Sections plein écran** pour Hero, WhyUs et Contact (`min-h-screen`/`h-screen`).
 - **Fonds vidéo** sur les sections plein écran (Hero, WhyUs, Contact), chacune avec son propre clip via `VideoBackground.tsx`. La classe CSS `.starfield` (champ d'étoiles) reste définie dans `globals.css` mais n'est plus utilisée.
@@ -172,7 +172,7 @@ Ordre des sections de l'accueil : Hero → Services → Pourquoi nous → Qui su
 
 - Skip-to-content `<a href="#main-content">` dans `layout.tsx` (visible uniquement au focus clavier).
 - `aria-label` et `aria-expanded` sur le bouton hamburger.
-- Contraste fort (texte clair sur fond noir).
+- Contraste fort (texte clair sur fond bleu nuit).
 - `useReducedMotion` pour désactiver les vidéos auto-jouées si demandé par l'OS.
 
 ### 4.6 Formulaire de contact (Formspree)

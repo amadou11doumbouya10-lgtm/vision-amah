@@ -7,7 +7,7 @@ import { services, CATEGORIES } from "@/data/services";
 
 export default function Services() {
   return (
-    <section id="services" className="bg-black py-28">
+    <section id="services" className="bg-background py-28">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
