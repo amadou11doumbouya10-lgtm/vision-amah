@@ -25,7 +25,7 @@ export default function WhyUs() {
   return (
     <section
       id="pourquoi"
-      className="relative flex min-h-screen items-center overflow-hidden border-t border-white/10 bg-black py-28"
+      className="relative flex min-h-screen items-center overflow-hidden border-t border-white/10 bg-background py-28"
     >
       <VideoBackground src="/video/coding-on-a-laptop.mp4" alt="Programmation" />
       <div className="relative z-10 mx-auto max-w-7xl px-6">

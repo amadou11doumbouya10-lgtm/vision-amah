@@ -35,7 +35,7 @@ export default function VideoBackground({
   }, [priority, shouldLoad]);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden bg-black">
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden bg-background">
       {shouldLoad && (
         <video
           src={src}
@@ -54,7 +54,7 @@ export default function VideoBackground({
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.55)_0%,transparent_25%,transparent_70%,black_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.55)_0%,transparent_25%,transparent_70%,rgb(var(--background))_100%)]"
         aria-hidden
       />
     </div>

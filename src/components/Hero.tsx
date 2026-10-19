@@ -6,7 +6,7 @@ import Typewriter from "./Typewriter";
 
 export default function Hero() {
   return (
-    <section className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-black">
+    <section className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-background">
       <VideoBackground src="/video/coding-technology.mp4" alt="Développement logiciel" priority />
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         <motion.p

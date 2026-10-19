@@ -52,10 +52,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
   const heroFit = heroProject?.fit;
 
   return (
-    <main id="main-content" className="bg-black">
+    <main id="main-content" className="bg-background">
       <Navbar />
 
-      <section className="border-b border-white/10 bg-black pb-16 pt-32">
+      <section className="border-b border-white/10 bg-background pb-16 pt-32">
         <div className="mx-auto max-w-5xl px-6">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
             {service.tag}
@@ -83,7 +83,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-black py-20">
+      <section className="border-b border-white/10 bg-background py-20">
         <div className="mx-auto max-w-5xl px-6">
           <div className="relative mb-12 aspect-[21/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5">
             <Image
@@ -124,7 +124,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       </section>
 
       {relatedProjects.length > 0 && (
-        <section className="border-b border-white/10 bg-black py-20">
+        <section className="border-b border-white/10 bg-background py-20">
           <div className="mx-auto max-w-5xl px-6">
             <p className="mb-6 text-xs font-medium uppercase tracking-widest-plus text-accent">
               Réalisé avec ce service
@@ -148,7 +148,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                     />
                   </div>
                   <div className="p-6">
-                    <p className="mb-2 text-xs font-medium uppercase tracking-widest-plus text-accent/80">
+                    <p className="mb-2 text-xs font-medium uppercase tracking-widest-plus text-accent">
                       {project.tag}
                     </p>
                     <p className="text-sm font-semibold text-white">{project.name}</p>
@@ -160,7 +160,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         </section>
       )}
 
-      <section className="bg-black py-20">
+      <section className="bg-background py-20">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="mb-4 text-balance text-3xl font-bold uppercase sm:text-4xl">
             Discutons de votre projet

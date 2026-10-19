@@ -9,9 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        accent: "var(--accent)",
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
+      },
+      // text-accent utilise une variante plus claire, lisible en petit sur le
+      // fond sombre ; bg-accent et border-accent gardent l'accent de la marque.
+      textColor: {
+        accent: "rgb(var(--accent-text) / <alpha-value>)",
       },
     },
   },
