@@ -18,10 +18,12 @@ This is a marketing site for **Vision Amah**, an IT/AI solutions company based i
 
 ### Routes
 
-- `/` — home page (`src/app/page.tsx`): stack of full-width sections in order: `Navbar`, `Hero`, `Services`, `WhyUs`, `Projects`, `Testimonials` (hidden when empty), `Contact`, `Footer`.
+- `/` — home page (`src/app/page.tsx`): stack of full-width sections in order: `Navbar`, `Hero`, `Services`, `WhyUs`, `QuiSuisJe`, `Processus`, `Projects`, `Testimonials` (hidden when empty), `FAQ`, `Contact`, `Footer`.
+- `/services/[slug]` — service detail page (`src/app/services/[slug]/page.tsx`), statically generated via `generateStaticParams`: description, "what's included" list, and related projects (via `relatedProjectSlugs`). Linked from each card of the home `Services` grid.
 - `/projets/[slug]` — project detail page (`src/app/projets/[slug]/page.tsx`), statically generated via `generateStaticParams`, reusing `Navbar`/`Footer`.
-- `/portfolio` — personal portfolio page for Amadou Doumbouya (`src/app/portfolio/page.tsx`): hero, stats, projects grid, skills (including ML), timeline, certifications, contact. Linked from Navbar.
-- `/sitemap.xml` — auto-generated via `src/app/sitemap.ts` (lists `/`, all `/projets/[slug]`, `/portfolio`).
+- `/blog` — blog index (`src/app/blog/page.tsx`); `/blog/[slug]` — article page (`src/app/blog/[slug]/page.tsx`), statically generated. Linked from Navbar.
+- `/portfolio` — personal portfolio page for Amadou Doumbouya (`src/app/portfolio/page.tsx`): hero, stats, projects grid, skills (including ML), timeline, certifications (images/PDFs in `public/certifications/`), contact. Linked from Navbar.
+- `/sitemap.xml` — auto-generated via `src/app/sitemap.ts` (lists `/`, `/portfolio`, `/blog`, all `/services/[slug]`, `/projets/[slug]` and `/blog/[slug]`).
 - `/robots.txt` — auto-generated via `src/app/robots.ts`.
 - `/icon` / `/apple-icon` — PWA icons generated via `@vercel/og` (`src/app/icon.tsx`, `src/app/apple-icon.tsx`). Both have `export const dynamic = "force-dynamic"` to avoid a Windows path-spaces bug with `@vercel/og`.
 - `/opengraph-image` — 1200×630 OG social sharing image via `src/app/opengraph-image.tsx`. Same `dynamic = "force-dynamic"` fix.
@@ -31,14 +33,21 @@ This is a marketing site for **Vision Amah**, an IT/AI solutions company based i
 ### Data
 
 - `src/data/projects.ts` — single source of truth for all projects (type `Project` + `projects` array). Consumed by the home `Projects` grid, all `/projets/[slug]` detail pages, and the `/portfolio` projects grid. To add/edit/remove a project, edit this file only.
+- `src/data/services.ts` — single source of truth for services (type `Service` + `services` array + `CATEGORIES`). Consumed by the home `Services` grid (grouped by category) and the `/services/[slug]` pages. `hiddenFromHome: true` keeps a service reachable at its URL but out of the home grid (currently `cybersecurite`).
+- `src/data/blog.ts` — blog articles (type `BlogPost` + `posts` array). Content is an array of typed blocks (`paragraph` | `heading` | `list`), rendered by `/blog/[slug]` — no Markdown or raw HTML. To publish an article, add an entry here.
 
 ### Components
 
-- Each home-page section is self-contained under `src/components/`: its copy/data is defined as local arrays at the top of the file. To change text or add/remove a service, edit the array in the component.
-- `Navbar.tsx` — fixed nav, becomes opaque on scroll, includes mobile hamburger menu with body scroll-lock on open. Links: Services, Pourquoi nous, Réalisations, Portfolio, Contact.
+- Home-page sections live under `src/components/`. Sections with static copy (`WhyUs`, `QuiSuisJe`, `Processus`, `FAQ`, `Testimonials`) define it as local arrays at the top of the file; `Services` and `Projects` read from `src/data/`.
+- `Navbar.tsx` — fixed nav, becomes opaque on scroll, includes mobile hamburger menu with body scroll-lock on open. Links: Services, Pourquoi nous, Réalisations, Portfolio, Blog, Contact.
+- `QuiSuisJe.tsx` — founder section (`#apropos`): photo `public/about/amadou-doumbouya.jpg` + badges.
+- `Processus.tsx` — 4-step process (audit gratuit → devis → développement → livraison & formation).
+- `FAQ.tsx` — accordion of frequent questions (`#faq`), first item open by default.
+- `WhatsAppFloat.tsx` — floating WhatsApp bubble rendered on every page (mounted in `layout.tsx`), stacked above the Avatar Amah widget in the bottom-right corner. Number and prefilled message are constants at the top of the file.
+- `ProjectCardVideo.tsx` — video for the home `Projects` cards; sets the video source only when the card nears the viewport (avoids downloading clips the visitor hasn't reached) and respects `prefers-reduced-motion`.
 - `VideoBackground.tsx` — looping muted `<video>` with dark gradient overlay. Uses `IntersectionObserver` to lazy-load the video source only when the section enters the viewport. Each full-screen section (`Hero`, `WhyUs`, `Contact`) passes its own distinct clip.
-- `ContactForm.tsx` — Formspree-based contact form (name, email, message). Reads `process.env.NEXT_PUBLIC_FORMSPREE_ID`. Four states: `idle | submitting | success | error`. Includes a `_gotcha` honeypot field to block spam bots. Used inside `Contact.tsx` above the WhatsApp/email buttons.
-- `AvatarAmahWidget.tsx` — embedded iframe widget for Avatar Amah chatbot warm-up. Triggers on user interaction (pointermove/scroll/keydown/touchstart) or after 4s idle. Has `sandbox="allow-scripts allow-forms allow-popups allow-same-origin"`.
+- `ContactForm.tsx` — Formspree-based contact form (name, email, optional phone, message). Reads `process.env.NEXT_PUBLIC_FORMSPREE_ID`. Four states: `idle | submitting | success | error`. Includes a `_gotcha` honeypot field to block spam bots. Used inside `Contact.tsx` above the WhatsApp/email buttons.
+- `AvatarAmahWidget.tsx` — mounted globally in `layout.tsx`; embedded iframe widget for Avatar Amah chatbot warm-up. Triggers on user interaction (pointermove/scroll/keydown/touchstart) or after 4s idle. Has `sandbox="allow-scripts allow-forms allow-popups allow-same-origin"`.
 - `ProjectHeroVideo.tsx` — video component for project detail hero that respects `prefers-reduced-motion` (disables autoPlay/loop when reduced motion is on).
 - `Typewriter.tsx` — reusable typewriter animation component used in `Hero.tsx`. Respects `prefers-reduced-motion` (shows full text immediately if reduced motion is on). Full text always present in a `sr-only` span for SEO and screen readers. Transparent placeholder reserves space to prevent layout shift.
 - `Testimonials.tsx` — client testimonials section. Returns `null` when the `testimonials` array is empty — the section is invisible until real client quotes are added. To activate: fill the `testimonials` array in the file with real client feedback.
@@ -51,7 +60,9 @@ Dark theme (`--background`/`--foreground` CSS vars in `src/app/globals.css`), up
 ### Static assets
 
 - `public/projects/` — project visuals: real screenshots (`*.png`) and SVG placeholders (`*.svg`) in 16:9 ratio. No text inside SVGs (avoids duplication with card titles).
-- `public/services/` — dedicated icons for the Services section (6 SVGs: `automatisation`, `chatbot`, `cybersecurite`, `ecommerce`, `logiciels-metier`, `plateformes-web`). Kept separate from `public/projects/`.
+- `public/services/` — one illustration per service (9 SVGs, referenced by the `image` field in `src/data/services.ts`), used by the home grid and `/services/[slug]`. Kept separate from `public/projects/`.
+- `public/about/` — founder photo (used by `QuiSuisJe` and `/portfolio`).
+- `public/certifications/` — certificate images/PDFs linked from the `/portfolio` certifications section.
 - `public/video/` — background videos for full-screen sections; `public/video/projects/` for per-project demo clips.
 
 ### App metadata (`src/app/layout.tsx`)
@@ -61,6 +72,7 @@ Dark theme (`--background`/`--foreground` CSS vars in `src/app/globals.css`), up
 - `verification.google` reads `process.env.GOOGLE_SITE_VERIFICATION` (set in Vercel env vars).
 - `<Analytics />` from `@vercel/analytics/next` — zero-config Vercel page-view tracking.
 - Skip-to-content `<a href="#main-content">` for accessibility.
+- Site-wide floating widgets mounted in `<body>`: `<WhatsAppFloat />` and `<AvatarAmahWidget />`.
 
 ### PWA
 

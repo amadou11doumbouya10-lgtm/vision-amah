@@ -2,7 +2,7 @@
 
 ## 1. Vue d'ensemble
 
-Vision Amah est un site vitrine pour une société de solutions informatiques et IA basée à Conakry, Guinée. Le site présente les services, les réalisations, les coordonnées de contact de l'entreprise, et un portfolio personnel — sans backend, base de données ni CMS.
+Vision Amah est un site vitrine pour une société de solutions informatiques et IA basée à Conakry, Guinée. Le site présente les services (avec une page dédiée par service), les réalisations, un blog, les coordonnées de contact de l'entreprise, et un portfolio personnel — sans backend, base de données ni CMS.
 
 - **Cible** : clients en Afrique francophone et à l'international cherchant des assistants IA, chatbots, plateformes web, e-commerce ou cybersécurité.
 - **URL de production** : `https://vision-amah.vercel.app`
@@ -13,7 +13,10 @@ Vision Amah est un site vitrine pour une société de solutions informatiques et
 | Route | Description |
 |---|---|
 | `/` | Page d'accueil one-page (sections empilées) |
+| `/services/[slug]` | Page dédiée par service (générée statiquement) |
 | `/projets/[slug]` | Page de détail par projet (générée statiquement) |
+| `/blog` | Liste des articles du blog |
+| `/blog/[slug]` | Article de blog (généré statiquement) |
 | `/portfolio` | Portfolio personnel d'Amadou Doumbouya |
 | `/sitemap.xml` | Sitemap auto-généré (indexation Google) |
 | `/robots.txt` | Directives robots auto-générées |
@@ -42,30 +45,40 @@ Aucune base de données, aucune API externe à part Formspree, aucun gestionnair
 ```
 src/
   app/
-    layout.tsx               → squelette HTML, polices, métadonnées SEO complètes, JSON-LD, Analytics
+    layout.tsx               → squelette HTML, polices, métadonnées SEO complètes, JSON-LD, Analytics, bulle WhatsApp + widget Avatar Amah
     page.tsx                 → assemble les sections de la page d'accueil dans l'ordre d'affichage
-    globals.css              → variables CSS (couleurs), animations CSS (starfield)
+    globals.css              → variables CSS (couleurs), keyframes (curseur du Typewriter, starfield)
     fonts/                   → fichiers de police Geist (.woff)
     icon.tsx                 → icône PWA 32×32 "VA" générée via @vercel/og (force-dynamic)
     apple-icon.tsx           → icône Apple Touch 180×180 via @vercel/og (force-dynamic)
     opengraph-image.tsx      → image OG 1200×630 pour partage social (force-dynamic)
-    sitemap.ts               → sitemap.xml auto-généré (/, /projets/[slug], /portfolio)
+    sitemap.ts               → sitemap.xml auto-généré (/, /portfolio, /blog, /services/[slug], /projets/[slug], /blog/[slug])
     robots.ts                → robots.txt auto-généré
     not-found.tsx            → page 404 personnalisée
     error.tsx                → error boundary global (client component)
+    services/[slug]/
+      page.tsx               → page dédiée d'un service : description, prestations incluses, projets liés (statique)
     projets/[slug]/
       page.tsx               → page de détail d'un projet (statique, via generateStaticParams)
+    blog/
+      page.tsx               → liste des articles
+      [slug]/page.tsx        → article (statique), rendu à partir de blocs typés
     portfolio/
-      page.tsx               → portfolio personnel Amadou Doumbouya (hero, stats, projets, skills ML, certifications, contact)
+      page.tsx               → portfolio personnel Amadou Doumbouya (hero, stats, projets, skills ML, parcours, certifications, contact)
   components/
     Navbar.tsx               → navigation fixe, opaque au scroll, menu hamburger mobile + scroll-lock
-    Hero.tsx                 → section d'accueil plein écran
-    Services.tsx             → grille des 6 services proposés
+    Hero.tsx                 → section d'accueil plein écran (fond vidéo + titre Typewriter)
+    Services.tsx             → grille des services groupés par catégorie, chaque carte mène à /services/[slug] (lit src/data/services.ts)
     WhyUs.tsx                → 3 arguments différenciants (statistiques)
+    QuiSuisJe.tsx            → présentation du fondateur (photo + badges)
+    Processus.tsx            → les 4 étapes d'un projet (audit, devis, développement, livraison)
     Projects.tsx             → grille des réalisations/projets (lit src/data/projects.ts)
+    ProjectCardVideo.tsx     → vidéo des cartes Réalisations, chargée seulement à l'approche de la fenêtre
+    FAQ.tsx                  → questions fréquentes en accordéon
     Contact.tsx              → formulaire Formspree + boutons WhatsApp/email
-    ContactForm.tsx          → formulaire Formspree (nom, email, message) — 4 états : idle/submitting/success/error — honeypot _gotcha anti-spam
+    ContactForm.tsx          → formulaire Formspree (nom, email, téléphone facultatif, message) — 4 états : idle/submitting/success/error — honeypot _gotcha anti-spam
     Testimonials.tsx         → section témoignages clients — retourne null si le tableau testimonials est vide
+    WhatsAppFloat.tsx        → bulle WhatsApp flottante présente sur toutes les pages
     Footer.tsx               → mentions légales, copyright
     VideoBackground.tsx      → fond vidéo lazy-loadé (IntersectionObserver) avec overlay, utilisé par Hero/WhyUs/Contact
     AvatarAmahWidget.tsx     → iframe chatbot Avatar Amah, warm-up au premier interaction ou après 4s idle
@@ -75,14 +88,18 @@ src/
     useReducedMotion.ts      → hook React qui lit la media query prefers-reduced-motion
   data/
     projects.ts              → source unique de vérité des projets (type Project + tableau projects)
+    services.ts              → source unique de vérité des services (type Service, tableau services, CATEGORIES)
+    blog.ts                  → articles du blog (type BlogPost + tableau posts)
 docs/
   PROJET.md                  → ce fichier
   projets/                   → un fichier markdown de référence par projet
 public/
   logo.svg                   → wordmark SVG blanc-sur-noir
   manifest.webmanifest       → manifeste PWA (nom, thème #050505, icônes)
-  projects/                  → visuels projets (*.png screenshots, *.svg placeholders 16:9, sans texte)
-  services/                  → icônes dédiées à la section Services (6 SVG thématiques)
+  projects/                  → visuels projets (captures *.png/*.jpeg, placeholders *.svg 16:9 sans texte)
+  services/                  → une illustration SVG par service (9 fichiers)
+  about/                     → photo du fondateur (QuiSuisJe, portfolio)
+  certifications/            → certificats (images et PDF) du portfolio
   video/                     → vidéos de fond sections (hero/section backgrounds)
   video/projects/            → démos vidéo par projet
 CLAUDE.md                    → instructions pour Claude Code (commandes, architecture)
@@ -98,11 +115,19 @@ Chaque projet est un objet `Project` avec :
 - `architecture` (optionnel) : arborescence technique en texte brut ;
 - `externalHref` / `externalLabel` : lien vers la démo/le site en ligne ;
 - `repoHref` (optionnel) : lien GitHub du code source ;
-- `image` (optionnel) : screenshot PNG dans `public/projects/` ;
-- `svg` (optionnel) : placeholder SVG dans `public/projects/` ;
-- `video` (optionnel) : démo MP4 dans `public/video/projects/`.
+- `image` : capture d'écran ou placeholder SVG dans `public/projects/` ;
+- `video` (optionnel) : démo MP4 dans `public/video/projects/` ;
+- `fit` (optionnel) : `contain` ou `cover` pour le cadrage du visuel.
 
-Ce fichier est la seule source de vérité consommée par la grille `Projects.tsx`, les pages `/projets/[slug]`, et le portfolio `/portfolio`.
+Ce fichier est la seule source de vérité consommée par la grille `Projects.tsx`, les pages `/projets/[slug]`, les pages services (projets liés) et le portfolio `/portfolio`.
+
+### Données des services (`src/data/services.ts`)
+
+Chaque `Service` a un `slug`, une `category` (parmi `CATEGORIES`), un résumé (carte), une description et une liste `included` (page dédiée), une `image` dans `public/services/`, et éventuellement `relatedProjectSlugs` (projets affichés sur la page du service). `hiddenFromHome: true` retire un service de la grille d'accueil tout en gardant sa page accessible (c'est le cas de la cybersécurité).
+
+### Articles du blog (`src/data/blog.ts`)
+
+Chaque `BlogPost` a un `slug`, un titre, un résumé, un `tag`, une date `publishedAt` (AAAA-MM-JJ), un temps de lecture et un `content` composé de blocs typés (`paragraph`, `heading`, `list`). Pas de Markdown ni de HTML brut : la page `/blog/[slug]` rend chaque bloc avec le style du site.
 
 ## 4. Construction et choix de conception
 
@@ -113,13 +138,15 @@ Le site a été conçu pour adopter l'esthétique de spacex.com :
 - **Une seule couleur d'accent** (`--accent: #3b82f6`, bleu) utilisée avec parcimonie sur les CTA, tags et statistiques.
 - **Typographie massive en majuscules** : `font-black`/`font-bold`, `uppercase`, `tracking-widest-plus` (`letter-spacing: 0.25em`).
 - **Sections plein écran** pour Hero, WhyUs et Contact (`min-h-screen`/`h-screen`).
-- **Fond animé du Hero** : champ d'étoiles pur CSS (classe `.starfield`, keyframe `drift` dans `globals.css`).
+- **Fonds vidéo** sur les sections plein écran (Hero, WhyUs, Contact), chacune avec son propre clip via `VideoBackground.tsx`. La classe CSS `.starfield` (champ d'étoiles) reste définie dans `globals.css` mais n'est plus utilisée.
 
 ### 4.2 Navigation
 
 `Navbar.tsx` est client (`"use client"`) car il écoute le scroll pour basculer entre transparent (haut de page) et `bg-black/80 backdrop-blur-md` (après 40px). Il inclut un menu hamburger mobile avec verrouillage du scroll `document.body.style.overflow = "hidden"` pendant l'ouverture.
 
-Liens de navigation : Services → Pourquoi nous → Réalisations → **Portfolio** → Contact.
+Liens de navigation : Services → Pourquoi nous → Réalisations → Portfolio → Blog → Contact.
+
+Ordre des sections de l'accueil : Hero → Services → Pourquoi nous → Qui suis-je → Processus → Réalisations → Témoignages (si renseignés) → FAQ → Contact.
 
 ### 4.3 Animations
 
@@ -133,7 +160,7 @@ Liens de navigation : Services → Pourquoi nous → Réalisations → **Portfol
 - `layout.tsx` exporte `metadata` complet : `title`, `description`, `keywords`, Open Graph, Twitter card, `metadataBase = "https://vision-amah.vercel.app"`.
 - JSON-LD `LocalBusiness` schema injecté dans `<body>` via `<script type="application/ld+json">`.
 - `verification.google` lit `process.env.GOOGLE_SITE_VERIFICATION` → balise `<meta name="google-site-verification">` automatique.
-- `sitemap.ts` génère `/sitemap.xml` avec toutes les routes (priorité 1.0 pour `/`, 0.8 pour `/portfolio`, 0.7 pour les projets).
+- `sitemap.ts` génère `/sitemap.xml` avec toutes les routes (priorité 1.0 pour `/`, 0.8 pour `/portfolio` et les services, 0.6 pour le blog et ses articles ; les projets n'ont pas de priorité explicite).
 - `robots.ts` pointe vers `/sitemap.xml`.
 - `opengraph-image.tsx` génère l'image 1200×630 pour le partage sur les réseaux sociaux.
 - Images optimisées AVIF/WebP via `next.config.mjs`.
@@ -149,7 +176,7 @@ Liens de navigation : Services → Pourquoi nous → Réalisations → **Portfol
 
 ### 4.6 Formulaire de contact (Formspree)
 
-`ContactForm.tsx` envoie les données à `https://formspree.io/f/${NEXT_PUBLIC_FORMSPREE_ID}`. L'ID est stocké dans la variable d'environnement `NEXT_PUBLIC_FORMSPREE_ID` dans Vercel (jamais dans le code). Le formulaire gère 4 états : `idle`, `submitting`, `success`, `error`. Le champ caché `_gotcha` (honeypot) protège le quota Formspree contre les robots spam.
+`ContactForm.tsx` (nom, email, téléphone facultatif, message) envoie les données à `https://formspree.io/f/${NEXT_PUBLIC_FORMSPREE_ID}`. L'ID est stocké dans la variable d'environnement `NEXT_PUBLIC_FORMSPREE_ID` dans Vercel (jamais dans le code). Le formulaire gère 4 états : `idle`, `submitting`, `success`, `error`. Le champ caché `_gotcha` (honeypot) protège le quota Formspree contre les robots spam.
 
 ### 4.7 Sécurité HTTP (`next.config.mjs`)
 
@@ -164,12 +191,20 @@ Tous les en-têtes de sécurité sont définis dans `next.config.mjs` et s'appli
 
 La section `#temoignages` est rendue conditionnellement : elle retourne `null` tant que le tableau `testimonials` (dans `Testimonials.tsx`) est vide. Pour l'activer, remplir ce tableau avec de vrais retours clients obtenus avec leur accord.
 
+### 4.9 Bulle WhatsApp (`WhatsAppFloat.tsx`)
+
+Montée dans `layout.tsx`, elle est visible sur toutes les pages, empilée au-dessus du widget Avatar Amah (coin inférieur droit). Le numéro et le message pré-rempli sont des constantes en haut du fichier.
+
 ## 5. Modifier le contenu
 
 | Ce que tu veux changer | Où modifier |
 |---|---|
-| Texte / services sur la page d'accueil | Tableau local en haut du composant concerné (`Services.tsx`, `WhyUs.tsx`, etc.) |
+| Textes des sections de l'accueil (Pourquoi nous, Qui suis-je, Processus, FAQ) | Tableau local en haut du composant concerné |
+| Ajouter/modifier/supprimer un service | `src/data/services.ts` (+ illustration dans `public/services/`) |
 | Ajouter/modifier/supprimer un projet | `src/data/projects.ts` uniquement |
+| Publier un article de blog | Ajouter une entrée dans `src/data/blog.ts` |
+| Ajouter des témoignages | Tableau `testimonials` dans `src/components/Testimonials.tsx` |
+| Numéro WhatsApp de la bulle flottante | Constantes en haut de `src/components/WhatsAppFloat.tsx` |
 | Modifier le portfolio | `src/app/portfolio/page.tsx` |
 | Changer les liens de la navbar | Tableau `links` dans `src/components/Navbar.tsx` |
 | Métadonnées SEO globales | `src/app/layout.tsx` |
@@ -190,7 +225,8 @@ Il n'y a pas de suite de tests dans ce projet.
 
 ## 7. Pistes d'amélioration futures
 
-- Ajouter de vraies captures d'écran/démos pour les projets qui ont encore des SVG placeholders (Vertex Shop, Transport Agency, Ticketing Platform, Cyber Content Generator).
-- Publier les dépôts GitHub manquants (Transport Agency, Ticketing Platform, Cyber Content Generator) pour afficher un bouton « Voir le code » sur leurs pages de détail.
-- Ajouter des témoignages clients ou des études de cas dans une nouvelle section.
+- Ajouter de vraies captures d'écran/démos pour les projets qui ont encore des SVG placeholders (Transport Agency, Avatar Amah, Ticketing Platform, Générateur de cours, Cyber Content Generator).
+- Publier les dépôts GitHub des projets sans `repoHref` pour afficher un bouton « Voir le code » sur leurs pages de détail.
+- Renseigner de vrais témoignages clients pour faire apparaître la section Témoignages.
+- Publier d'autres articles de blog.
 - Internationalisation (EN/FR) si une audience anglophone est ciblée.
