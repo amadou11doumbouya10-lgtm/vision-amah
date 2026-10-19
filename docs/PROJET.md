@@ -97,8 +97,8 @@ public/
   og-image.jpg               → image de partage 1200×630 (bannière de la marque)
   icon-512.png               → grande icône PWA
   manifest.webmanifest       → manifeste PWA (nom, thème #050505, icônes)
-  projects/                  → visuels projets (captures *.png/*.jpeg, placeholders *.svg 16:9 sans texte)
-  services/                  → une illustration SVG par service (9 fichiers)
+  projects/                  → visuels projets 16:9 (captures *.png/*.jpeg, photos libres *.jpg en attendant une capture)
+  services/                  → une photo libre (CC0) par service (9 fichiers .jpg)
   about/                     → photo du fondateur (QuiSuisJe, portfolio)
   certifications/            → certificats (images et PDF) du portfolio
   video/                     → vidéos de fond sections (hero/section backgrounds)
@@ -116,7 +116,7 @@ Chaque projet est un objet `Project` avec :
 - `architecture` (optionnel) : arborescence technique en texte brut ;
 - `externalHref` / `externalLabel` : lien vers la démo/le site en ligne ;
 - `repoHref` (optionnel) : lien GitHub du code source ;
-- `image` : capture d'écran ou placeholder SVG dans `public/projects/` ;
+- `image` : capture d'écran, ou photo libre de droits en attendant une capture, dans `public/projects/` ;
 - `video` (optionnel) : démo MP4 dans `public/video/projects/` ;
 - `fit` (optionnel) : `contain` ou `cover` pour le cadrage du visuel.
 
@@ -201,7 +201,7 @@ Montée dans `layout.tsx`, elle est visible sur toutes les pages, empilée au-de
 | Ce que tu veux changer | Où modifier |
 |---|---|
 | Textes des sections de l'accueil (Pourquoi nous, Qui suis-je, Processus, FAQ) | Tableau local en haut du composant concerné |
-| Ajouter/modifier/supprimer un service | `src/data/services.ts` (+ illustration dans `public/services/`) |
+| Ajouter/modifier/supprimer un service | `src/data/services.ts` (+ photo 16:9 libre de droits dans `public/services/`, source notée dans `docs/CREDITS-PHOTOS.md`) |
 | Ajouter/modifier/supprimer un projet | `src/data/projects.ts` uniquement |
 | Publier un article de blog | Ajouter une entrée dans `src/data/blog.ts` |
 | Ajouter des témoignages | Tableau `testimonials` dans `src/components/Testimonials.tsx` |
@@ -226,7 +226,7 @@ Il n'y a pas de suite de tests dans ce projet.
 
 ## 7. Pistes d'amélioration futures
 
-- Ajouter de vraies captures d'écran/démos pour les projets qui ont encore des SVG placeholders (Transport Agency, Avatar Amah, Ticketing Platform, Générateur de cours, Cyber Content Generator).
+- Remplacer par de vraies captures d'écran/démos les photos d'illustration des projets qui n'en ont pas encore (Transport Agency, Avatar Amah, Ticketing Platform, Générateur de cours, Cyber Content Generator).
 - Publier les dépôts GitHub des projets sans `repoHref` pour afficher un bouton « Voir le code » sur leurs pages de détail.
 - Renseigner de vrais témoignages clients pour faire apparaître la section Témoignages.
 - Publier d'autres articles de blog.
