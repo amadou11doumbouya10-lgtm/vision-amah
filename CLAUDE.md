@@ -59,8 +59,9 @@ Dark theme (`--background`/`--foreground` CSS vars in `src/app/globals.css`), up
 
 ### Static assets
 
-- `public/projects/` — project visuals: real screenshots (`*.png`) and SVG placeholders (`*.svg`) in 16:9 ratio. No text inside SVGs (avoids duplication with card titles).
-- `public/services/` — one illustration per service (9 SVGs, referenced by the `image` field in `src/data/services.ts`), used by the home grid and `/services/[slug]`. Kept separate from `public/projects/`.
+- `public/projects/` — project visuals in 16:9: real screenshots (`*.png`/`*.jpeg`) and, for projects that don't have one yet, CC0 stock photos (`*.jpg`).
+- `public/services/` — one CC0 stock photo per service (9 JPGs, 16:9, referenced by the `image` field in `src/data/services.ts`), used by the home grid and `/services/[slug]`. Kept separate from `public/projects/`.
+- Every stock photo's source is listed in `docs/CREDITS-PHOTOS.md`; any new image must be free for commercial use (CC0 or equivalent) and added there.
 - `public/about/` — founder photo (used by `QuiSuisJe` and `/portfolio`).
 - `public/certifications/` — certificate images/PDFs linked from the `/portfolio` certifications section.
 - `public/video/` — background videos for full-screen sections; `public/video/projects/` for per-project demo clips.

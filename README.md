@@ -22,7 +22,7 @@ src/
     projects.ts              → source unique de vérité des projets
 public/
   video/                     → vidéos de fond (Hero, WhyUs, Contact)
-  projects/                  → captures et placeholders des projets
+  projects/                  → captures et photos d'illustration des projets
 docs/
   PROJET.md                  → documentation technique complète (FR)
   projets/                   → fiche de référence par projet

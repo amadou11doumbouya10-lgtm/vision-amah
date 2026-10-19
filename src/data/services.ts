@@ -36,7 +36,7 @@ export const services: Service[] = [
       "Navigation web automatisée pour les tâches en ligne",
       "Formation à l'utilisation, sans jargon technique",
     ],
-    image: "/services/automatisation.svg",
+    image: "/services/automatisation.jpg",
     relatedProjectSlugs: ["amah-agent"],
   },
   {
@@ -55,7 +55,7 @@ export const services: Service[] = [
       "Prise de rendez-vous automatisée",
       "Personnalisable à votre ton de marque",
     ],
-    image: "/services/chatbot.svg",
+    image: "/services/chatbot.jpg",
     relatedProjectSlugs: ["avatar-amah"],
   },
   {
@@ -74,7 +74,7 @@ export const services: Service[] = [
       "Hébergement et mise en ligne inclus",
       "Formation à la gestion du contenu",
     ],
-    image: "/services/plateformes-web.svg",
+    image: "/services/plateformes-web.jpg",
     relatedProjectSlugs: ["theamah", "ticketing-platform"],
   },
   {
@@ -93,7 +93,7 @@ export const services: Service[] = [
       "Gestion des commandes et du stock",
       "Optimisation pour le référencement Google",
     ],
-    image: "/services/ecommerce.svg",
+    image: "/services/ecommerce.jpg",
     relatedProjectSlugs: ["vertex-shop"],
   },
   {
@@ -112,7 +112,7 @@ export const services: Service[] = [
       "Rapports et statistiques automatiques",
       "Formation de votre équipe à l'outil",
     ],
-    image: "/services/logiciels-metier.svg",
+    image: "/services/logiciels-metier.jpg",
     relatedProjectSlugs: ["transport-agency"],
   },
   {
@@ -131,7 +131,7 @@ export const services: Service[] = [
       "Accompagnement pour corriger les failles identifiées",
       "Bonnes pratiques pour la suite",
     ],
-    image: "/services/cybersecurite.svg",
+    image: "/services/cybersecurite.jpg",
     relatedProjectSlugs: ["cyber-content-generator"],
     hiddenFromHome: true,
   },
@@ -151,7 +151,7 @@ export const services: Service[] = [
       "Cohérence visuelle sur tous vos supports",
       "Fichiers sources livrés, réutilisables de votre côté",
     ],
-    image: "/services/infographie-design.svg",
+    image: "/services/infographie-design.jpg",
   },
   {
     slug: "marketing-digital",
@@ -169,7 +169,7 @@ export const services: Service[] = [
       "Optimisation pour la recherche locale (Conakry et environs)",
       "Suivi de position sur les mots-clés ciblés",
     ],
-    image: "/services/marketing-digital.svg",
+    image: "/services/marketing-digital.jpg",
   },
   {
     slug: "maintenance-sites",
@@ -187,7 +187,7 @@ export const services: Service[] = [
       "Support technique en cas de problème",
       "Priorité donnée aux sites/applications développés avec nous",
     ],
-    image: "/services/maintenance-sites.svg",
+    image: "/services/maintenance-sites.jpg",
   },
 ];
 

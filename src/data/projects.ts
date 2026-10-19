@@ -120,7 +120,7 @@ export const projects: Project[] = [
     ],
     architecture:
       "app/(public)/    → site public (accueil, tarifs, suivi, contact)\napp/admin/       → dashboard protégé (KPIs, colis, expéditions)\napp/api/         → routes REST (colis, expéditions, tarifs, stats, auth)\nlib/             → auth, client Prisma, génération PDF, envoi email\nprisma/          → schéma (Colis, Expedition, Tarif, ColisCounter) + seed",
-    image: "/projects/transport-agency.svg",
+    image: "/projects/transport-agency.jpg",
   },
   {
     slug: "avatar-amah",
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     externalHref: "https://legendary-selkie-d298b7.netlify.app",
     externalLabel: "Voir le site",
     repoHref: "https://github.com/amadou11doumbouya10-lgtm/amah-avatar",
-    image: "/projects/avatar-amah.svg",
+    image: "/projects/avatar-amah.jpg",
   },
   {
     slug: "ticketing-platform",
@@ -173,7 +173,7 @@ export const projects: Project[] = [
       { name: "Mes Billets", description: "Billets personnels avec QR codes SVG" },
       { name: "Back Office", description: "Dashboard KPIs et tableau des commandes" },
     ],
-    image: "/projects/ticketing-platform.svg",
+    image: "/projects/ticketing-platform.jpg",
   },
   {
     slug: "generateur-cours",
@@ -194,7 +194,7 @@ export const projects: Project[] = [
     ],
     architecture:
       "main.py                 → Menu interactif (cours simple / programme complet)\nchercheur.py            → Recherche Wikipedia FR/EN + filtre ML de pertinence\ngenerateur.py           → Génération Groq (cours, suggestions, plans de programme)\nentrainement/           → Dataset, entraînement du classifieur (scikit-learn),\n                          expérience réseau de neurones (PyTorch)\ncours_generes/          → Cours et programmes produits (Markdown)",
-    image: "/projects/generateur-cours.svg",
+    image: "/projects/generateur-cours.jpg",
   },
   {
     slug: "cyber-content-generator",
@@ -214,7 +214,7 @@ export const projects: Project[] = [
     ],
     architecture:
       "topics.py              → Sujets statiques + sujets générés par IA\nai_topic_generator.py  → Génération de nouveaux sujets (Claude, streaming)\nscript_generator.py    → Mise en forme du script (ton fun / sérieux)\nhashtags.py            → Stratégie de hashtags par ton\nbatch_export.py        → Génération de plans de publication multi-jours",
-    image: "/projects/cyber-content-generator.svg",
+    image: "/projects/cyber-content-generator.jpg",
   },
 ];
 
