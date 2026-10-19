@@ -39,10 +39,19 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="/" className="block">
-          <Image src="/logo.svg" alt="Vision Amah" width={140} height={20} priority />
+        <a href="/" className="block shrink-0">
+          <Image
+            src="/logo.png"
+            alt="Vision Amah"
+            width={203}
+            height={40}
+            priority
+            className="h-9 w-auto sm:h-10"
+          />
         </a>
-        <ul className="hidden gap-8 text-xs font-medium uppercase tracking-widest-plus text-white/70 md:flex">
+        {/* Six liens + logo + bouton devis demandent ~1180 px : en dessous de xl
+            (1280 px), ils passent dans le menu hamburger plutôt que de se tasser. */}
+        <ul className="hidden gap-8 whitespace-nowrap text-xs font-medium uppercase tracking-widest-plus text-white/70 xl:flex">
           {links.map((link) => (
             <li key={link.href}>
               <a href={link.href} className="transition hover:text-white">
@@ -54,7 +63,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="/#contact"
-            className="hidden rounded-full border border-accent/50 px-4 py-2 text-xs font-medium uppercase tracking-widest-plus text-white transition hover:border-accent hover:bg-accent hover:text-white sm:block"
+            className="hidden whitespace-nowrap rounded-full border border-accent/50 px-4 py-2 text-xs font-medium uppercase tracking-widest-plus text-white transition hover:border-accent hover:bg-accent hover:text-white sm:block"
           >
             Demander un devis
           </a>
@@ -63,7 +72,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen((value) => !value)}
             aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={menuOpen}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white xl:hidden"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
               {menuOpen ? (
@@ -77,7 +86,7 @@ export default function Navbar() {
       </nav>
 
       {menuOpen && (
-        <div className="border-t border-white/10 bg-black/95 backdrop-blur-md md:hidden">
+        <div className="border-t border-white/10 bg-black/95 backdrop-blur-md xl:hidden">
           <ul className="flex flex-col gap-1 px-6 py-4 text-sm font-medium uppercase tracking-widest-plus text-white/70">
             {links.map((link) => (
               <li key={link.href}>
