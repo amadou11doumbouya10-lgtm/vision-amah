@@ -48,13 +48,13 @@ export const metadata: Metadata = {
     siteName: "Vision Amah",
     title,
     description,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Vision Amah" }],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Vision Amah" }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/opengraph-image"],
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -68,7 +68,8 @@ const jsonLd = {
   name: "Vision Amah",
   description,
   url: siteUrl,
-  image: `${siteUrl}/logo.svg`,
+  image: `${siteUrl}/og-image.jpg`,
+  logo: `${siteUrl}/icon-512.png`,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Conakry",

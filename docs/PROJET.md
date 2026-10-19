@@ -20,8 +20,8 @@ Vision Amah est un site vitrine pour une société de solutions informatiques et
 | `/portfolio` | Portfolio personnel d'Amadou Doumbouya |
 | `/sitemap.xml` | Sitemap auto-généré (indexation Google) |
 | `/robots.txt` | Directives robots auto-générées |
-| `/opengraph-image` | Image sociale 1200×630 pour partage |
-| `/icon` / `/apple-icon` | Icônes PWA générées dynamiquement |
+| `/og-image.jpg` | Image sociale 1200×630 pour partage (bannière de la marque) |
+| `/icon.png` / `/apple-icon.png` / `/favicon.ico` | Icônes (onglet, écran d'accueil, PWA) tirées du monogramme VA |
 | `/_not-found` | Page 404 personnalisée |
 
 ## 2. Stack technique
@@ -32,7 +32,6 @@ Vision Amah est un site vitrine pour une société de solutions informatiques et
 | TypeScript | Typage statique |
 | Tailwind CSS | Styling utilitaire |
 | Framer Motion | Animations au scroll et au chargement |
-| `@vercel/og` | Génération d'images OG et icônes PWA |
 | `@vercel/analytics` | Suivi des pages vues (zero-config) |
 | Formspree | Formulaire de contact serverless (env var `NEXT_PUBLIC_FORMSPREE_ID`) |
 | ESLint (`next/core-web-vitals`, `next/typescript`) | Linting |
@@ -49,9 +48,9 @@ src/
     page.tsx                 → assemble les sections de la page d'accueil dans l'ordre d'affichage
     globals.css              → variables CSS (couleurs), keyframes (curseur du Typewriter, starfield)
     fonts/                   → fichiers de police Geist (.woff)
-    icon.tsx                 → icône PWA 32×32 "VA" générée via @vercel/og (force-dynamic)
-    apple-icon.tsx           → icône Apple Touch 180×180 via @vercel/og (force-dynamic)
-    opengraph-image.tsx      → image OG 1200×630 pour partage social (force-dynamic)
+    icon.png                 → icône 192×192 (monogramme VA sur fond #050505)
+    apple-icon.png           → icône Apple Touch 180×180
+    favicon.ico              → favicon 16/32/48 px
     sitemap.ts               → sitemap.xml auto-généré (/, /portfolio, /blog, /services/[slug], /projets/[slug], /blog/[slug])
     robots.ts                → robots.txt auto-généré
     not-found.tsx            → page 404 personnalisée
@@ -94,7 +93,9 @@ docs/
   PROJET.md                  → ce fichier
   projets/                   → un fichier markdown de référence par projet
 public/
-  logo.svg                   → wordmark SVG blanc-sur-noir
+  logo.png                   → logo (monogramme VA + VISION AMAH), fond transparent, pour fonds sombres
+  og-image.jpg               → image de partage 1200×630 (bannière de la marque)
+  icon-512.png               → grande icône PWA
   manifest.webmanifest       → manifeste PWA (nom, thème #050505, icônes)
   projects/                  → visuels projets (captures *.png/*.jpeg, placeholders *.svg 16:9 sans texte)
   services/                  → une illustration SVG par service (9 fichiers)
@@ -162,10 +163,10 @@ Ordre des sections de l'accueil : Hero → Services → Pourquoi nous → Qui su
 - `verification.google` lit `process.env.GOOGLE_SITE_VERIFICATION` → balise `<meta name="google-site-verification">` automatique.
 - `sitemap.ts` génère `/sitemap.xml` avec toutes les routes (priorité 1.0 pour `/`, 0.8 pour `/portfolio` et les services, 0.6 pour le blog et ses articles ; les projets n'ont pas de priorité explicite).
 - `robots.ts` pointe vers `/sitemap.xml`.
-- `opengraph-image.tsx` génère l'image 1200×630 pour le partage sur les réseaux sociaux.
+- `public/og-image.jpg` (la bannière de la marque) est l'image de partage 1200×630, déclarée dans les métadonnées `openGraph` et `twitter`.
 - Images optimisées AVIF/WebP via `next.config.mjs`.
 - `@vercel/analytics` : suivi des pages vues sans configuration supplémentaire.
-- PWA : `manifest.webmanifest` + icônes `/icon` et `/apple-icon` générées via `@vercel/og`.
+- PWA : `manifest.webmanifest` + icônes statiques `/icon.png`, `/icon-512.png` et `/apple-icon.png`.
 
 ### 4.5 Accessibilité
 

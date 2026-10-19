@@ -26,13 +26,13 @@ export function generateMetadata({
       url: `/blog/${post.slug}`,
       type: "article",
       publishedTime: post.publishedAt,
-      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Vision Amah" }],
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Vision Amah" }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.summary,
-      images: ["/opengraph-image"],
+      images: ["/og-image.jpg"],
     },
   };
 }

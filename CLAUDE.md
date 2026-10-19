@@ -25,8 +25,8 @@ This is a marketing site for **Vision Amah**, an IT/AI solutions company based i
 - `/portfolio` — personal portfolio page for Amadou Doumbouya (`src/app/portfolio/page.tsx`): hero, stats, projects grid, skills (including ML), timeline, certifications (images/PDFs in `public/certifications/`), contact. Linked from Navbar.
 - `/sitemap.xml` — auto-generated via `src/app/sitemap.ts` (lists `/`, `/portfolio`, `/blog`, all `/services/[slug]`, `/projets/[slug]` and `/blog/[slug]`).
 - `/robots.txt` — auto-generated via `src/app/robots.ts`.
-- `/icon` / `/apple-icon` — PWA icons generated via `@vercel/og` (`src/app/icon.tsx`, `src/app/apple-icon.tsx`). Both have `export const dynamic = "force-dynamic"` to avoid a Windows path-spaces bug with `@vercel/og`.
-- `/opengraph-image` — 1200×630 OG social sharing image via `src/app/opengraph-image.tsx`. Same `dynamic = "force-dynamic"` fix.
+- `/icon.png` / `/apple-icon.png` / `/favicon.ico` — static icons in `src/app/` (Next.js file convention), cut from the logo's VA monogram on `#050505`. `public/icon-512.png` is the large PWA icon.
+- `/og-image.jpg` — 1200×630 social sharing image (`public/og-image.jpg`, the full brand banner), referenced explicitly in the `openGraph`/`twitter` metadata of `layout.tsx` and `/blog/[slug]`.
 - `/_not-found` — custom 404 page (`src/app/not-found.tsx`).
 - `/error` — global error boundary (`src/app/error.tsx`, `"use client"`).
 
@@ -76,7 +76,7 @@ Dark theme (`--background`/`--foreground` CSS vars in `src/app/globals.css`), up
 
 ### PWA
 
-`public/manifest.webmanifest` — PWA manifest referencing `/icon` and `/apple-icon`. Theme color `#050505`.
+`public/manifest.webmanifest` — PWA manifest referencing `/icon.png` (192), `/icon-512.png` and `/apple-icon.png`. Theme color `#050505`.
 
 ### Security (`next.config.mjs`)
 
@@ -99,7 +99,7 @@ All HTTP responses carry security headers:
 - `Navbar` and any component using scroll listeners or `framer-motion` must be `"use client"`.
 - Scroll-in animations use `framer-motion`'s `whileInView` with `viewport={{ once: true }}`.
 - `animate-caret` keyframe in `globals.css` — used by `Typewriter.tsx` for the blinking cursor.
-- The wordmark is `public/logo.svg` (white-on-black SVG) rendered via `next/image` in `Navbar`.
+- The logo is `public/logo.png` (VA monogram + "VISION AMAH", transparent background, made for dark backgrounds) rendered via `next/image` in `Navbar`. The desktop nav links only show from `xl` (1280px); below that they live in the hamburger menu, so the logo never gets squeezed.
 - Fonts are local Geist variable fonts (`src/app/fonts/`), exposed as CSS vars `--font-geist-sans` / `--font-geist-mono`.
 - Path alias `@/*` maps to `src/*` (`tsconfig.json`).
 - AVIF/WebP image optimization enabled in `next.config.mjs`.
