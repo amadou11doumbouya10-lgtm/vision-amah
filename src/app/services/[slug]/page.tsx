@@ -45,25 +45,40 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
     .map((slug) => getProject(slug))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
-  // Une vraie capture d'un projet livré est plus parlante qu'une icône
-  // générique — on ne retombe sur l'icône du service que faute de projet lié.
-  const heroProject = relatedProjects[0];
-  const heroImage = heroProject?.image ?? service.image;
-  const heroFit = heroProject?.fit;
-
   return (
     <main id="main-content" className="bg-background">
       <Navbar />
 
-      <section className="border-b border-white/10 bg-background pb-16 pt-32">
-        <div className="mx-auto max-w-5xl px-6">
+      {/* Même principe que le hero des pages projet : la photo du service en
+          pleine largeur, le texte posé sur le bas, fondu dans le fond du site.
+          Sur mobile, le haut est laissé libre pour que la photo reste visible
+          au-dessus du texte au lieu de disparaître derrière. */}
+      <section className="relative flex min-h-[75vh] w-full items-end overflow-hidden bg-background pt-[38vh] sm:pt-32">
+        <div className="absolute inset-0">
+          <Image
+            src={service.image}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          {/* Haut assombri pour la barre de navigation ; à partir du milieu, le
+              fond reprend le dessus pour que le résumé reste lisible quelle
+              que soit la photo. */}
+          <div
+            className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.3)_30%,rgb(var(--background)/0.85)_55%,rgb(var(--background))_100%)]"
+            aria-hidden
+          />
+        </div>
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-16">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
             {service.tag}
           </p>
-          <h1 className="mb-6 text-balance text-4xl font-black uppercase leading-tight tracking-tight sm:text-6xl">
+          <h1 className="mb-6 text-balance text-4xl font-black uppercase leading-tight tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] sm:text-6xl">
             {service.title}
           </h1>
-          <p className="max-w-2xl text-balance text-lg leading-relaxed text-white/70">
+          <p className="max-w-2xl text-balance text-lg leading-relaxed text-white/75">
             {service.summary}
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -83,18 +98,8 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-background py-20">
+      <section className="border-y border-white/10 bg-background py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="relative mb-12 aspect-[21/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-            <Image
-              src={heroImage}
-              alt={service.title}
-              fill
-              className={heroFit === "contain" ? "object-contain p-10" : "object-cover"}
-              sizes="(min-width: 1024px) 900px, 100vw"
-            />
-          </div>
-
           <p className="text-balance text-lg leading-relaxed text-white/70">
             {service.description}
           </p>
