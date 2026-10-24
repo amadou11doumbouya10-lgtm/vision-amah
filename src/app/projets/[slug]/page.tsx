@@ -42,9 +42,9 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   if (!project) notFound();
 
   return (
-    <main id="main-content" className="bg-black">
+    <main id="main-content" className="bg-background">
       <Navbar />
-      <section className="relative flex min-h-[70vh] w-full items-end overflow-hidden bg-black pt-24">
+      <section className="relative flex min-h-[70vh] w-full items-end overflow-hidden bg-background pt-24">
         <div className="absolute inset-0">
           {project.video ? (
             <ProjectHeroVideo src={project.video} alt={project.name} />
@@ -58,7 +58,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             />
           )}
           <div
-            className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.5)_0%,transparent_30%,black_100%)]"
+            className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.5)_0%,transparent_30%,rgb(var(--background))_100%)]"
             aria-hidden
           />
         </div>
@@ -72,7 +72,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      <section className="border-t border-white/10 bg-black py-20">
+      <section className="border-t border-white/10 bg-background py-20">
         <div className="mx-auto max-w-5xl px-6">
           <p className="text-balance text-lg leading-relaxed text-white/70">
             {project.description}

@@ -14,7 +14,7 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-black px-6 text-center text-white">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-background px-6 text-center text-white">
       <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
         Erreur
       </p>

@@ -3,14 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --background: #050505;
-  --foreground: #f2f2f2;
-  --accent: #3b82f6;
+  /* Canaux RVB : Tailwind peut ainsi appliquer l'opacité (bg-background/80, bg-accent/85). */
+  --background: 6 10 20; /* #060a14, bleu nuit */
+  --foreground: 242 242 242; /* #f2f2f2 */
+  --accent: 2 107 222; /* #026bde : boutons, pastilles, bordures */
+  /* Accent éclairci pour le texte : #026bde n'atteint que 3,9:1 sur le fond,
+     celui-ci dépasse 5:1 même sur les sections légèrement éclaircies. */
+  --accent-text: 52 137 229; /* #3489e5 */
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: rgb(var(--foreground));
+  background: rgb(var(--background));
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 

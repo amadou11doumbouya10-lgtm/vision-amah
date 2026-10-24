@@ -189,14 +189,14 @@ const stats = [
 
 export default function PortfolioPage() {
   return (
-    <main id="main-content" className="bg-black">
+    <main id="main-content" className="bg-background">
       <Navbar />
 
       {/* ── HERO ── */}
-      <section className="relative flex min-h-screen items-center overflow-hidden bg-black pt-24">
+      <section className="relative flex min-h-screen items-center overflow-hidden bg-background pt-24">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(59,130,246,0.12)_0%,transparent_60%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(59,130,246,0.06)_0%,transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgb(var(--accent)/0.12)_0%,transparent_60%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgb(var(--accent)/0.06)_0%,transparent_50%)]" />
         </div>
         <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 gap-16 px-6 py-20 md:grid-cols-2 md:items-center">
           {/* text */}
@@ -244,7 +244,7 @@ export default function PortfolioPage() {
             <div className="relative">
               <div className="absolute inset-[-16px] animate-pulse rounded-full border border-accent/30" />
               <div className="absolute inset-[-32px] rounded-full border border-accent/10" />
-              <div className="relative z-10 h-64 w-64 overflow-hidden rounded-full border-2 border-accent/40 shadow-[0_0_60px_rgba(59,130,246,0.2)]">
+              <div className="relative z-10 h-64 w-64 overflow-hidden rounded-full border-2 border-accent/40 shadow-[0_0_60px_rgb(var(--accent)/0.2)]">
                 <Image
                   src="/about/amadou-doumbouya.jpg"
                   alt="Amadou Doumbouya"
@@ -278,7 +278,7 @@ export default function PortfolioPage() {
       </div>
 
       {/* ── PROJETS ── */}
-      <section id="projets" className="border-t border-white/10 bg-black py-28">
+      <section id="projets" className="border-t border-white/10 bg-background py-28">
         <div className="mx-auto max-w-7xl px-6">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
             Réalisations
@@ -318,7 +318,7 @@ export default function PortfolioPage() {
                   )}
                 </div>
                 <div className="flex flex-col gap-2 p-6">
-                  <p className="text-xs font-medium uppercase tracking-widest-plus text-accent/80">
+                  <p className="text-xs font-medium uppercase tracking-widest-plus text-accent">
                     {project.tag}
                   </p>
                   <h3 className="font-semibold">{project.name}</h3>
@@ -347,7 +347,7 @@ export default function PortfolioPage() {
             {skills.map((group) => (
               <div
                 key={group.category}
-                className="mb-5 break-inside-avoid rounded-2xl border border-white/10 bg-black p-6"
+                className="mb-5 break-inside-avoid rounded-2xl border border-white/10 bg-background p-6"
               >
                 <p className="mb-4 text-xs font-bold uppercase tracking-widest-plus text-accent">
                   {group.category}
@@ -369,7 +369,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ── PARCOURS ── */}
-      <section id="parcours" className="border-t border-white/10 bg-black py-28">
+      <section id="parcours" className="border-t border-white/10 bg-background py-28">
         <div className="mx-auto max-w-5xl px-6">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
             Expérience
@@ -384,7 +384,7 @@ export default function PortfolioPage() {
               <div key={i} className="grid grid-cols-[80px_1fr] gap-8 sm:grid-cols-[120px_1fr]">
                 <p className="pt-1 text-right text-xs font-bold text-white/40">{item.date}</p>
                 <div className="relative border-l border-accent/20 pl-8">
-                  <span className="absolute -left-[5px] top-[6px] h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(59,130,246,0.6)]" />
+                  <span className="absolute -left-[5px] top-[6px] h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_10px_rgb(var(--accent)/0.6)]" />
                   <p className="mb-1 font-semibold text-white">{item.title}</p>
                   <p className="mb-2 text-xs font-medium text-accent">{item.place}</p>
                   <p className="text-sm leading-relaxed text-white/50">{item.desc}</p>
@@ -412,8 +412,8 @@ export default function PortfolioPage() {
                 key={cert.title}
                 className={`flex flex-col rounded-2xl border transition ${
                   cert.obtained
-                    ? "border-white/10 bg-black hover:border-accent/40"
-                    : "border-dashed border-white/15 bg-black/50"
+                    ? "border-white/10 bg-background hover:border-accent/40"
+                    : "border-dashed border-white/15 bg-background/50"
                 }`}
               >
                 {cert.image && (
@@ -482,7 +482,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ── CONTACT ── */}
-      <section id="contact" className="border-t border-white/10 bg-black py-28">
+      <section id="contact" className="border-t border-white/10 bg-background py-28">
         <div className="mx-auto max-w-5xl px-6">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
             Contact
@@ -507,7 +507,7 @@ export default function PortfolioPage() {
                     {...(item.href
                       ? { href: item.href, target: "_blank", rel: "noopener noreferrer" }
                       : {})}
-                    className="flex items-center gap-4 rounded-2xl border border-white/10 bg-black p-5 transition hover:border-accent/40"
+                    className="flex items-center gap-4 rounded-2xl border border-white/10 bg-background p-5 transition hover:border-accent/40"
                   >
                     <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-accent/30 text-accent">
                       {item.icon}
@@ -523,7 +523,7 @@ export default function PortfolioPage() {
               })}
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-black p-8">
+            <div className="rounded-2xl border border-white/10 bg-background p-8">
               <p className="mb-6 text-sm font-semibold text-white/60">
                 Envoyez-moi un message — je lis tout personnellement.
               </p>

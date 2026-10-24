@@ -25,7 +25,7 @@ This is a marketing site for **Vision Amah**, an IT/AI solutions company based i
 - `/portfolio` — personal portfolio page for Amadou Doumbouya (`src/app/portfolio/page.tsx`): hero, stats, projects grid, skills (including ML), timeline, certifications (images/PDFs in `public/certifications/`), contact. Linked from Navbar.
 - `/sitemap.xml` — auto-generated via `src/app/sitemap.ts` (lists `/`, `/portfolio`, `/blog`, all `/services/[slug]`, `/projets/[slug]` and `/blog/[slug]`).
 - `/robots.txt` — auto-generated via `src/app/robots.ts`.
-- `/icon.png` / `/apple-icon.png` / `/favicon.ico` — static icons in `src/app/` (Next.js file convention), cut from the logo's VA monogram on `#050505`. `public/icon-512.png` is the large PWA icon.
+- `/icon.png` / `/apple-icon.png` / `/favicon.ico` — static icons in `src/app/` (Next.js file convention), cut from the logo's VA monogram on `#060a14`. `public/icon-512.png` is the large PWA icon.
 - `/og-image.jpg` — 1200×630 social sharing image (`public/og-image.jpg`, the full brand banner), referenced explicitly in the `openGraph`/`twitter` metadata of `layout.tsx` and `/blog/[slug]`.
 - `/_not-found` — custom 404 page (`src/app/not-found.tsx`).
 - `/error` — global error boundary (`src/app/error.tsx`, `"use client"`).
@@ -55,7 +55,7 @@ This is a marketing site for **Vision Amah**, an IT/AI solutions company based i
 
 ### Visual language
 
-Dark theme (`--background`/`--foreground` CSS vars in `src/app/globals.css`), uppercase tracked-out headings (`tracking-widest-plus` utility), single accent color (`--accent: #3b82f6`, blue) used sparingly for CTAs/highlights. SpaceX-inspired aesthetic — keep new sections consistent. Video/media backgrounds only on full-screen sections (`Hero`, `WhyUs`, `Contact`); grid sections (`Services`, `Projects`) stay on plain black.
+Dark navy theme (`--background` #060a14 / `--foreground` in `src/app/globals.css`, stored as RGB channels so Tailwind opacity modifiers like `bg-background/80` work — sections use `bg-background`, never `bg-black`), uppercase tracked-out headings (`tracking-widest-plus` utility), single accent color (`--accent: #026bde`, from the logo) used sparingly for CTAs/highlights; `text-accent` maps to the lighter `--accent-text` (#3489e5) so small labels keep ≥4.5:1 contrast. SpaceX-inspired aesthetic — keep new sections consistent. Video/media backgrounds only on full-screen sections (`Hero`, `WhyUs`, `Contact`); grid sections (`Services`, `Projects`) stay on plain black.
 
 ### Static assets
 
@@ -77,7 +77,7 @@ Dark theme (`--background`/`--foreground` CSS vars in `src/app/globals.css`), up
 
 ### PWA
 
-`public/manifest.webmanifest` — PWA manifest referencing `/icon.png` (192), `/icon-512.png` and `/apple-icon.png`. Theme color `#050505`.
+`public/manifest.webmanifest` — PWA manifest referencing `/icon.png` (192), `/icon-512.png` and `/apple-icon.png`. Theme color `#060a14`.
 
 ### Security (`next.config.mjs`)
 

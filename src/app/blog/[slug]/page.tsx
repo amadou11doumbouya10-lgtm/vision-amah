@@ -42,10 +42,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   if (!post) notFound();
 
   return (
-    <main id="main-content" className="bg-black">
+    <main id="main-content" className="bg-background">
       <Navbar />
 
-      <section className="border-b border-white/10 bg-black pb-16 pt-32">
+      <section className="border-b border-white/10 bg-background pb-16 pt-32">
         <div className="mx-auto max-w-3xl px-6">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
             {post.tag} ·{" "}
@@ -62,7 +62,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      <section className="bg-black py-20">
+      <section className="bg-background py-20">
         <div className="mx-auto max-w-3xl px-6">
           <article className="space-y-6">
             {post.content.map((block, i) => {

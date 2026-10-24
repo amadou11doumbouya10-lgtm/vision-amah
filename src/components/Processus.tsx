@@ -31,7 +31,7 @@ const etapes = [
 
 export default function Processus() {
   return (
-    <section id="processus" className="border-t border-white/10 bg-black py-28">
+    <section id="processus" className="border-t border-white/10 bg-background py-28">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -62,7 +62,7 @@ export default function Processus() {
                 {etape.titre}
               </h3>
               {etape.duree && (
-                <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent/70">
+                <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
                   {etape.duree}
                 </p>
               )}

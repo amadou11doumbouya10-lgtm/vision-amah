@@ -8,7 +8,7 @@ import ProjectCardVideo from "./ProjectCardVideo";
 
 export default function Projects() {
   return (
-    <section id="realisations" className="border-t border-white/10 bg-black py-28">
+    <section id="realisations" className="border-t border-white/10 bg-background py-28">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ export default function Projects() {
                   )}
                 </div>
                 <div className="flex flex-col justify-between p-8">
-                  <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent/80">
+                  <p className="mb-3 text-xs font-medium uppercase tracking-widest-plus text-accent">
                     {project.tag}
                   </p>
                   <h3 className="mb-3 text-lg font-semibold">{project.name}</h3>

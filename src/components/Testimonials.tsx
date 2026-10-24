@@ -60,7 +60,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-              className="flex flex-col justify-between rounded-2xl border border-white/10 bg-black p-8 transition hover:border-accent/40"
+              className="flex flex-col justify-between rounded-2xl border border-white/10 bg-background p-8 transition hover:border-accent/40"
             >
               <div>
                 <span

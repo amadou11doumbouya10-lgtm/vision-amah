@@ -45,7 +45,7 @@ export default function AvatarAmahWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="h-[min(640px,80vh)] w-[min(380px,92vw)] overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl shadow-black/60"
+            className="h-[min(640px,80vh)] w-[min(380px,92vw)] overflow-hidden rounded-2xl border border-white/10 bg-background shadow-2xl shadow-black/60"
           >
             <iframe
               src={AVATAR_AMAH_URL}
