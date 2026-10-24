@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const badges = [
@@ -52,13 +53,13 @@ export default function QuiSuisJe() {
             </span>
           ))}
         </div>
-        <a
+        <Link
           href="/portfolio"
           className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest-plus text-accent transition hover:text-white"
         >
           Voir mon parcours complet
           <span aria-hidden="true">→</span>
-        </a>
+        </Link>
       </motion.div>
     </section>
   );

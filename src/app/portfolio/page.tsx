@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
@@ -291,7 +292,7 @@ export default function PortfolioPage() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
-              <a
+              <Link
                 key={project.slug}
                 href={`/projets/${project.slug}`}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 transition hover:border-accent/50 hover:bg-white/[0.03]"
@@ -326,7 +327,7 @@ export default function PortfolioPage() {
                   <h3 className="font-semibold">{project.name}</h3>
                   <p className="text-sm leading-relaxed text-white/50">{project.summary}</p>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -552,9 +553,9 @@ export default function PortfolioPage() {
                 </a>
                 <p className="text-center text-xs text-white/40">
                   Ou réservez un audit IA gratuit sur{" "}
-                  <a href="/#contact" className="text-accent underline underline-offset-4">
+                  <Link href="/#contact" className="text-accent underline underline-offset-4">
                     Vision Amah →
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>

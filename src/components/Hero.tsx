@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import VideoBackground from "./VideoBackground";
 import Typewriter from "./Typewriter";
@@ -41,18 +42,18 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.75 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <a
+          <Link
             href="/#contact"
             className="rounded-full bg-accent px-8 py-3 text-sm font-semibold uppercase tracking-widest-plus text-white transition hover:bg-accent/85"
           >
             Réserver mon audit IA gratuit
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#realisations"
             className="rounded-full border border-white/30 px-8 py-3 text-sm font-semibold uppercase tracking-widest-plus transition hover:bg-white/10"
           >
             Voir nos réalisations
-          </a>
+          </Link>
         </motion.div>
       </div>
       {/* Le centrage est porté par le conteneur flex : animate-bounce anime `transform`

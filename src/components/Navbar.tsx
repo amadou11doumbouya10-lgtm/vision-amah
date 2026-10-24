@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const links = [
   { href: "/#services", label: "Services" },
@@ -39,7 +40,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="/" className="block shrink-0">
+        <Link href="/" className="block shrink-0">
           <Image
             src="/logo.png"
             alt="Vision Amah"
@@ -48,25 +49,25 @@ export default function Navbar() {
             priority
             className="h-9 w-auto sm:h-10"
           />
-        </a>
+        </Link>
         {/* Six liens + logo + bouton devis demandent ~1180 px : en dessous de xl
             (1280 px), ils passent dans le menu hamburger plutôt que de se tasser. */}
         <ul className="hidden gap-8 whitespace-nowrap text-xs font-medium uppercase tracking-widest-plus text-white/70 xl:flex">
           {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="transition hover:text-white">
+              <Link href={link.href} className="transition hover:text-white">
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
         <div className="flex items-center gap-3">
-          <a
+          <Link
             href="/#contact"
             className="hidden whitespace-nowrap rounded-full border border-accent/50 px-4 py-2 text-xs font-medium uppercase tracking-widest-plus text-white transition hover:border-accent hover:bg-accent hover:text-white sm:block"
           >
             Demander un devis
-          </a>
+          </Link>
           <button
             type="button"
             onClick={() => setMenuOpen((value) => !value)}
@@ -90,23 +91,23 @@ export default function Navbar() {
           <ul className="flex flex-col gap-1 px-6 py-4 text-sm font-medium uppercase tracking-widest-plus text-white/70">
             {links.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className="block py-3 transition hover:text-white"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li className="pt-2 sm:hidden">
-              <a
+              <Link
                 href="/#contact"
                 onClick={() => setMenuOpen(false)}
                 className="block rounded-full border border-accent/50 px-4 py-3 text-center text-white transition hover:border-accent hover:bg-accent"
               >
                 Demander un devis
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

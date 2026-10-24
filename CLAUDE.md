@@ -14,7 +14,7 @@ There is no test suite in this project.
 
 ## Architecture
 
-This is a marketing site for **Vision Amah**, an IT/AI solutions company based in Conakry, Guinée. Built with Next.js 14 (App Router), TypeScript, and Tailwind CSS — no backend, no database, no CMS.
+This is a marketing site for **Vision Amah**, an IT/AI solutions company based in Conakry, Guinée. Built with Next.js 15 (App Router, React 19), TypeScript, and Tailwind CSS — no backend, no database, no CMS.
 
 ### Routes
 
@@ -96,6 +96,7 @@ All HTTP responses carry security headers:
 | `GOOGLE_SITE_VERIFICATION` | Google Search Console verification token |
 
 ### Other notes
+- Next.js 15: dynamic route `params` is a Promise — page components and `generateMetadata` in `[slug]` routes are `async` and `await params`.
 
 - `Navbar` and any component using scroll listeners or `framer-motion` must be `"use client"`.
 - Scroll-in animations use `framer-motion`'s `whileInView` with `viewport={{ once: true }}`.
