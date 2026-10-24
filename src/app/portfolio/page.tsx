@@ -115,7 +115,7 @@ const certifications = [
     date: "2026",
     note: "Module de la certification Getting Started with Generative AI",
     href: null,
-    image: null,
+    image: "/certifications/cert-fondamentaux-ia.jpg",
     pdf: "/certifications/cert-fondamentaux-ia.pdf",
     obtained: true,
   },
@@ -125,7 +125,7 @@ const certifications = [
     date: "2026",
     note: "Module de la certification Getting Started with Generative AI",
     href: null,
-    image: null,
+    image: "/certifications/cert-introduction-llm.jpg",
     pdf: "/certifications/cert-introduction-llm.pdf",
     obtained: true,
   },
@@ -135,7 +135,7 @@ const certifications = [
     date: "2026",
     note: "Module de la certification Getting Started with Generative AI",
     href: null,
-    image: null,
+    image: "/certifications/cert-ethique-ia.jpg",
     pdf: "/certifications/cert-ethique-ia.pdf",
     obtained: true,
   },
@@ -418,9 +418,11 @@ export default function PortfolioPage() {
                     : "border-dashed border-white/15 bg-background/50"
                 }`}
               >
+                {/* L'aperçu ouvre le document d'origine (PDF) quand il existe,
+                    sinon l'image elle-même. */}
                 {cert.image && (
                   <a
-                    href={cert.image}
+                    href={cert.pdf ?? cert.image}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative block aspect-[1.414] w-full overflow-hidden rounded-t-2xl border-b border-white/10"
