@@ -3,6 +3,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import ProjectCardVideo from "@/components/ProjectCardVideo";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
@@ -296,24 +297,25 @@ export default function PortfolioPage() {
                 className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 transition hover:border-accent/50 hover:bg-white/[0.03]"
               >
                 <div className="relative aspect-video w-full overflow-hidden border-b border-white/10 bg-white/5">
+                  {/* Mêmes composants que la grille de l'accueil : la vidéo ne se
+                      charge qu'à l'approche de l'écran, et l'image passe par
+                      l'optimiseur (AVIF/WebP à la bonne taille) au lieu d'envoyer
+                      la photo d'origine — décisif sur une connexion lente. */}
                   {project.video ? (
-                    <video
+                    <ProjectCardVideo
                       src={project.video}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
+                      alt={project.name}
                       className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                      aria-label={project.name}
                     />
                   ) : (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.name}
-                      className={`h-full w-full transition duration-300 group-hover:scale-105 ${
+                      fill
+                      className={`transition duration-300 group-hover:scale-105 ${
                         project.fit === "contain" ? "object-contain p-6" : "object-cover"
                       }`}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     />
                   )}
                 </div>
