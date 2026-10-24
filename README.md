@@ -4,7 +4,7 @@ Site marketing pour **Vision Amah**, société de solutions informatiques et IA 
 
 ## Stack
 
-- **Next.js 14** (App Router) — rendu statique, pas de backend
+- **Next.js 15** (App Router, React 19) — rendu statique, pas de backend
 - **TypeScript** — typage statique complet
 - **Tailwind CSS** — design system dark/minimaliste
 - **Framer Motion** — animations au scroll

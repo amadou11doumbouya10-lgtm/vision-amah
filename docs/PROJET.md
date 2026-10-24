@@ -28,7 +28,7 @@ Vision Amah est un site vitrine pour une société de solutions informatiques et
 
 | Outil | Rôle |
 |---|---|
-| Next.js 14 (App Router) | Framework React, rendu serveur par défaut |
+| Next.js 15 (App Router) + React 19 | Framework React, rendu serveur par défaut |
 | TypeScript | Typage statique |
 | Tailwind CSS | Styling utilitaire |
 | Framer Motion | Animations au scroll et au chargement |
@@ -143,7 +143,7 @@ Le site a été conçu pour adopter l'esthétique de spacex.com :
 
 ### 4.2 Navigation
 
-`Navbar.tsx` est client (`"use client"`) car il écoute le scroll pour basculer entre transparent (haut de page) et `bg-black/80 backdrop-blur-md` (après 40px). Il inclut un menu hamburger mobile avec verrouillage du scroll `document.body.style.overflow = "hidden"` pendant l'ouverture.
+`Navbar.tsx` est client (`"use client"`) car il écoute le scroll pour basculer entre transparent (haut de page) et `bg-background/80 backdrop-blur-md` (après 40px). Il inclut un menu hamburger mobile avec verrouillage du scroll `document.body.style.overflow = "hidden"` pendant l'ouverture.
 
 Liens de navigation : Services → Pourquoi nous → Réalisations → Portfolio → Blog → Contact.
 
