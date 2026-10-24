@@ -56,7 +56,7 @@ src/
     not-found.tsx            → page 404 personnalisée
     error.tsx                → error boundary global (client component)
     services/[slug]/
-      page.tsx               → page dédiée d'un service : description, prestations incluses, projets liés (statique)
+      page.tsx               → page dédiée d'un service : photo pleine largeur en hero, description, prestations incluses, projets liés (statique)
     projets/[slug]/
       page.tsx               → page de détail d'un projet (statique, via generateStaticParams)
     blog/

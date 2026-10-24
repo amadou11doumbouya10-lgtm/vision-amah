@@ -19,7 +19,7 @@ This is a marketing site for **Vision Amah**, an IT/AI solutions company based i
 ### Routes
 
 - `/` — home page (`src/app/page.tsx`): stack of full-width sections in order: `Navbar`, `Hero`, `Services`, `WhyUs`, `QuiSuisJe`, `Processus`, `Projects`, `Testimonials` (hidden when empty), `FAQ`, `Contact`, `Footer`.
-- `/services/[slug]` — service detail page (`src/app/services/[slug]/page.tsx`), statically generated via `generateStaticParams`: description, "what's included" list, and related projects (via `relatedProjectSlugs`). Linked from each card of the home `Services` grid.
+- `/services/[slug]` — service detail page (`src/app/services/[slug]/page.tsx`), statically generated via `generateStaticParams`: full-width hero with the service photo (same pattern as project pages), description, "what's included" list, and related projects (via `relatedProjectSlugs`). Linked from each card of the home `Services` grid.
 - `/projets/[slug]` — project detail page (`src/app/projets/[slug]/page.tsx`), statically generated via `generateStaticParams`, reusing `Navbar`/`Footer`.
 - `/blog` — blog index (`src/app/blog/page.tsx`); `/blog/[slug]` — article page (`src/app/blog/[slug]/page.tsx`), statically generated. Linked from Navbar.
 - `/portfolio` — personal portfolio page for Amadou Doumbouya (`src/app/portfolio/page.tsx`): hero, stats, projects grid, skills (including ML), timeline, certifications (images/PDFs in `public/certifications/`), contact. Linked from Navbar.
