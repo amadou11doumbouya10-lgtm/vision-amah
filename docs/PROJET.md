@@ -46,7 +46,7 @@ src/
   app/
     layout.tsx               → squelette HTML, polices, métadonnées SEO complètes, JSON-LD, Analytics, bulle WhatsApp + widget Avatar Amah
     page.tsx                 → assemble les sections de la page d'accueil dans l'ordre d'affichage
-    globals.css              → variables CSS (couleurs), keyframes (starfield)
+    globals.css              → variables CSS (couleurs), keyframes (bandeau d'outils, starfield)
     fonts/                   → fichiers de police Geist (.woff)
     icon.png                 → icône 192×192 (monogramme VA sur fond #060a14)
     apple-icon.png           → icône Apple Touch 180×180
@@ -68,6 +68,7 @@ src/
     Navbar.tsx               → navigation fixe, opaque au scroll, menu hamburger mobile + scroll-lock
     Hero.tsx                 → section d'accueil en 2 colonnes : badge, titre h1 unique, boutons, garanties ; maquette CampusMarket à droite
     CampusMarketMockup.tsx   → téléphone en HTML/CSS montrant le vrai catalogue CampusMarket Guinée (produits de démo avec badge « Démo »)
+    ToolsMarquee.tsx         → bandeau défilant des outils réellement utilisés, juste sous le hero (CSS pur, pause au survol, immobile si reduced-motion)
     Services.tsx             → grille des services groupés par catégorie, chaque carte mène à /services/[slug] (lit src/data/services.ts)
     WhyUs.tsx                → 3 arguments différenciants (statistiques)
     QuiSuisJe.tsx            → présentation du fondateur (photo + badges)
@@ -148,11 +149,12 @@ Le site a été conçu pour adopter l'esthétique de spacex.com :
 
 Liens de navigation : Services → Pourquoi nous → Réalisations → Portfolio → Blog → Contact.
 
-Ordre des sections de l'accueil : Hero → Services → Pourquoi nous → Qui suis-je → Processus → Réalisations → Témoignages (si renseignés) → FAQ → Contact.
+Ordre des sections de l'accueil : Hero → Bandeau d'outils → Services → Pourquoi nous → Qui suis-je → Processus → Réalisations → Témoignages (si renseignés) → FAQ → Contact.
 
 ### 4.3 Animations
 
 - Hero : animations à l'arrivée (`initial`/`animate` Framer Motion).
+- Bandeau d'outils : défilement infini en CSS pur (`@keyframes marquee` dans `globals.css`, 28 s), en pause au survol, arrêté avec `prefers-reduced-motion`.
 - Autres sections : `whileInView` + `viewport={{ once: true }}` pour déclencher un fondu/translation à l'entrée dans le viewport.
 - `ProjectHeroVideo.tsx` et `useReducedMotion` : désactivent `autoPlay`/`loop` si l'OS a `prefers-reduced-motion: reduce`.
 - `VideoBackground.tsx` : lazy-loading via `IntersectionObserver` — la vidéo ne se charge que quand la section entre dans le viewport.
