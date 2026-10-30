@@ -45,23 +45,25 @@ This is a marketing site for **Vision Amah**, an IT/AI solutions company based i
 - `FAQ.tsx` — accordion of frequent questions (`#faq`), first item open by default.
 - `WhatsAppFloat.tsx` — floating WhatsApp bubble rendered on every page (mounted in `layout.tsx`), stacked above the Avatar Amah widget in the bottom-right corner. Number and prefilled message are constants at the top of the file.
 - `ProjectCardVideo.tsx` — video for the home `Projects` cards; sets the video source only when the card nears the viewport (avoids downloading clips the visitor hasn't reached) and respects `prefers-reduced-motion`.
-- `VideoBackground.tsx` — looping muted `<video>` with dark gradient overlay. Uses `IntersectionObserver` to lazy-load the video source only when the section enters the viewport. Each full-screen section (`Hero`, `WhyUs`, `Contact`) passes its own distinct clip.
+- `Hero.tsx` — two columns, stacked on mobile: availability badge, the page's only `<h1>`, subtitle, the two CTAs (`/#contact`, `/#realisations`) and two guarantees on the left; `CampusMarketMockup` on the right. No video background.
+- `CampusMarketMockup.tsx` — HTML/CSS phone showing the real CampusMarket Guinée catalogue screen (colors, "c-sac" logo, categories and card layout taken from the `campusmarket` repo). The 4 products are the live site's demo products and keep their "Démo" badge (photos in `public/campusmarket/`). CampusMarket has no in-app messaging or online payment — contact is via WhatsApp — so the mockup and its floating cards must never suggest otherwise, and show only true facts (no invented figures).
+- `VideoBackground.tsx` — looping muted `<video>` with dark gradient overlay. Uses `IntersectionObserver` to lazy-load the video source only when the section enters the viewport. `WhyUs` and `Contact` each pass their own distinct clip.
 - `ContactForm.tsx` — Formspree-based contact form (name, email, optional phone, message). Reads `process.env.NEXT_PUBLIC_FORMSPREE_ID`. Four states: `idle | submitting | success | error`. Includes a `_gotcha` honeypot field to block spam bots. Used inside `Contact.tsx` above the WhatsApp/email buttons.
 - `AvatarAmahWidget.tsx` — mounted globally in `layout.tsx`; embedded iframe widget for Avatar Amah chatbot warm-up. Triggers on user interaction (pointermove/scroll/keydown/touchstart) or after 4s idle. Has `sandbox="allow-scripts allow-forms allow-popups allow-same-origin"`.
 - `ProjectHeroVideo.tsx` — video component for project detail hero that respects `prefers-reduced-motion` (disables autoPlay/loop when reduced motion is on).
-- `Typewriter.tsx` — reusable typewriter animation component used in `Hero.tsx`. Respects `prefers-reduced-motion` (shows full text immediately if reduced motion is on). Full text always present in a `sr-only` span for SEO and screen readers. Transparent placeholder reserves space to prevent layout shift.
 - `Testimonials.tsx` — client testimonials section. Returns `null` when the `testimonials` array is empty — the section is invisible until real client quotes are added. To activate: fill the `testimonials` array in the file with real client feedback.
 - `src/hooks/useReducedMotion.ts` — custom React hook that reads the `prefers-reduced-motion` media query.
 
 ### Visual language
 
-Dark navy theme (`--background` #060a14 / `--foreground` in `src/app/globals.css`, stored as RGB channels so Tailwind opacity modifiers like `bg-background/80` work — sections use `bg-background`, never `bg-black`), uppercase tracked-out headings (`tracking-widest-plus` utility), single accent color (`--accent: #026bde`, from the logo) used sparingly for CTAs/highlights; `text-accent` maps to the lighter `--accent-text` (#3489e5) so small labels keep ≥4.5:1 contrast. SpaceX-inspired aesthetic — keep new sections consistent. Video/media backgrounds only on full-screen sections (`Hero`, `WhyUs`, `Contact`); grid sections (`Services`, `Projects`) stay on plain black.
+Dark navy theme (`--background` #060a14 / `--foreground` in `src/app/globals.css`, stored as RGB channels so Tailwind opacity modifiers like `bg-background/80` work — sections use `bg-background`, never `bg-black`), uppercase tracked-out headings (`tracking-widest-plus` utility), single accent color (`--accent: #026bde`, from the logo) used sparingly for CTAs/highlights; `text-accent` maps to the lighter `--accent-text` (#3489e5) so small labels keep ≥4.5:1 contrast. SpaceX-inspired aesthetic — keep new sections consistent. Video/media backgrounds only on full-screen sections (`WhyUs`, `Contact`; the `Hero` shows the CampusMarket mockup on a plain background with an accent glow instead); grid sections (`Services`, `Projects`) stay on plain black.
 
 ### Static assets
 
 - `public/projects/` — project visuals in 16:9: real screenshots (`*.png`/`*.jpeg`) and, for projects that don't have one yet, CC0 stock photos (`*.jpg`).
 - `public/services/` — one CC0 stock photo per service (9 JPGs, 16:9, referenced by the `image` field in `src/data/services.ts`), used by the home grid and `/services/[slug]`. Kept separate from `public/projects/`.
 - Every stock photo's source is listed in `docs/CREDITS-PHOTOS.md`; any new image must be free for commercial use (CC0 or equivalent) and added there.
+- `public/campusmarket/` — the 4 demo product photos shown in `CampusMarketMockup` (Unsplash, same photos as on the live CampusMarket site).
 - `public/about/` — founder photo (used by `QuiSuisJe` and `/portfolio`).
 - `public/certifications/` — certificate images/PDFs linked from the `/portfolio` certifications section.
 - `public/video/` — background videos for full-screen sections; `public/video/projects/` for per-project demo clips.
@@ -100,7 +102,6 @@ All HTTP responses carry security headers:
 
 - `Navbar` and any component using scroll listeners or `framer-motion` must be `"use client"`.
 - Scroll-in animations use `framer-motion`'s `whileInView` with `viewport={{ once: true }}`.
-- `animate-caret` keyframe in `globals.css` — used by `Typewriter.tsx` for the blinking cursor.
 - The logo is `public/logo.png` (VA monogram + "VISION AMAH", transparent background, made for dark backgrounds) rendered via `next/image` in `Navbar`. The desktop nav links only show from `xl` (1280px); below that they live in the hamburger menu, so the logo never gets squeezed.
 - Fonts are local Geist variable fonts (`src/app/fonts/`), exposed as CSS vars `--font-geist-sans` / `--font-geist-mono`.
 - Path alias `@/*` maps to `src/*` (`tsconfig.json`).
