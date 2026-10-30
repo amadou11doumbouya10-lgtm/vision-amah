@@ -1,3 +1,5 @@
+import { toolLogos } from "./toolLogos";
+
 // Outils réellement utilisés dans les projets de Vision Amah : chaque entrée
 // vient des Réalisations du site ou des package.json / requirements.txt des
 // dépôts (vision-amah, campusmarket, mecef-site, amah-agent, generateur-cours,
@@ -37,8 +39,13 @@ function ListeOutils({ copie = false }: { copie?: boolean }) {
       {outils.map((outil) => (
         <li
           key={outil}
-          className="whitespace-nowrap text-sm font-semibold uppercase tracking-widest-plus text-white/50"
+          className="flex items-center gap-3 whitespace-nowrap text-sm font-semibold uppercase tracking-widest-plus text-white/50"
         >
+          {toolLogos[outil] && (
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 shrink-0 fill-current">
+              <path d={toolLogos[outil]} />
+            </svg>
+          )}
           {outil}
         </li>
       ))}
