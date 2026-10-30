@@ -46,7 +46,7 @@ src/
   app/
     layout.tsx               → squelette HTML, polices, métadonnées SEO complètes, JSON-LD, Analytics, bulle WhatsApp + widget Avatar Amah
     page.tsx                 → assemble les sections de la page d'accueil dans l'ordre d'affichage
-    globals.css              → variables CSS (couleurs), keyframes (curseur du Typewriter, starfield)
+    globals.css              → variables CSS (couleurs), keyframes (starfield)
     fonts/                   → fichiers de police Geist (.woff)
     icon.png                 → icône 192×192 (monogramme VA sur fond #060a14)
     apple-icon.png           → icône Apple Touch 180×180
@@ -66,7 +66,8 @@ src/
       page.tsx               → portfolio personnel Amadou Doumbouya (hero, stats, projets, skills ML, parcours, certifications, contact)
   components/
     Navbar.tsx               → navigation fixe, opaque au scroll, menu hamburger mobile + scroll-lock
-    Hero.tsx                 → section d'accueil plein écran (fond vidéo + titre Typewriter)
+    Hero.tsx                 → section d'accueil en 2 colonnes : badge, titre h1 unique, boutons, garanties ; maquette CampusMarket à droite
+    CampusMarketMockup.tsx   → téléphone en HTML/CSS montrant le vrai catalogue CampusMarket Guinée (produits de démo avec badge « Démo »)
     Services.tsx             → grille des services groupés par catégorie, chaque carte mène à /services/[slug] (lit src/data/services.ts)
     WhyUs.tsx                → 3 arguments différenciants (statistiques)
     QuiSuisJe.tsx            → présentation du fondateur (photo + badges)
@@ -79,10 +80,9 @@ src/
     Testimonials.tsx         → section témoignages clients — retourne null si le tableau testimonials est vide
     WhatsAppFloat.tsx        → bulle WhatsApp flottante présente sur toutes les pages
     Footer.tsx               → mentions légales, copyright
-    VideoBackground.tsx      → fond vidéo lazy-loadé (IntersectionObserver) avec overlay, utilisé par Hero/WhyUs/Contact
+    VideoBackground.tsx      → fond vidéo lazy-loadé (IntersectionObserver) avec overlay, utilisé par WhyUs/Contact
     AvatarAmahWidget.tsx     → iframe chatbot Avatar Amah, warm-up au premier interaction ou après 4s idle
     ProjectHeroVideo.tsx     → vidéo hero projet respectant prefers-reduced-motion
-    Typewriter.tsx           → effet machine à écrire réutilisable, utilisé dans Hero.tsx (prefers-reduced-motion respecté, SEO-safe)
   hooks/
     useReducedMotion.ts      → hook React qui lit la media query prefers-reduced-motion
   data/
@@ -99,9 +99,10 @@ public/
   manifest.webmanifest       → manifeste PWA (nom, thème #060a14, icônes)
   projects/                  → visuels projets 16:9 (captures *.png/*.jpeg, photos libres *.jpg en attendant une capture)
   services/                  → une photo libre (CC0) par service (9 fichiers .jpg)
+  campusmarket/              → photos des 4 produits de démo de la maquette CampusMarket (Unsplash)
   about/                     → photo du fondateur (QuiSuisJe, portfolio)
   certifications/            → certificats (images et PDF) du portfolio
-  video/                     → vidéos de fond sections (hero/section backgrounds)
+  video/                     → vidéos de fond des sections WhyUs et Contact
   video/projects/            → démos vidéo par projet
 CLAUDE.md                    → instructions pour Claude Code (commandes, architecture)
 ```
@@ -138,8 +139,8 @@ Le site a été conçu pour adopter l'esthétique de spacex.com :
 - **Fond bleu nuit** (`--background: #060a14`) et texte clair (`--foreground: #f2f2f2`), définis dans `globals.css` en canaux RVB pour que les opacités Tailwind (`bg-background/80`) fonctionnent. Les sections utilisent `bg-background`, jamais `bg-black`.
 - **Une seule couleur d'accent** (`--accent: #026bde`, le bleu du logo) utilisée avec parcimonie sur les CTA, tags et statistiques. `text-accent` prend automatiquement une variante plus claire (`--accent-text: #3489e5`) pour rester lisible en petit (contraste ≥ 4,5:1).
 - **Typographie massive en majuscules** : `font-black`/`font-bold`, `uppercase`, `tracking-widest-plus` (`letter-spacing: 0.25em`).
-- **Sections plein écran** pour Hero, WhyUs et Contact (`min-h-screen`/`h-screen`).
-- **Fonds vidéo** sur les sections plein écran (Hero, WhyUs, Contact), chacune avec son propre clip via `VideoBackground.tsx`. La classe CSS `.starfield` (champ d'étoiles) reste définie dans `globals.css` mais n'est plus utilisée.
+- **Sections plein écran** pour WhyUs et Contact (`min-h-screen`/`h-screen`).
+- **Fonds vidéo** sur WhyUs et Contact, chacune avec son propre clip via `VideoBackground.tsx`. Le Hero n'a plus de vidéo : il montre la maquette CampusMarket sur fond uni, avec un halo de l'accent. La classe CSS `.starfield` (champ d'étoiles) reste définie dans `globals.css` mais n'est plus utilisée.
 
 ### 4.2 Navigation
 

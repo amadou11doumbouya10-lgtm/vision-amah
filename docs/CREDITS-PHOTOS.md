@@ -31,3 +31,14 @@ Ces photos illustrent le domaine du projet en attendant une vraie capture d'écr
 | `ticketing-platform.jpg` | https://stocksnap.io/photo/crowd-people-IUJP9OI22I |
 | `generateur-cours.jpg` | https://stocksnap.io/photo/guy-man-H0VXBZUZP3 |
 | `cyber-content-generator.jpg` | https://stocksnap.io/photo/smartphone-camera-TBGNSSQV6B |
+
+## Maquette CampusMarket (`public/campusmarket/`)
+
+Photos des produits de démonstration de CampusMarket Guinée, reprises telles qu'elles apparaissent sur le site en ligne (crédits d'origine dans `scripts/photos-demo.mjs` du dépôt campusmarket). Elles viennent d'[Unsplash](https://unsplash.com), sous **licence Unsplash** : usage commercial et modification autorisés, sans obligation de citer l'auteur. Téléchargées en 480 × 480 px.
+
+| Fichier | Image Unsplash | Auteur |
+|---|---|---|
+| `ecouteurs.jpg` | https://images.unsplash.com/photo-1655560378428-7605bda51749 | Yasin Hasan |
+| `chemise-wax.jpg` | https://images.unsplash.com/photo-1629299342269-b2e20c444c05 | Dusabimana Aimable |
+| `calculatrice.jpg` | https://images.unsplash.com/photo-1574607383077-47ddc2dc51c4 | Annie Spratt |
+| `jus-bissap.jpg` | https://images.unsplash.com/photo-1654922704274-cd34f165c5e7 | Eiliv Aceron |
