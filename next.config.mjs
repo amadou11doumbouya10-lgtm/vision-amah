@@ -8,13 +8,18 @@ const AVATAR_AMAH_ORIGIN = "https://legendary-selkie-d298b7.netlify.app";
 // utilisé sur les déploiements de préversion.
 const VERCEL_ANALYTICS_ORIGIN = "https://va.vercel-scripts.com";
 
+// `next dev` exécute son code via eval() : sans 'unsafe-eval', la page ne
+// s'hydrate pas en local et tout ce qu'anime Framer Motion reste invisible.
+// La production n'en a pas besoin et garde la politique stricte.
+const DEV_EVAL = process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
+
 const contentSecurityPolicy = [
   "default-src 'self'",
   // 'unsafe-inline' est nécessaire : Next.js App Router injecte des scripts inline
   // pour l'hydratation, et le JSON-LD est lui aussi inline. S'en passer imposerait
   // un middleware à nonce, qui rendrait chaque page dynamique — coûteux pour un
   // site statique. La directive bloque malgré tout tout script d'origine externe.
-  `script-src 'self' 'unsafe-inline' ${VERCEL_ANALYTICS_ORIGIN}`,
+  `script-src 'self' 'unsafe-inline'${DEV_EVAL} ${VERCEL_ANALYTICS_ORIGIN}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "media-src 'self'",
