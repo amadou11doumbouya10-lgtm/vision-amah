@@ -68,7 +68,7 @@ src/
     Navbar.tsx               → navigation fixe, opaque au scroll, menu hamburger mobile + scroll-lock
     Hero.tsx                 → section d'accueil en 2 colonnes : badge, titre h1 unique, boutons, garanties ; maquette CampusMarket à droite
     CampusMarketMockup.tsx   → téléphone en HTML/CSS montrant le vrai catalogue CampusMarket Guinée (produits de démo avec badge « Démo »)
-    ToolsMarquee.tsx         → bandeau défilant des outils réellement utilisés, juste sous le hero (CSS pur, pause au survol, immobile si reduced-motion)
+    ToolsMarquee.tsx         → bandeau défilant des outils réellement utilisés, avec leur logo en gris (toolLogos.ts, Simple Icons CC0), juste sous le hero (CSS pur, pause au survol, immobile si reduced-motion)
     Services.tsx             → grille des services groupés par catégorie, chaque carte mène à /services/[slug] (lit src/data/services.ts)
     WhyUs.tsx                → 3 arguments différenciants (statistiques)
     QuiSuisJe.tsx            → présentation du fondateur (photo + badges)
