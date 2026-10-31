@@ -31,3 +31,4 @@ Assistant IA installé localement sur Windows, piloté à l'écrit ou à la voix
 
 - Le code source est partagé à titre de portfolio sous licence propriétaire.
 - Aucun identifiant, clé API ou secret n'est documenté ici — la configuration reste gérée via `.env` hors dépôt.
+- Visuels du site (v1.5.2, captures du 31/10/2026) : `public/projects/amah-agent-hud.jpg`, l'interface vocale plein écran (carte Réalisations, fiche projet, image de partage) ; `public/projects/amah-agent-voix.jpg`, la fenêtre de l'application avec le mode vocal ouvert, posée en entier sur le fond du cadre (section « Nos applications »). L'ancienne capture et la vidéo de démonstration affichaient « 65 outils » et ont été retirées. Pour une nouvelle capture de la fenêtre de chat, ne pas montrer de conversation qui cite des projets privés.

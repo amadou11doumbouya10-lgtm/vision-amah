@@ -100,8 +100,7 @@ export const projects: Project[] = [
       "gui.py                  → Interface graphique (chat + HUD)\nvoice_fullscreen.py     → Interface vocale HUD plein écran (+ Mode Live)\nagent.py                → Interface terminal\nconfig.py               → 101 définitions d'outils\ngroq_client.py          → Client Groq (rotation de clés, retry)\ngemini_client.py        → Session Gemini Live (pont audio temps réel)\ntools/                  → 30+ modules d'outils (fichiers, email, navigateur, Excel...)",
     externalHref: "https://github.com/amadou11doumbouya10-lgtm/amah-agent",
     externalLabel: "Voir le code",
-    image: "/projects/amah-agent.png",
-    video: "/video/projects/amah-agent.mp4",
+    image: "/projects/amah-agent-hud.jpg",
   },
   {
     slug: "vertex-shop",
