@@ -232,7 +232,7 @@ Il n'y a pas de suite de tests dans ce projet.
 
 ## 7. Pistes d'amélioration futures
 
-- Remplacer par de vraies captures d'écran/démos les photos d'illustration des projets qui n'en ont pas encore (Transport Agency, Avatar Amah, Ticketing Platform, Générateur de cours, Cyber Content Generator).
+- Remplacer par de vraies captures d'écran/démos les photos d'illustration des projets qui n'en ont pas encore (Transport Agency, Ticketing Platform, Générateur de cours, Cyber Content Generator).
 - Publier les dépôts GitHub des projets sans `repoHref` pour afficher un bouton « Voir le code » sur leurs pages de détail.
 - Renseigner de vrais témoignages clients pour faire apparaître la section Témoignages.
 - Publier d'autres articles de blog.

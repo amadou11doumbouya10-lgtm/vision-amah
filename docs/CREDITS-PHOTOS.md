@@ -27,7 +27,6 @@ Ces photos illustrent le domaine du projet en attendant une vraie capture d'écr
 | Fichier | Page d'origine |
 |---|---|
 | `transport-agency.jpg` | https://stocksnap.io/photo/cargo-ships-1CFC9715A4 |
-| `avatar-amah.jpg` | https://stocksnap.io/photo/idea-brain-5NLKT00MVB |
 | `ticketing-platform.jpg` | https://stocksnap.io/photo/crowd-people-IUJP9OI22I |
 | `generateur-cours.jpg` | https://stocksnap.io/photo/guy-man-H0VXBZUZP3 |
 | `cyber-content-generator.jpg` | https://stocksnap.io/photo/smartphone-camera-TBGNSSQV6B |
