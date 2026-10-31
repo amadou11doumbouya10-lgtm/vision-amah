@@ -15,7 +15,7 @@ Assistant IA installé localement sur Windows, piloté à l'écrit ou à la voix
 - Navigateur : Playwright + Edge/Chromium, profil persistant
 - Packaging : PyInstaller → exécutable Windows standalone
 
-## Fonctionnalités clés (99 outils)
+## Fonctionnalités clés (101 outils)
 
 - Fichiers, documents (Word/PDF/TXT), Excel, archives ZIP, presse-papiers
 - Email Gmail (lecture, envoi, recherche, brouillons)

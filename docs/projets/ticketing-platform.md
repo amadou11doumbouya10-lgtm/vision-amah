@@ -2,6 +2,8 @@
 
 Maquette interactive complète d'une plateforme de billetterie en ligne, en une seule page HTML/CSS/JavaScript (sans rechargement, sans backend).
 
+- **Statut** : en cours de développement (confirmé le 31/10/2026). La maquette front-end est en place ; le paiement en ligne (Stripe) et le backend restent à brancher. Ne pas présenter Stripe comme déjà intégré.
+
 ## Stack
 
 - HTML/CSS/JavaScript (fichier unique)
