@@ -53,15 +53,24 @@ function ListeOutils({ copie = false }: { copie?: boolean }) {
   );
 }
 
-export default function ToolsMarquee() {
+// Accueil : « on » (Vision Amah) et bordures en haut et en bas. Le Portfolio
+// parle à la première personne et pose le bandeau sous ses chiffres, qui ont
+// déjà une bordure basse.
+export default function ToolsMarquee({
+  titre = "Les outils avec lesquels on construit",
+  bordures = "border-y",
+}: {
+  titre?: string;
+  bordures?: "border-y" | "border-b";
+}) {
   return (
     // Le survol de toute la bande met le défilement en pause.
-    <section aria-labelledby="outils-titre" className="group border-y border-white/10 bg-background py-10">
+    <section aria-labelledby="outils-titre" className={`group ${bordures} border-white/10 bg-background py-10`}>
       <h2
         id="outils-titre"
         className="mb-6 px-6 text-center text-xs font-medium uppercase tracking-widest-plus text-white/50"
       >
-        Les outils avec lesquels on construit
+        {titre}
       </h2>
       <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] motion-reduce:[mask-image:none]">
         <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:w-full">

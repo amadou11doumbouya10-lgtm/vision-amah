@@ -63,7 +63,7 @@ src/
       page.tsx               → liste des articles
       [slug]/page.tsx        → article (statique), rendu à partir de blocs typés
     portfolio/
-      page.tsx               → portfolio personnel Amadou Doumbouya (hero, stats, projets, skills ML, parcours, certifications, contact)
+      page.tsx               → portfolio personnel Amadou Doumbouya (hero, stats, bandeau d'outils, projets, skills ML, parcours, certifications, contact)
   components/
     Navbar.tsx               → navigation fixe, opaque au scroll, menu hamburger mobile + scroll-lock
     Hero.tsx                 → section d'accueil en 2 colonnes : badge, titre h1 unique, boutons, garanties ; maquette CampusMarket à droite

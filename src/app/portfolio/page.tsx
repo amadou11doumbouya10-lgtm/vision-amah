@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import ProjectCardVideo from "@/components/ProjectCardVideo";
+import ToolsMarquee from "@/components/ToolsMarquee";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
@@ -183,7 +184,9 @@ const certifications = [
 ];
 
 const stats = [
-  { num: "8+", label: "Projets déployés" },
+  // Calculé depuis projects.ts : le chiffre suit les ajouts. « Conçus » et non
+  // « déployés » : certains projets sont en développement ou des maquettes.
+  { num: String(projects.length), label: "Projets conçus" },
   { num: "99", label: "Outils — Amah Agent" },
   { num: "600K+", label: "Titres — Theamah+" },
   { num: "3", label: "Ventures actives" },
@@ -279,6 +282,9 @@ export default function PortfolioPage() {
         </div>
       </div>
 
+      {/* ── OUTILS ── */}
+      <ToolsMarquee titre="Les outils avec lesquels je construis" bordures="border-b" />
+
       {/* ── PROJETS ── */}
       <section id="projets" className="border-t border-white/10 bg-background py-28">
         <div className="mx-auto max-w-7xl px-6">
@@ -287,7 +293,7 @@ export default function PortfolioPage() {
           </p>
           <h2 className="mb-3 text-4xl font-bold uppercase sm:text-5xl">Mes Projets</h2>
           <p className="mb-16 max-w-xl text-sm leading-relaxed text-white/50">
-            Des applications web que j&apos;ai conçues, développées et déployées de A à Z.
+            Des projets que j&apos;ai conçus et développés de A à Z, du prototype à la mise en ligne.
           </p>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
