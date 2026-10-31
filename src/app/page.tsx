@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ToolsMarquee from "@/components/ToolsMarquee";
+import Applications from "@/components/Applications";
 import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
 import QuiSuisJe from "@/components/QuiSuisJe";
@@ -17,6 +18,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ToolsMarquee />
+      <Applications />
       <Services />
       <WhyUs />
       {/* Après la proposition de valeur, on humanise : qui est derrière Vision
