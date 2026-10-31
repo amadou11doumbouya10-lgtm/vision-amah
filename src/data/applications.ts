@@ -59,8 +59,8 @@ export const applications: Application[] = [
       "Un assistant IA pour Windows, à la voix ou au texte : il range vos fichiers, remplit vos tableurs, rédige vos emails et navigue pour vous.",
     lien: { href: "https://github.com/amadou11doumbouya10-lgtm/amah-agent", label: "Voir le code" },
     cadre: "fenetre",
-    image: "/projects/amah-agent.png",
-    video: "/video/projects/amah-agent.mp4",
+    // Vraie fenêtre de l'application (mode vocal ouvert), sans conversation privée.
+    image: "/projects/amah-agent-voix.jpg",
   },
   {
     slug: "generateur-cours",
