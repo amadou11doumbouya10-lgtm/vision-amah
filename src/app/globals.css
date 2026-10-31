@@ -43,6 +43,21 @@ body {
   animation: marquee 28s linear infinite;
 }
 
+/* Section « Nos applications » : barre sous l'onglet actif. La fin de
+   l'animation fait passer à l'application suivante (voir Applications.tsx). */
+@keyframes progression {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-progression {
+  animation: progression 7s linear forwards;
+}
+
 @keyframes drift {
   from {
     transform: translateY(0);

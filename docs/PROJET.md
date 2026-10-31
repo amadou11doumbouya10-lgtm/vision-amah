@@ -68,6 +68,7 @@ src/
     Navbar.tsx               → navigation fixe, opaque au scroll, menu hamburger mobile + scroll-lock
     Hero.tsx                 → section d'accueil en 2 colonnes : badge, titre h1 unique, boutons, garanties ; maquette CampusMarket à droite
     CampusMarketMockup.tsx   → téléphone en HTML/CSS montrant le vrai catalogue CampusMarket Guinée (produits de démo avec badge « Démo »)
+    Applications.tsx         → section « Nos applications » : une application à la fois en grand (onglets, défilement auto 7 s avec pause), lit src/data/applications.ts
     ToolsMarquee.tsx         → bandeau défilant des outils réellement utilisés, avec leur logo en gris (toolLogos.ts, Simple Icons CC0), juste sous le hero (CSS pur, pause au survol, immobile si reduced-motion)
     Services.tsx             → grille des services groupés par catégorie, chaque carte mène à /services/[slug] (lit src/data/services.ts)
     WhyUs.tsx                → 3 arguments différenciants (statistiques)
@@ -88,6 +89,7 @@ src/
     useReducedMotion.ts      → hook React qui lit la media query prefers-reduced-motion
   data/
     projects.ts              → source unique de vérité des projets (type Project + tableau projects)
+    applications.ts          → applications montrées en grand format (statut vrai, lien, visuel réel), reliées à projects.ts
     services.ts              → source unique de vérité des services (type Service, tableau services, CATEGORIES)
     blog.ts                  → articles du blog (type BlogPost + tableau posts)
 docs/
@@ -149,11 +151,12 @@ Le site a été conçu pour adopter l'esthétique de spacex.com :
 
 Liens de navigation : Services → Pourquoi nous → Réalisations → Portfolio → Blog → Contact.
 
-Ordre des sections de l'accueil : Hero → Bandeau d'outils → Services → Pourquoi nous → Qui suis-je → Processus → Réalisations → Témoignages (si renseignés) → FAQ → Contact.
+Ordre des sections de l'accueil : Hero → Bandeau d'outils → Nos applications → Services → Pourquoi nous → Qui suis-je → Processus → Réalisations → Témoignages (si renseignés) → FAQ → Contact.
 
 ### 4.3 Animations
 
 - Hero : animations à l'arrivée (`initial`/`animate` Framer Motion).
+- Nos applications : changement d'application toutes les 7 s, piloté par la fin de l'animation de la barre sous l'onglet actif ; en pause au survol, au focus clavier et hors de l'écran, arrêté par le bouton pause ou dès que le visiteur choisit un onglet, désactivé avec `prefers-reduced-motion`.
 - Bandeau d'outils : défilement infini en CSS pur (`@keyframes marquee` dans `globals.css`, 28 s), en pause au survol, arrêté avec `prefers-reduced-motion`.
 - Autres sections : `whileInView` + `viewport={{ once: true }}` pour déclencher un fondu/translation à l'entrée dans le viewport.
 - `ProjectHeroVideo.tsx` et `useReducedMotion` : désactivent `autoPlay`/`loop` si l'OS a `prefers-reduced-motion: reduce`.
