@@ -18,6 +18,38 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "campusmarket",
+    name: "CampusMarket Guinée",
+    tag: "Marketplace",
+    summary:
+      "Marketplace des étudiants et des petits vendeurs de Conakry : catalogue sans compte, contact du vendeur sur WhatsApp, vendeurs vérifiés par l'équipe. En ligne en version de test.",
+    description:
+      "CampusMarket Guinée réunit au même endroit les produits des étudiants et des petits vendeurs de Conakry. L'acheteur consulte le catalogue sans créer de compte, puis contacte le vendeur directement sur WhatsApp, avec un message déjà prêt, ou par appel : le lieu de rencontre, la livraison et le paiement se décident entre eux, sans intermédiaire. Côté vendeurs, chaque candidature est vérifiée par l'équipe avant toute publication ; une fois approuvé, le vendeur gère ses produits et partage sa boutique. Toute écriture passe par le serveur, avec une validation Zod et des règles de sécurité Row Level Security dans Postgres. Le site est pensé pour le smartphone et les connexions lentes. Il est en ligne en version de test : les produits de démonstration y sont signalés par un badge « Démo ».",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "Zod"],
+    features: [
+      "Catalogue consultable sans compte : recherche, filtres par catégorie, fiches produit et boutiques partageables",
+      "Contact direct du vendeur sur WhatsApp (message pré-rempli avec le produit) ou par appel, sans paiement en ligne",
+      "Candidature vendeur vérifiée par l'équipe avant toute publication",
+      "Espace vendeur : gestion des produits, du logo et de la couverture de la boutique",
+      "Espace administrateur : candidatures, vendeurs, produits signalés, mise en avant de boutiques, historique des actions",
+      "Sécurité : écritures uniquement côté serveur (validation Zod), règles Row Level Security dans Postgres",
+      "Pensé pour le smartphone et la 3G : catalogue affiché en 2,2 s en 3G rapide",
+    ],
+    pages: [
+      { name: "Accueil", description: "Recherche, catégories, produits et boutiques mis en avant" },
+      { name: "Catalogue", description: "Recherche et filtres par catégorie, pagination" },
+      { name: "Fiche produit", description: "Photos, prix en GNF, boutons WhatsApp et appel, signalement" },
+      { name: "Boutiques", description: "Annuaire des boutiques et page publique de chaque vendeur" },
+      { name: "Devenir vendeur", description: "Formulaire de candidature, examiné par l'équipe" },
+      { name: "Espaces vendeur et admin", description: "Gestion des produits ; validation des candidatures et modération" },
+    ],
+    architecture:
+      "app/(public)/     → accueil, catalogue, fiches produit, boutiques, candidature vendeur\napp/vendeur/      → espace vendeur (compte connecté)\napp/admin/        → espace administrateur (rôle admin seulement)\nactions/          → Server Actions : validation Zod, contrôle des rôles, images\nsupabase/         → migrations : schéma Postgres, règles RLS, stockage",
+    externalHref: "https://campusmarket-nu.vercel.app",
+    externalLabel: "Voir le site (version de test)",
+    image: "/projects/campusmarket-boutique-demo.jpg",
+  },
+  {
     slug: "theamah",
     name: "Theamah+",
     tag: "Streaming",
