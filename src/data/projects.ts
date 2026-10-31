@@ -247,6 +247,28 @@ export const projects: Project[] = [
       "topics.py              → Sujets statiques + sujets générés par IA\nai_topic_generator.py  → Génération de nouveaux sujets (Claude, streaming)\nscript_generator.py    → Mise en forme du script (ton fun / sérieux)\nhashtags.py            → Stratégie de hashtags par ton\nbatch_export.py        → Génération de plans de publication multi-jours",
     image: "/projects/cyber-content-generator.jpg",
   },
+  {
+    slug: "prospection",
+    name: "Vision Amah Prospection",
+    tag: "Automatisation",
+    summary:
+      "Script Python qui trouve sur OpenStreetMap les commerces de Conakry sans site web, puis prépare pour chacun un message WhatsApp et une page de démo personnalisés. L'envoi reste manuel.",
+    description:
+      "Cet outil interne automatise la recherche de clients pour la création de sites web. Il interroge OpenStreetMap (API Overpass) pour trouver les commerces de Conakry — ou de toute autre ville — qui ont un numéro de téléphone mais aucun site web, nettoie et dédoublonne les résultats, puis classe chaque commerce par secteur (restauration, beauté, mode, santé, hébergement, auto…). Pour chacun, il génère un message WhatsApp personnalisé et une page de démo qui montre à quoi pourrait ressembler son site, avec sa vraie photo ou son vrai menu quand OpenStreetMap en référence. Les résultats sont exportés en CSV, en PDF et dans une page de suivi interactive. Aucun envoi n'est automatisé : les messages partent à la main, car automatiser WhatsApp expose le numéro à un bannissement.",
+    stack: ["Python", "API Overpass (OpenStreetMap)", "fpdf2", "openpyxl"],
+    features: [
+      "Recherche des commerces sans site web mais avec un numéro de téléphone, via l'API Overpass d'OpenStreetMap",
+      "Nettoyage et dédoublonnage des résultats (numéros, établissements saisis plusieurs fois)",
+      "Classement par secteur pour adapter le message et la mise en page de la démo",
+      "Une page de démo personnalisée par commerce, avec sa vraie photo ou son vrai menu quand OpenStreetMap en référence",
+      "Export CSV et PDF, page de suivi interactive (recherche, filtres, statuts, relances, statistiques)",
+      "Mémoire des commerces déjà trouvés, relance hebdomadaire possible par tâche planifiée Windows",
+      "Aucun envoi automatisé : les messages WhatsApp partent à la main",
+    ],
+    architecture:
+      "prospect_finder.py      → recherche Overpass, nettoyage, secteurs, messages et pages de démo\nlancer_hebdo.bat        → relance hebdomadaire (tâche planifiée Windows)\nRésultats générés       → CSV, PDF, page de suivi prospects.html, une démo HTML par commerce",
+    image: "/projects/prospection.svg",
+  },
 ];
 
 export function getProject(slug: string) {
