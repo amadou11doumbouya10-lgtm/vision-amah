@@ -21,7 +21,7 @@ export default function Projects() {
             Réalisations
           </p>
           <h2 className="text-4xl font-bold uppercase sm:text-5xl">
-            Des projets concrets, déjà déployés
+            Des projets concrets, du prototype à la mise en ligne
           </h2>
         </motion.div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

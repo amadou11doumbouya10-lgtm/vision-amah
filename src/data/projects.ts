@@ -130,9 +130,9 @@ export const projects: Project[] = [
     name: "Transport Agency",
     tag: "Logistique",
     summary:
-      "Plateforme de gestion de fret Allemagne → Afrique, développée avec Next.js, Prisma et PostgreSQL.",
+      "Plateforme de gestion de fret Allemagne → Afrique, en cours de développement avec Next.js, Prisma et PostgreSQL.",
     description:
-      "Cette plateforme bilingue (français/allemand) accompagne une agence de transport de fret entre l'Allemagne et l'Afrique de l'Ouest. Elle combine un site public (tarifs, suivi de colis, contact) et un dashboard administrateur protégé, avec génération automatique de bons de retrait PDF (QR code inclus) et notifications email à chaque changement de statut du colis. La base de données PostgreSQL centralise colis, expéditions et tarifs pour fiabiliser le suivi logistique de bout en bout.",
+      "Cette plateforme bilingue (français/allemand), en cours de développement, est conçue pour une agence de transport de fret entre l'Allemagne et l'Afrique de l'Ouest. Elle combine un site public (tarifs, suivi de colis, contact) et un dashboard administrateur protégé, avec génération automatique de bons de retrait PDF (QR code inclus) et notifications email à chaque changement de statut du colis. La base de données PostgreSQL centralise colis, expéditions et tarifs pour fiabiliser le suivi logistique de bout en bout.",
     stack: ["Next.js", "Prisma", "PostgreSQL", "NextAuth"],
     features: [
       "Site public bilingue FR/DE : accueil, calculateur de tarifs, suivi de colis par code, contact",

@@ -2,6 +2,8 @@
 
 Site full-stack bilingue (FR/DE) pour une agence de transport de colis entre l'Allemagne et l'Afrique de l'Ouest (Guinée, Côte d'Ivoire, Sénégal, Mali, etc.).
 
+- **Statut** : en cours de développement (confirmé le 31/10/2026). Pas de lien public ni de dépôt accessible : la fiche ne montre qu'une photo d'illustration, et le projet n'apparaît pas dans la section « Nos applications ».
+
 ## Stack
 
 - Next.js 14 (App Router, TypeScript)
