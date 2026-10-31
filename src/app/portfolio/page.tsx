@@ -66,13 +66,13 @@ const timeline = [
     date: "2026",
     title: "Fondateur — Vision Amah",
     place: "Conakry, Guinée · Solutions IA & Web · Next.js / TypeScript / Claude",
-    desc: "Création de Vision Amah, une agence spécialisée en IA, chatbots conversationnels, développement web et cybersécurité. Conception et déploiement du site complet (Next.js 14, Tailwind, Framer Motion) avec PWA, SEO avancé, Vercel Analytics et formulaire de contact Formspree.",
+    desc: "Création de Vision Amah, une agence spécialisée en IA, chatbots conversationnels, développement web et cybersécurité. Conception et déploiement du site complet (Next.js 15, Tailwind, Framer Motion) avec PWA, SEO avancé, Vercel Analytics et formulaire de contact Formspree.",
   },
   {
     date: "2026",
     title: "Créateur — Amah Agent",
     place: "Projet commercial · Windows AI Agent · Python / Groq / PyInstaller",
-    desc: "Assistant IA local pour Windows avec 99 outils intégrés (fichiers, email, navigateur, Excel, voix…), mémoire SQLite persistante, interface HUD, mode live Gemini, système de licence offline, packaging .exe standalone.",
+    desc: "Assistant IA local pour Windows avec 101 outils intégrés (fichiers, email, navigateur, Excel, voix…), mémoire SQLite persistante, interface HUD, mode live Gemini, système de licence offline, packaging .exe standalone.",
   },
   {
     date: "2026",
@@ -83,8 +83,8 @@ const timeline = [
   {
     date: "2025–2026",
     title: "Développeur Full-Stack — Projets clients",
-    place: "Next.js · Prisma · PostgreSQL · Stripe · Shopify",
-    desc: "Plateforme de billetterie (Next.js + Stripe), application de gestion de fret Allemagne → Afrique (Next.js + Prisma + PostgreSQL), boutique Shopify Vertex Shop, générateur de contenu cybersécurité (Python + Anthropic API).",
+    place: "Next.js · Prisma · PostgreSQL · Shopify · JavaScript",
+    desc: "Plateforme de billetterie TicketFlow (en développement : maquette interactive en place, paiement et backend à venir), application de gestion de fret Allemagne → Afrique (en développement, Next.js + Prisma + PostgreSQL), boutique Shopify Vertex Shop, générateur de contenu cybersécurité (Python + Anthropic API).",
   },
   {
     date: "2025",
@@ -187,7 +187,7 @@ const stats = [
   // Calculé depuis projects.ts : le chiffre suit les ajouts. « Conçus » et non
   // « déployés » : certains projets sont en développement ou des maquettes.
   { num: String(projects.length), label: "Projets conçus" },
-  { num: "99", label: "Outils — Amah Agent" },
+  { num: "101", label: "Outils — Amah Agent" },
   { num: "600K+", label: "Titres — Theamah+" },
   { num: "3", label: "Ventures actives" },
 ];
@@ -274,7 +274,7 @@ export default function PortfolioPage() {
               className={`py-8 text-center ${i > 0 ? "border-l border-white/10" : ""}`}
             >
               <p className="text-4xl font-black text-accent">{s.num}</p>
-              <p className="mt-1 text-xs font-medium uppercase tracking-widest-plus text-white/40">
+              <p className="mt-1 text-xs font-medium uppercase tracking-widest-plus text-white/50">
                 {s.label}
               </p>
             </div>
@@ -391,7 +391,7 @@ export default function PortfolioPage() {
           <div className="flex flex-col gap-10">
             {timeline.map((item, i) => (
               <div key={i} className="grid grid-cols-[80px_1fr] gap-8 sm:grid-cols-[120px_1fr]">
-                <p className="pt-1 text-right text-xs font-bold text-white/40">{item.date}</p>
+                <p className="pt-1 text-right text-xs font-bold text-white/50">{item.date}</p>
                 <div className="relative border-l border-accent/20 pl-8">
                   <span className="absolute -left-[5px] top-[6px] h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_10px_rgb(var(--accent)/0.6)]" />
                   <p className="mb-1 font-semibold text-white">{item.title}</p>
@@ -450,17 +450,17 @@ export default function PortfolioPage() {
                         className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest-plus ${
                           cert.obtained
                             ? "bg-accent/15 text-accent"
-                            : "bg-white/5 text-white/40"
+                            : "bg-white/5 text-white/60"
                         }`}
                       >
                         {cert.obtained ? "Obtenu" : "En cours"}
                       </span>
-                      <span className="text-xs text-white/40">{cert.date}</span>
+                      <span className="text-xs text-white/50">{cert.date}</span>
                     </div>
                     <p className="mb-1 font-semibold leading-snug text-white">{cert.title}</p>
                     <p className="text-xs font-medium text-accent">{cert.issuer}</p>
                     {cert.note && (
-                      <p className="mt-2 text-xs leading-relaxed text-white/40">{cert.note}</p>
+                      <p className="mt-2 text-xs leading-relaxed text-white/50">{cert.note}</p>
                     )}
                   </div>
                   <div className="mt-4 flex flex-wrap gap-4">
@@ -524,7 +524,7 @@ export default function PortfolioPage() {
                       {item.icon}
                     </span>
                     <div>
-                      <p className="mb-0.5 text-xs font-bold uppercase tracking-widest-plus text-white/40">
+                      <p className="mb-0.5 text-xs font-bold uppercase tracking-widest-plus text-white/50">
                         {item.label}
                       </p>
                       <p className="text-sm font-semibold text-white">{item.value}</p>
@@ -539,7 +539,7 @@ export default function PortfolioPage() {
                 Envoyez-moi un message — je lis tout personnellement.
               </p>
               <ContactForm />
-              <p className="mb-4 mt-8 text-center text-xs uppercase tracking-widest-plus text-white/40">
+              <p className="mb-4 mt-8 text-center text-xs uppercase tracking-widest-plus text-white/50">
                 ou directement
               </p>
               <div className="flex flex-col gap-4">
@@ -557,7 +557,7 @@ export default function PortfolioPage() {
                 >
                   Envoyer un email
                 </a>
-                <p className="text-center text-xs text-white/40">
+                <p className="text-center text-xs text-white/50">
                   Ou réservez un audit IA gratuit sur{" "}
                   <Link href="/#contact" className="text-accent underline underline-offset-4">
                     Vision Amah →

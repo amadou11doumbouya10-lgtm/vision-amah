@@ -86,10 +86,10 @@ export const projects: Project[] = [
     summary:
       "Dites « Amah, rédige cet email » — et c'est fait. Un assistant IA local qui automatise vos tâches Windows : fichiers, Excel, emails, navigateur, voix.",
     description:
-      "Imaginez un collaborateur disponible 24h/24, qui lit vos PDF, remplit vos fichiers Excel, rédige vos emails Gmail et navigue sur le web pour vous — le tout à la voix ou au texte. Amah Agent s'installe sur votre PC Windows et fonctionne sans internet pour l'essentiel. Ses 99 outils couvrent tout ce que vous faites en journée : gestion de fichiers, documents, tableurs, agenda, vision par IA sur vos écrans. Il planifie des tâches en plusieurs étapes, se souvient de vos préférences entre les sessions, et répond au mot-clé « Amah » comme un vrai assistant. Résultat : 10 heures récupérées par semaine, sans recruter.",
+      "Imaginez un collaborateur disponible 24h/24, qui lit vos PDF, remplit vos fichiers Excel, rédige vos emails Gmail et navigue sur le web pour vous — le tout à la voix ou au texte. Amah Agent s'installe sur votre PC Windows et fonctionne sans internet pour l'essentiel. Ses 101 outils couvrent tout ce que vous faites en journée : gestion de fichiers, documents, tableurs, agenda, vision par IA sur vos écrans. Il planifie des tâches en plusieurs étapes, se souvient de vos préférences entre les sessions, et répond au mot-clé « Amah » comme un vrai assistant. Résultat : 10 heures récupérées par semaine, sans recruter.",
     stack: ["Python", "Groq / Llama 3.3", "Gemini Live", "SQLite"],
     features: [
-      "99 outils : fichiers, documents, Excel, email Gmail, navigateur, vision IA, automatisation système",
+      "101 outils : fichiers, documents, Excel, email Gmail, navigateur, vision IA, automatisation système",
       "Interface vocale HUD avec mot de réveil « Amah » et Mode Live Gemini (conversation orale temps réel, touche F9)",
       "Navigateur Playwright avec profil persistant, navigation par texte visible sans sélecteur CSS",
       "Planification multi-étapes : génération et exécution automatique d'un plan, avec confirmation pour les actions sensibles",
@@ -97,7 +97,7 @@ export const projects: Project[] = [
       "Licence offline liée au matériel, packagé en exécutable Windows standalone",
     ],
     architecture:
-      "gui.py                  → Interface graphique (chat + HUD)\nvoice_fullscreen.py     → Interface vocale HUD plein écran (+ Mode Live)\nagent.py                → Interface terminal\nconfig.py               → 99 définitions d'outils\ngroq_client.py          → Client Groq (rotation de clés, retry)\ngemini_client.py        → Session Gemini Live (pont audio temps réel)\ntools/                  → 30+ modules d'outils (fichiers, email, navigateur, Excel...)",
+      "gui.py                  → Interface graphique (chat + HUD)\nvoice_fullscreen.py     → Interface vocale HUD plein écran (+ Mode Live)\nagent.py                → Interface terminal\nconfig.py               → 101 définitions d'outils\ngroq_client.py          → Client Groq (rotation de clés, retry)\ngemini_client.py        → Session Gemini Live (pont audio temps réel)\ntools/                  → 30+ modules d'outils (fichiers, email, navigateur, Excel...)",
     externalHref: "https://github.com/amadou11doumbouya10-lgtm/amah-agent",
     externalLabel: "Voir le code",
     image: "/projects/amah-agent.png",
@@ -186,9 +186,9 @@ export const projects: Project[] = [
     name: "Ticketing Platform",
     tag: "Billetterie",
     summary:
-      "Maquette interactive complète d'une billetterie en ligne (TicketFlow) : catalogue d'événements, réservation, billets à QR code et back-office.",
+      "Billetterie en ligne en cours de développement (TicketFlow) : la maquette interactive couvre déjà le catalogue d'événements, la réservation, les billets à QR code et le back-office.",
     description:
-      "TicketFlow est une maquette interactive complète d'une billetterie en ligne, développée en une seule page sans rechargement. Elle couvre le parcours utilisateur de bout en bout : catalogue d'événements filtrable, réservation avec plan de salle et récapitulatif de commande en temps réel, billets personnels avec QR codes, et back-office avec indicateurs clés. Pensée comme base de démonstration, elle est prête à être branchée à un vrai moteur de paiement et à un backend pour passer en production.",
+      "TicketFlow est une maquette interactive complète d'une billetterie en ligne, développée en une seule page sans rechargement. Elle couvre le parcours utilisateur de bout en bout : catalogue d'événements filtrable, réservation avec plan de salle et récapitulatif de commande en temps réel, billets personnels avec QR codes, et back-office avec indicateurs clés. Le projet est en cours de développement : le paiement en ligne et le backend restent à brancher avant une mise en production.",
     stack: ["HTML/CSS", "JavaScript", "QR Code"],
     features: [
       "Catalogue d'événements filtrable par catégorie (concerts, sport, cinéma, festivals)",
@@ -196,7 +196,7 @@ export const projects: Project[] = [
       "Billets personnels avec QR codes SVG",
       "Back-office avec indicateurs clés (KPIs) et tableau des dernières commandes",
       "Responsive mobile complet, modal connexion/inscription, notifications toast",
-      "Démonstration frontend — prête à être branchée à un vrai moteur de paiement et un backend",
+      "En développement : front-end en place, paiement en ligne et backend encore à brancher",
     ],
     pages: [
       { name: "Accueil", description: "Hero animé, grille d'événements avec filtres" },
