@@ -159,28 +159,27 @@ export const projects: Project[] = [
     name: "Avatar Amah",
     tag: "Intelligence artificielle",
     summary:
-      "Chatbot IA public à la persona élégante et minimaliste, ambassadrice de Theamah+, avec dashboard admin de surveillance.",
+      "Chatbot IA commercial de Vision Amah, à la persona élégante et minimaliste : il cerne le besoin du visiteur et l'oriente vers la bonne solution. C'est lui qui répond dans la bulle de ce site.",
     description:
-      "Avatar Amah (« The Amah ») est un chatbot IA public propulsé par GPT-OSS 120B via l'API Groq, intégré comme widget flottant dans Theamah+. Sa persona est volontairement courte, dense et mystérieuse — jamais de listes, jamais de formules de politesse — et reste centrée sur le streaming, la tech, l'IA et la cybersécurité. Une fonction serverless Netlify fait office de proxy pour ne jamais exposer la clé API côté client, avec limitation du nombre de requêtes par visiteur. Un dashboard admin protégé permet de suivre les conversations, les sujets abordés et les statistiques d'usage.",
+      "Avatar Amah (« The Amah ») est le chatbot public de Vision Amah, propulsé par GPT-OSS 120B via l'API Groq. Il répond dans la bulle de discussion de ce site et dans Theamah+, où il est intégré en widget flottant. Sa persona est volontairement courte, dense et élégante — jamais de listes, jamais de formules de politesse — et son rôle est commercial : comprendre le besoin du visiteur, citer une réalisation de Vision Amah proche de ce besoin, puis lui proposer d'être recontacté. Une fonction serverless Netlify fait office de proxy pour ne jamais exposer la clé API côté client, avec une limite de 30 requêtes par heure et par adresse IP.",
     stack: ["JavaScript", "API Groq (GPT-OSS 120B)", "Netlify Functions", "HTML/CSS"],
     features: [
       "Persona « The Amah » : réponses courtes, élégantes, jamais de listes ni de salutations",
-      "Widget flottant intégré directement dans Theamah+",
+      "Rôle commercial : cerner le besoin, citer une réalisation similaire, proposer un contact",
+      "Intégré en bulle de discussion sur ce site et en widget flottant dans Theamah+",
       "Clé API jamais exposée côté client — proxy via fonction serverless Netlify",
-      "Limitation des requêtes par visiteur (anti-abus)",
-      "Effet machine à écrire, suggestions de démarrage, compteur de messages",
-      "Dashboard admin protégé : historique des conversations, statistiques, export",
+      "Limite de 30 requêtes par heure et par adresse IP (anti-abus)",
+      "Effet machine à écrire, suggestions de démarrage, 20 messages par conversation, prénom du visiteur retenu",
     ],
     pages: [
-      { name: "Chatbot public", description: "Widget conversationnel pour les visiteurs (index.html)" },
-      { name: "Dashboard admin", description: "Suivi des conversations et statistiques, accès protégé" },
+      { name: "Chatbot public", description: "Interface conversationnelle pour les visiteurs (index.html), aussi chargée en bulle sur ce site" },
     ],
     architecture:
-      "index.html              → Chatbot public (persona, UI, logique conversation)\nadmin.html              → Dashboard admin protégé (stats, historique, export)\nnetlify/functions/\n  chat.js               → Proxy serverless vers l'API Anthropic (clé cachée)\nnetlify.toml            → Configuration de déploiement Netlify",
+      "index.html              → Chatbot public (persona, interface, logique de conversation)\nnetlify/functions/\n  chat.js               → Proxy serverless vers l'API Groq (clé cachée, 30 requêtes/heure par IP)\nnetlify.toml            → Configuration de déploiement Netlify",
     externalHref: "https://legendary-selkie-d298b7.netlify.app",
     externalLabel: "Voir le site",
     repoHref: "https://github.com/amadou11doumbouya10-lgtm/amah-avatar",
-    image: "/projects/avatar-amah.jpg",
+    image: "/projects/avatar-amah-capture.jpg",
   },
   {
     slug: "ticketing-platform",
